@@ -1,10 +1,32 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div>
-      <h1>Welcome to Diwanag 2025 App</h1>
-      <p>
-        Edit <code>app/page.tsx</code> to get started.
-      </p>
+      <h1>Welcome to Diwanag 2025</h1>
+      <nav>
+        <ul>
+          <li>
+            <Link href="/prologue">Prologue</Link>
+          </li>
+          <li>
+            <Link href="/table-of-content">Table of Content</Link>
+          </li>
+          <li>
+            <Link href="/chap-1">Chapter 1</Link>
+          </li>
+          <li>
+            <Link href="/chap-2">Chapter 2</Link>
+          </li>
+          <li>
+            <Link href="/chap-3">Chapter 3</Link>
+          </li>
+          <li>
+            <Link href="/epilogue">Epilogue</Link>
+          </li>
+        </ul>
+      </nav>
+    
     </div>
   );
 }
