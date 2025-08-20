@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Landing from "./landing/page";
 
 export default function Home() {
   return (
     <div>
+      <Landing />
       <h1>Welcome to Diwanag 2025</h1>
       <nav>
         <ul>
@@ -26,7 +28,6 @@ export default function Home() {
           </li>
         </ul>
       </nav>
-    
     </div>
   );
 }
