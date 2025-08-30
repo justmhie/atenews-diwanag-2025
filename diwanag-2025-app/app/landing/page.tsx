@@ -1,6 +1,11 @@
+"use client";
+import { useRouter } from "next/navigation";
+
 export default function Page() {
+  const router = useRouter();
   return (
     <main
+      className="bg-light"
       style={{
         minHeight: "100vh",
         display: "flex",
@@ -8,7 +13,7 @@ export default function Page() {
         gap: "10rem",
         alignItems: "center",
         justifyContent: "flex-end",
-        background: "#fdf6e3",
+        background: "var(--bg-light)",
         width: "100%",
         boxSizing: "border-box",
         paddingTop: "10rem",
@@ -29,7 +34,7 @@ export default function Page() {
           style={{
             position: "relative",
             fontSize: "5rem",
-            color: "#d4a94f",
+            color: "var(--text-accent)",
             lineHeight: 0.5,
             zIndex: 1,
             background: "transparent",
@@ -51,7 +56,7 @@ export default function Page() {
             style={{
               flex: 2,
               border: "none",
-              borderTop: "1px solid #fdf6e3",
+              borderTop: "1px solid var(--bg-light)",
             }}
           />
 
@@ -59,14 +64,14 @@ export default function Page() {
             style={{
               flex: 1,
               border: "none",
-              borderTop: "1px solid #a88c3d",
+              borderTop: "1px solid var(--text-accent)",
             }}
           />
           <p
             style={{
               fontFamily: "averia-serif",
               fontSize: "16px",
-              color: "#a88c3d",
+              color: "var(--text-accent)",
               marginTop: "0.5rem",
               fontWeight: "300",
               margin: 0,
@@ -90,6 +95,7 @@ export default function Page() {
             height: "auto",
             objectFit: "contain",
             display: "block",
+            pointerEvents: "none",
           }}
         />
 
@@ -109,13 +115,30 @@ export default function Page() {
           <img
             src="/door-1.png"
             alt="Door 1"
-            style={{ height: "auto", marginTop: "3rem" }}
+            style={{
+              height: "auto",
+              marginTop: "3rem",
+              cursor: "pointer",
+              pointerEvents: "auto",
+            }}
+            onClick={() => router.push("/prologue")}
           />
-          <img src="/door-2.png" alt="Door 2" style={{ height: "auto" }} />
+          <img
+            src="/door-2.png"
+            alt="Door 2"
+            style={{ height: "auto", cursor: "pointer", pointerEvents: "auto" }}
+            onClick={() => router.push("/chap-1")}
+          />
           <img
             src="/door-3.png"
             alt="Door 3"
-            style={{ height: "auto", marginTop: "3rem" }}
+            style={{
+              height: "auto",
+              marginTop: "3rem",
+              cursor: "pointer",
+              pointerEvents: "auto",
+            }}
+            onClick={() => router.push("/epilogue")}
           />
         </div>
       </div>
