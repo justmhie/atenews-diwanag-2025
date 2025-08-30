@@ -17,6 +17,8 @@ export default function Page() {
       {/* MAIN TEXT */}
       <div
         style={{
+          flexDirection: "column",
+          gap: "1rem",
           textAlign: "center",
           justifyContent: "center",
           alignContent: "center",
@@ -25,25 +27,54 @@ export default function Page() {
       >
         <h1
           style={{
-            fontFamily: "serif",
-            fontSize: "clamp(2rem, 5vw, 4rem)",
+            position: "relative",
+            fontSize: "5rem",
             color: "#d4a94f",
-            margin: 0,
-            lineHeight: 1.2,
+            lineHeight: 0.5,
+            zIndex: 1,
+            background: "transparent",
           }}
         >
           Tinipong Alaala
         </h1>
-        <p
+
+        <div
           style={{
-            fontSize: "clamp(1rem, 2.5vw, 1.5rem)",
-            color: "#a88c3d",
-            marginTop: "0.5rem",
-            fontWeight: "300",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "1rem",
+            zIndex: 1,
           }}
         >
-          An Art Folio
-        </p>
+          <hr
+            style={{
+              flex: 2,
+              border: "none",
+              borderTop: "1px solid #fdf6e3",
+            }}
+          />
+
+          <hr
+            style={{
+              flex: 1,
+              border: "none",
+              borderTop: "1px solid #a88c3d",
+            }}
+          />
+          <p
+            style={{
+              fontFamily: "averia-serif",
+              fontSize: "16px",
+              color: "#a88c3d",
+              marginTop: "0.5rem",
+              fontWeight: "300",
+              margin: 0,
+            }}
+          >
+            An Art Folio
+          </p>
+        </div>
       </div>
 
       {/* MOUNTAIN AND DOORS */}
