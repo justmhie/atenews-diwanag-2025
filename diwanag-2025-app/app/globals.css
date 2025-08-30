@@ -1,3 +1,40 @@
+/* Color Palette */
+:root {
+  --bg-light: #f8ffd8;
+  --bg-primary: #4e79ad;
+  --bg-dark: #05111c;
+  --text-dark: #161207;
+  --text-light: #f8ffd8;
+  --text-accent: #987930;
+  --accent-green: #79a191;
+  --accent-blue: #3c6271;
+  --accent-blue-dark: #2a4555;
+  --accent-blue-darker: #1e2e3e;
+  --accent-blue-darkest: #182231;
+  --accent-gold: #ba9f66;
+  --accent-gold-dark: #a58843;
+  --accent-gold-darker: #987930;
+  --accent-brown: #6a4b21;
+  --accent-brown-dark: #563320;
+}
+
+body {
+  background: var(--bg-light);
+  color: var(--text-dark);
+  font-family: "Averia Serif Libre", "Vestardia Regular", serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-dark);
+}
+.bg-dark {
+  background: var(--bg-dark);
+}
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&display=swap");
 
