@@ -3,7 +3,15 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <nav>
-      <ul>
+      <ul
+        style={{
+          display: "flex",
+          gap: "2rem",
+          listStyle: "none",
+          padding: 0,
+          margin: 0,
+        }}
+      >
         <li>
           <Link href="/prologue">Prologue</Link>
         </li>
