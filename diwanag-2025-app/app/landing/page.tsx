@@ -1,8 +1,9 @@
 "use client";
 import { useRouter } from "next/navigation";
-
-export default function Page() {
+import TableOfContents from "../table-of-content/page";
+export default function LandingPage() {
   const router = useRouter();
+
   return (
     <main
       className="bg-light"
@@ -17,8 +18,11 @@ export default function Page() {
         width: "100%",
         boxSizing: "border-box",
         paddingTop: "10rem",
+        position: "relative",
       }}
     >
+      <TableOfContents />
+
       {/* MAIN TEXT */}
       <div
         style={{
