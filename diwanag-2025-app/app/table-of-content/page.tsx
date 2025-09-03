@@ -15,71 +15,98 @@ export default function TableOfContents() {
     {
       title: "Prologue",
       path: "/prologue",
-      description: "The beginning of our journey",
-      artworks: [
-        { title: "Dawn's First Light", path: "/prologue/artwork-1" },
-        { title: "Memory's Gate", path: "/prologue/artwork-2" },
-        { title: "Whispered Beginnings", path: "/prologue/artwork-3" },
-      ],
+      description: "",
     },
     {
       title: "Chapter 1",
       path: "/chap-1",
-      description: "First memories unfold",
+      description: "",
       artworks: [
-        { title: "Childhood Dreams", path: "/chap-1/artwork-1" },
-        { title: "Paper Boats", path: "/chap-1/artwork-2" },
-        { title: "Summer Rain", path: "/chap-1/artwork-3" },
-        { title: "Mother's Lullaby", path: "/chap-1/artwork-4" },
+        { title: "Tailored for Yesterday", path: "/chap-1/artwork-1" },
+        {
+          title: "You don't have to worry anymore, Ate is here",
+          path: "/chap-1/artwork-2",
+        },
+        { title: "I Was Here", path: "/chap-1/artwork-3" },
+        { title: "Pictures on the Wall", path: "/chap-1/artwork-4" },
+        { title: "Underneath The Cloudless Sky", path: "/chap-1/artwork-5" },
       ],
     },
     {
       title: "Chapter 2",
       path: "/chap-2",
-      description: "Deeper into the past",
+      description: "",
       artworks: [
-        { title: "School Days", path: "/chap-2/artwork-1" },
-        { title: "First Love Letters", path: "/chap-2/artwork-2" },
-        { title: "Broken Promises", path: "/chap-2/artwork-3" },
+        { title: "Reminiscence", path: "/chap-2/artwork-1" },
+        { title: "Phantom Pain", path: "/chap-2/artwork-2" },
+        {
+          title: "Something Stored in Warm Plush Toys",
+          path: "/chap-2/artwork-3",
+        },
+        { title: "Kami Sauna", path: "/chap-2/artwork-5" },
+        { title: "Entablado", path: "/chap-2/artwork-6" },
       ],
     },
     {
       title: "Chapter 3",
       path: "/chap-3",
-      description: "Revelations emerge",
+      description: "",
       artworks: [
-        { title: "Hidden Truths", path: "/chap-3/artwork-1" },
-        { title: "Family Secrets", path: "/chap-3/artwork-2" },
-        { title: "The Photograph", path: "/chap-3/artwork-3" },
-        { title: "Grandmother's Stories", path: "/chap-3/artwork-4" },
-        { title: "Lost Connections", path: "/chap-3/artwork-5" },
+        { title: "Indoor Garden", path: "/chap-3/artwork-1" },
+        { title: "Come Along With Me", path: "/chap-3/artwork-2" },
+        { title: "A Store that Sells Stories", path: "/chap-3/artwork-3" },
+        { title: "Where Broken Heart Rests", path: "/chap-3/artwork-4" },
+        { title: "Munimuni", path: "/chap-3/artwork-5" },
+        { title: "Post Apocalypse", path: "/chap-3/artwork-6" },
       ],
     },
     {
       title: "Chapter 4",
       path: "/chap-4",
-      description: "Paths diverge",
+      description: "",
       artworks: [
-        { title: "City Lights", path: "/chap-4/artwork-1" },
-        { title: "New Beginnings", path: "/chap-4/artwork-2" },
-        { title: "Distance and Time", path: "/chap-4/artwork-3" },
+        {
+          title: "Everything Everywhere All at Once",
+          path: "/chap-4/artwork-1",
+        },
+        { title: "Anatomy Study", path: "/chap-4/artwork-2" },
+        { title: "Dawn’s Quiet Kiss", path: "/chap-4/artwork-3" },
+        { title: "Heroine", path: "/chap-4/artwork-4" },
+        { title: "Wings of Yesterday", path: "/chap-4/artwork-5" },
+        { title: "Lakbay", path: "/chap-4/artwork-6" },
       ],
     },
     {
       title: "Chapter 5",
       path: "/chap-5",
-      description: "Coming home",
+      description: "",
       artworks: [
-        { title: "Return Journey", path: "/chap-5/artwork-1" },
-        { title: "Familiar Faces", path: "/chap-5/artwork-2" },
-        { title: "Changed Landscapes", path: "/chap-5/artwork-3" },
-        { title: "Reconciliation", path: "/chap-5/artwork-4" },
+        { title: "Old Habits Die Screaming", path: "/chap-5/artwork-1" },
+        { title: "Irrepressible", path: "/chap-5/artwork-2" },
+        { title: "Boredom", path: "/chap-5/artwork-3" },
+        { title: "Conversations with a Stranger", path: "/chap-5/artwork-4" },
+        { title: "Wholeness in Whiskered Whimsy", path: "/chap-5/artwork-5" },
+      ],
+    },
+    {
+      title: "Chapter 6",
+      path: "/chap-6",
+      description: "",
+      artworks: [
+        { title: "Walking Among Us", path: "/chap-6/artwork-1" },
+        {
+          title: "Under the Tree, in the 5th Grade",
+          path: "/chap-6/artwork-2",
+        },
+        { title: "Human Behavior", path: "/chap-6/artwork-3" },
+        { title: "Hugis ng Gunita’t Pangarap", path: "/chap-6/artwork-4" },
+        { title: "Sigalot ng Kaluluwa", path: "/chap-6/artwork-5" },
       ],
     },
     {
       title: "Epilogue",
       path: "/epilogue",
-      description: "Where stories converge",
+      description: "",
       artworks: [
         { title: "Full Circle", path: "/epilogue/artwork-1" },
         { title: "New Memories", path: "/epilogue/artwork-2" },
@@ -189,12 +216,12 @@ export default function TableOfContents() {
                 className="cursor-pointer rounded-md p-4 text-[var(--text-accent)] hover:bg-black/5 transition"
               >
                 <div className="flex items-center justify-between mb-1 ">
-<h3
-  className="m-0 text-lg font-semibold "
-  style={{ color: "var(--text-accent)" }}
->
-  {item.title}
-</h3>
+                  <h3
+                    className="m-0 text-lg font-semibold "
+                    style={{ color: "var(--text-accent)" }}
+                  >
+                    {item.title}
+                  </h3>
                   <span
                     className={`transform transition-transform ${
                       expandedChapters[index] ? "rotate-90" : ""
@@ -215,7 +242,7 @@ export default function TableOfContents() {
               </div>
 
               {/* Artworks */}
-              {expandedChapters[index] && (
+              {expandedChapters[index] && item.artworks && (
                 <div className="ml-4 mb-2 rounded-r-md border-l-2 border-[var(--text-accent)] bg-black/5 pl-4">
                   {item.artworks.map((artwork, artIndex) => (
                     <div
