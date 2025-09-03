@@ -9,9 +9,7 @@ export default function TableOfContents() {
   >({});
   const router = useRouter();
 
-  const toggleToc = () => {
-    setIsTocOpen(!isTocOpen);
-  };
+  const toggleToc = () => setIsTocOpen(!isTocOpen);
 
   const tocItems = [
     {
@@ -106,32 +104,10 @@ export default function TableOfContents() {
       {/* TOGGLE BUTTON */}
       <button
         onClick={toggleToc}
-        style={{
-          position: "fixed",
-          top: "2rem",
-          left: "2rem",
-          zIndex: 1000,
-          background: "var(--text-accent)",
-          color: "var(--bg-light)",
-          border: "none",
-          borderRadius: "50%",
-          width: "3rem",
-          height: "3rem",
-          cursor: "pointer",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: "1.2rem",
-        }}
-        onMouseEnter={(e) => {
-          const target = e.target as HTMLButtonElement;
-        }}
-        onMouseLeave={(e) => {
-          const target = e.target as HTMLButtonElement;
-        }}
+        className="fixed top-8 left-8 z-[1000] flex h-12 w-12 items-center justify-center rounded-full bg-[var(--text-accent)] text-[var(--bg-light)] text-xl"
       >
         {isTocOpen ? (
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <svg width="24" height="24" fill="none">
             <line
               x1="6"
               y1="6"
@@ -150,7 +126,7 @@ export default function TableOfContents() {
             />
           </svg>
         ) : (
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <svg width="24" height="24" fill="none">
             <rect
               x="4"
               y="6"
@@ -182,147 +158,49 @@ export default function TableOfContents() {
       {/* Overlay */}
       {isTocOpen && (
         <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            background: "rgba(0, 0, 0, 0.5)",
-            zIndex: 998,
-          }}
+          className="fixed inset-0 z-[998] bg-black/50"
           onClick={toggleToc}
         />
       )}
 
       {/* Side Panel */}
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: isTocOpen ? 0 : "-350px",
-          width: "350px",
-          height: "100vh",
-          background: "var(--bg-light)",
-          zIndex: 999,
-          display: "flex",
-          flexDirection: "column",
-          padding: "2rem",
-          boxSizing: "border-box",
-        }}
+      <aside
+        className={`fixed top-0 left-0 z-[999] h-screen w-[350px] bg-[var(--bg-light)] p-8 transition-transform duration-300 ${
+          isTocOpen ? "translate-x-0" : "-translate-x-[350px]"
+        }`}
       >
-        {/* TOC Header */}
-        <div
-          style={{
-            borderBottom: "1px solid var(--text-accent)",
-            paddingBottom: "1rem",
-            marginBottom: "2rem",
-            marginTop: "4rem",
-          }}
-        >
-          <h2
-            style={{
-              fontSize: "1.8rem",
-              color: "var(--text-accent)", // The title color is set by this line
-              margin: 0,
-              fontFamily: "averia-serif",
-              fontWeight: "600",
-            }}
-          >
+        {/* Header */}
+        <header className="mt-16 mb-8 border-b border-[var(--text-accent)] pb-4">
+          <h2 className="m-0 font-['averia-serif'] text-[1.8rem] font-semibold text-[var(--text-accent)]">
             Table of Contents
           </h2>
-          <p
-            style={{
-              fontFamily: "averia-serif",
-              fontSize: "0.9rem",
-              color: "var(--text-accent)",
-              opacity: 0.7,
-              margin: "0.5rem 0 0 0",
-            }}
-          >
+          <p className="mt-2 font-['averia-serif'] text-sm text-[var(--text-accent)] opacity-70">
             Navigate through memories
           </p>
-        </div>
+        </header>
 
         {/* TOC Items */}
-        <nav
-          style={{
-            fontFamily: "averia-serif",
-
-            display: "flex",
-            flexDirection: "column",
-            gap: "0.25rem",
-            flex: 1,
-            overflowY: "auto",
-          }}
-        >
+        <nav className="flex flex-col gap-1 font-['averia-serif'] overflow-y-auto h-[calc(100%-8rem)]">
           {tocItems.map((item, index) => (
-            <div key={item.path} style={{ width: "100%" }}>
+            <div key={item.path}>
               {/* Chapter Header */}
               <div
                 onClick={() => toggleChapter(index)}
-                style={{
-                  padding: "1rem",
-                  cursor: "pointer",
-                  borderRadius: "8px",
-                  background: "transparent",
-                  border: "1px solid transparent",
-                  color: "var(--text-accent)",
-                  position: "relative",
-                  transition: "background 0.2s, border 0.2s",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.background =
-                    "rgba(0,0,0,0.04)";
-                  // (e.currentTarget as HTMLDivElement).style.border =
-                  //   "1px solid var(--text-accent)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.background =
-                    "transparent";
-                  // (e.currentTarget as HTMLDivElement).style.border =
-                  //   "1px solid transparent";
-                }}
+                className="cursor-pointer rounded-md p-4 text-[var(--text-accent)] hover:bg-black/5 transition"
               >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    marginBottom: "0.25rem",
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.5rem",
-                    }}
-                  >
-                    <h3
-                      style={{
-                        fontSize: "1.1rem",
-                        margin: 0,
-                        fontWeight: "600",
-                        color: "var(--text-accent)",
-                      }}
-                    >
-                      {item.title}
-                    </h3>
-                  </div>
-                  {/* Toggle Icon */}
+                <div className="flex items-center justify-between mb-1 ">
+<h3
+  className="m-0 text-lg font-semibold "
+  style={{ color: "var(--text-accent)" }}
+>
+  {item.title}
+</h3>
                   <span
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      transition: "transform 0.2s",
-                      transform: expandedChapters[index]
-                        ? "rotate(90deg)"
-                        : "rotate(0deg)",
-                    }}
+                    className={`transform transition-transform ${
+                      expandedChapters[index] ? "rotate-90" : ""
+                    }`}
                   >
-                    {/* Chevron Right SVG */}
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <svg width="18" height="18" fill="none">
                       <path
                         d="M7 5l4 4-4 4"
                         stroke="currentColor"
@@ -333,30 +211,12 @@ export default function TableOfContents() {
                     </svg>
                   </span>
                 </div>
-                <p
-                  style={{
-                    fontSize: "0.85rem",
-                    margin: 0,
-                    opacity: 0.7,
-                    paddingLeft: "2rem",
-                  }}
-                >
-                  {item.description}
-                </p>
+                <p className="ml-8 text-sm opacity-70">{item.description}</p>
               </div>
 
-              {/* Artworks List */}
+              {/* Artworks */}
               {expandedChapters[index] && (
-                <div
-                  style={{
-                    marginLeft: "1rem",
-                    marginBottom: "0.5rem",
-                    borderLeft: "2px solid var(--text-accent)",
-                    paddingLeft: "1rem",
-                    background: "rgba(0, 0, 0, 0.02)",
-                    borderRadius: "0 8px 8px 0",
-                  }}
-                >
+                <div className="ml-4 mb-2 rounded-r-md border-l-2 border-[var(--text-accent)] bg-black/5 pl-4">
                   {item.artworks.map((artwork, artIndex) => (
                     <div
                       key={artwork.path}
@@ -364,33 +224,9 @@ export default function TableOfContents() {
                         e.stopPropagation();
                         navigateTo(artwork.path);
                       }}
-                      style={{
-                        padding: "0.75rem 1rem",
-                        cursor: "pointer",
-                        borderRadius: "6px",
-                        transition: "all 0.2s ease",
-                        color: "var(--text-accent)",
-                        fontSize: "0.9rem",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "0.5rem",
-                      }}
-                      onMouseEnter={(e) => {
-                        (e.currentTarget as HTMLDivElement).style.background =
-                          "rgba(0,0,0,0.07)";
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLDivElement).style.background =
-                          "transparent";
-                      }}
+                      className="flex items-center gap-2 cursor-pointer rounded-md px-4 py-2 text-[var(--text-accent)] text-sm hover:bg-black/10 transition"
                     >
-                      <span
-                        style={{
-                          fontSize: "0.7rem",
-                          opacity: 0.6,
-                          minWidth: "1rem",
-                        }}
-                      >
+                      <span className="w-4 text-xs opacity-60">
                         {artIndex + 1}.
                       </span>
                       <span>{artwork.title}</span>
@@ -401,7 +237,7 @@ export default function TableOfContents() {
             </div>
           ))}
         </nav>
-      </div>
+      </aside>
     </>
   );
 }
