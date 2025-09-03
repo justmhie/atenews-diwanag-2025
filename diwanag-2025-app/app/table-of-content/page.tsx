@@ -21,6 +21,10 @@ export default function TableOfContents() {
       title: "Chapter 1",
       path: "/chap-1",
       description: "",
+      subtitle: {
+        text: "See Chapter 1 Overview",
+        path: "/chap-1",
+      },
       artworks: [
         { title: "Tailored for Yesterday", path: "/chap-1/artwork-1" },
         {
@@ -198,7 +202,10 @@ export default function TableOfContents() {
       >
         {/* Header */}
         <header className="mt-16 mb-8 border-b border-[var(--text-accent)] pb-4">
-          <h2 className="m-0 font-['averia-serif'] text-[1.8rem] font-semibold text-[var(--text-accent)]">
+          <h2
+            className="m-0 font-['averia-serif'] text-[1.8rem] font-semibold ]"
+            style={{ color: "var(--text-accent" }}
+          >
             Table of Contents
           </h2>
           <p className="mt-2 font-['averia-serif'] text-sm text-[var(--text-accent)] opacity-70">
@@ -213,7 +220,7 @@ export default function TableOfContents() {
               {/* Chapter Header */}
               <div
                 onClick={() => toggleChapter(index)}
-                className="cursor-pointer rounded-md p-4 text-[var(--text-accent)] hover:bg-black/5 transition"
+                className="cursor-pointer rounded-md p-3 text-[var(--text-accent)] hover:bg-black/5 transition mb-2"
               >
                 <div className="flex items-center justify-between mb-1 ">
                   <h3
@@ -243,7 +250,7 @@ export default function TableOfContents() {
 
               {/* Artworks */}
               {expandedChapters[index] && item.artworks && (
-                <div className="ml-4 mb-2 rounded-r-md border-l-2 border-[var(--text-accent)] bg-black/5 pl-4">
+                <div className="ml-4 mb-2 rounded-r-md border-l-2 border-[var(--text-accent)] pl-4">
                   {item.artworks.map((artwork, artIndex) => (
                     <div
                       key={artwork.path}
@@ -251,7 +258,7 @@ export default function TableOfContents() {
                         e.stopPropagation();
                         navigateTo(artwork.path);
                       }}
-                      className="flex items-center gap-2 cursor-pointer rounded-md px-4 py-2 text-[var(--text-accent)] text-sm hover:bg-black/10 transition"
+                      className="flex items-center gap-2 cursor-pointer rounded-md px-4 py-2 text-[var(--text-accent)] text-sm hover:bg-black/5 transition"
                     >
                       <span className="w-4 text-xs opacity-60">
                         {artIndex + 1}.
