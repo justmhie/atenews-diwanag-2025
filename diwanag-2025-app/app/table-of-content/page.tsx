@@ -26,6 +26,7 @@ export default function TableOfContents() {
         path: "/chap-1",
       },
       artworks: [
+        { title: "Overview", path: "/chap-1/overview" },
         { title: "Tailored for Yesterday", path: "/chap-1/artwork-1" },
         {
           title: "You don't have to worry anymore, Ate is here",
@@ -41,6 +42,7 @@ export default function TableOfContents() {
       path: "/chap-2",
       description: "",
       artworks: [
+        { title: "Overview", path: "/chap-2/overview" },
         { title: "Reminiscence", path: "/chap-2/artwork-1" },
         { title: "Phantom Pain", path: "/chap-2/artwork-2" },
         {
@@ -56,6 +58,8 @@ export default function TableOfContents() {
       path: "/chap-3",
       description: "",
       artworks: [
+        { title: "Overview", path: "/chap-3/overview" },
+
         { title: "Indoor Garden", path: "/chap-3/artwork-1" },
         { title: "Come Along With Me", path: "/chap-3/artwork-2" },
         { title: "A Store that Sells Stories", path: "/chap-3/artwork-3" },
@@ -69,6 +73,8 @@ export default function TableOfContents() {
       path: "/chap-4",
       description: "",
       artworks: [
+        { title: "Overview", path: "/chap-4/overview" },
+
         {
           title: "Everything Everywhere All at Once",
           path: "/chap-4/artwork-1",
@@ -85,6 +91,8 @@ export default function TableOfContents() {
       path: "/chap-5",
       description: "",
       artworks: [
+        { title: "Overview", path: "/chap-5/overview" },
+
         { title: "Old Habits Die Screaming", path: "/chap-5/artwork-1" },
         { title: "Irrepressible", path: "/chap-5/artwork-2" },
         { title: "Boredom", path: "/chap-5/artwork-3" },
@@ -97,6 +105,8 @@ export default function TableOfContents() {
       path: "/chap-6",
       description: "",
       artworks: [
+        { title: "Overview", path: "/chap-6/overview" },
+
         { title: "Walking Among Us", path: "/chap-6/artwork-1" },
         {
           title: "Under the Tree, in the 5th Grade",
