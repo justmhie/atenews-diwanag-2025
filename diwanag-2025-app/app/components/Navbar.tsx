@@ -24,8 +24,23 @@ export default function Navbar() {
       >
         <li>
           <Link
-            href="/table-of-content"
-            className="hover:border-b-8 hover:border-[var(--aqua)]"
+            href="/landing"
+            className="hover:border-b-2 ]"
+            style={{
+              color: "var(--text-accent)",
+              fontWeight: 500,
+              fontSize: "1.2rem",
+              textDecoration: "none",
+              transition: "color 0.2s",
+            }}
+          >
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/landing"
+            className="hover:border-b-2 ]"
             style={{
               color: "var(--text-accent)",
               fontWeight: 500,
@@ -39,23 +54,8 @@ export default function Navbar() {
         </li>
         <li>
           <Link
-            href="/epilogue"
-            className="hover:border-b-8 hover:border-[var(--aqua)]"
-            style={{
-              color: "var(--text-accent)",
-              fontWeight: 500,
-              fontSize: "1.2rem",
-              textDecoration: "none",
-              transition: "color 0.2s",
-            }}
-          >
-            Artworks
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/staff"
-            className="hover:border-b-8 hover:border-[var(--aqua)]"
+            href="/landing"
+            className="hover:border-b-2 ]"
             style={{
               color: "var(--text-accent)",
               fontWeight: 500,
