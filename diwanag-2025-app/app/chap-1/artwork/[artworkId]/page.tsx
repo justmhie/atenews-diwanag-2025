@@ -74,13 +74,23 @@ export default function ArtworkPage() {
     const nextArt = artworks[index];
     if (nextArt) {
       setIsTransitioning(true);
-
       await new Promise((resolve) => setTimeout(resolve, 300));
-
       router.push(`/chap-1/artwork/${encodeURIComponent(nextArt.artTitle)}`);
-
       setTimeout(() => setIsTransitioning(false), 100);
     }
+  };
+
+  // Button hover handlers
+  const handleButtonMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.currentTarget.style.backgroundColor = "var(--accent-blue-darkest)";
+    e.currentTarget.style.transform = "translateY(-2px)";
+    e.currentTarget.style.boxShadow = "0 6px 20px var(--bg-dark)4D";
+  };
+
+  const handleButtonMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.currentTarget.style.backgroundColor = "var(--accent-brown-dark)";
+    e.currentTarget.style.transform = "translateY(0)";
+    e.currentTarget.style.boxShadow = "0 4px 15px var(--bg-dark)33";
   };
 
   return (
@@ -181,6 +191,7 @@ export default function ArtworkPage() {
               {artwork.medium}
             </p>
           </div>
+
           <div
             style={{
               marginTop: "3rem",
@@ -195,19 +206,12 @@ export default function ArtworkPage() {
             {currentIndex === 0 ? (
               <Button
                 onClick={() => router.push("/chap-1")}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor =
-                    "var(--accent-blue-darkest)";
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow =
-                    "0 6px 20px var(--bg-dark)4D";
+                style={{
+                  backgroundColor: "var(--accent-brown-dark)",
+                  color: "var(--text-light)",
                 }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "var(--bg-dark)";
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow =
-                    "0 4px 15px var(--bg-dark)33";
-                }}
+                onMouseEnter={handleButtonMouseEnter}
+                onMouseLeave={handleButtonMouseLeave}
               >
                 ← Chapter 1
               </Button>
@@ -215,23 +219,12 @@ export default function ArtworkPage() {
               <Button
                 disabled={currentIndex <= 0}
                 onClick={() => goToArtwork(currentIndex - 1)}
-                onMouseEnter={(e) => {
-                  if (currentIndex > 0) {
-                    e.currentTarget.style.backgroundColor =
-                      "var(--accent-blue-darkest)";
-                    e.currentTarget.style.transform = "translateY(-2px)";
-                    e.currentTarget.style.boxShadow =
-                      "0 6px 20px var(--bg-dark)4D";
-                  }
+                style={{
+                  backgroundColor: "var(--accent-brown-dark)",
+                  color: "var(--text-light)",
                 }}
-                onMouseLeave={(e) => {
-                  if (currentIndex > 0) {
-                    e.currentTarget.style.backgroundColor = "var(--bg-dark)";
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow =
-                      "0 4px 15px var(--bg-dark)33";
-                  }
-                }}
+                onMouseEnter={handleButtonMouseEnter}
+                onMouseLeave={handleButtonMouseLeave}
               >
                 ← Previous
               </Button>
@@ -253,19 +246,12 @@ export default function ArtworkPage() {
             {currentIndex === artworks.length - 1 ? (
               <Button
                 onClick={() => router.push("/chap-2")}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor =
-                    "var(--accent-blue-darkest)";
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow =
-                    "0 6px 20px var(--bg-dark)4D";
+                style={{
+                  backgroundColor: "var(--accent-brown-dark)",
+                  color: "var(--text-light)",
                 }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "var(--bg-dark)";
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow =
-                    "0 4px 15px var(--bg-dark)33";
-                }}
+                onMouseEnter={handleButtonMouseEnter}
+                onMouseLeave={handleButtonMouseLeave}
               >
                 Chapter 2 →
               </Button>
@@ -273,23 +259,12 @@ export default function ArtworkPage() {
               <Button
                 disabled={currentIndex >= artworks.length - 1}
                 onClick={() => goToArtwork(currentIndex + 1)}
-                onMouseEnter={(e) => {
-                  if (currentIndex < artworks.length - 1) {
-                    e.currentTarget.style.backgroundColor =
-                      "var(--accent-blue-darkest)";
-                    e.currentTarget.style.transform = "translateY(-2px)";
-                    e.currentTarget.style.boxShadow =
-                      "0 6px 20px var(--bg-dark)4D";
-                  }
+                style={{
+                  backgroundColor: "var(--accent-brown-dark)",
+                  color: "var(--text-light)",
                 }}
-                onMouseLeave={(e) => {
-                  if (currentIndex < artworks.length - 1) {
-                    e.currentTarget.style.backgroundColor = "var(--bg-dark)";
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow =
-                      "0 4px 15px var(--bg-dark)33";
-                  }
-                }}
+                onMouseEnter={handleButtonMouseEnter}
+                onMouseLeave={handleButtonMouseLeave}
               >
                 Next →
               </Button>

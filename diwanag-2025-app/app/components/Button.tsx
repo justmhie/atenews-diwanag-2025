@@ -32,9 +32,9 @@ export default function Button({
       variant === "primary"
         ? props.disabled
           ? "var(--bg-light)"
-          : "var(--bg-dark)"
+          : "var(--accent-brown-dark)"
         : variant === "secondary"
-        ? "var(--text-accent)"
+        ? "var(--)"
         : "transparent",
     color:
       variant === "primary"
