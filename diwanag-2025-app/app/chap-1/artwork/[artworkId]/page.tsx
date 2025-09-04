@@ -105,8 +105,29 @@ export default function ArtworkPage() {
         boxSizing: "border-box",
         width: "100vw",
         minHeight: "100vh",
+        zIndex: 1,
+        position: "relative",
+        overflow: "hidden",
       }}
     >
+      {/* Responsive background image */}
+      <img
+        src="/diwanag-prologue-1.png"
+        alt="Tinipong Alaala Mountain"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          objectFit: "cover",
+          zIndex: 0,
+          pointerEvents: "none",
+          opacity: 1,
+          maxWidth: "100vw",
+          maxHeight: "100vh",
+        }}
+      />
       <style>
         {`
           @media (max-width: 900px) {
@@ -123,9 +144,26 @@ export default function ArtworkPage() {
             .artwork-image-col img {
               padding: 1rem !important;
               max-width: 100vw !important;
+              height: auto !important;
+              aspect-ratio: 4/3 !important;
             }
             .artwork-info-col {
               margin-top: 2rem !important;
+            }
+          }
+          @media (max-width: 600px) {
+            .artwork-image-col img {
+              padding: 0.5rem !important;
+              max-width: 100vw !important;
+              height: auto !important;
+              aspect-ratio: 4/3 !important;
+            }
+            .artwork-info-col {
+              margin-top: 1rem !important;
+              font-size: 0.95rem !important;
+            }
+            .artwork-flex-row {
+              padding: 0 !important;
             }
           }
         `}
@@ -140,6 +178,8 @@ export default function ArtworkPage() {
           alignItems: "stretch",
           opacity: isTransitioning ? 0 : 1,
           transition: "opacity 0.3s ease-in-out",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         <div
@@ -149,6 +189,7 @@ export default function ArtworkPage() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            overflow: "hidden",
           }}
         >
           <img
@@ -165,6 +206,8 @@ export default function ArtworkPage() {
               objectFit: "contain",
               display: "block",
               padding: "2rem",
+              boxSizing: "border-box",
+              overflow: "hidden",
             }}
           />
         </div>
@@ -176,6 +219,7 @@ export default function ArtworkPage() {
             flexDirection: "column",
             justifyContent: "center",
             marginLeft: "2rem",
+            marginTop: "1rem",
           }}
         >
           <p
@@ -198,7 +242,7 @@ export default function ArtworkPage() {
           <div
             style={{
               fontFamily: "averia-serif",
-              marginTop: "5rem",
+              marginTop: "2rem",
               textAlign: "center",
             }}
           >
@@ -223,7 +267,7 @@ export default function ArtworkPage() {
 
           <div
             style={{
-              marginTop: "3rem",
+              marginTop: "1.5rem",
               display: "flex",
               gap: "2rem",
               justifyContent: "center",

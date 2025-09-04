@@ -8,13 +8,12 @@ export default function Chapter1Layout({
   return (
     <div
       style={{
-        background: "url('/chap-1-bg.png') center/cover no-repeat",
+        background: "var(--bg-light)",
         color: "#161207",
         minHeight: "100vh",
         position: "relative",
       }}
     >
-     
       <main>{children}</main>
     </div>
   );
