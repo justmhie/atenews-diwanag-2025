@@ -8,7 +8,6 @@ export default function Navbar() {
       style={{
         background: "var(--bg-light)",
         padding: "1rem 0",
-        fontFamily: 'Averia Serif Libre", serif',
         letterSpacing: "0.05em",
       }}
     >
@@ -20,11 +19,13 @@ export default function Navbar() {
           padding: "0 2rem",
           margin: 0,
           alignItems: "center",
+          fontFamily: "Averia Serif Libre",
         }}
       >
         <li>
           <Link
             href="/table-of-content"
+            className="hover:border-b-8 hover:border-[var(--aqua)]"
             style={{
               color: "var(--text-accent)",
               fontWeight: 500,
@@ -39,6 +40,7 @@ export default function Navbar() {
         <li>
           <Link
             href="/epilogue"
+            className="hover:border-b-8 hover:border-[var(--aqua)]"
             style={{
               color: "var(--text-accent)",
               fontWeight: 500,
@@ -53,6 +55,7 @@ export default function Navbar() {
         <li>
           <Link
             href="/staff"
+            className="hover:border-b-8 hover:border-[var(--aqua)]"
             style={{
               color: "var(--text-accent)",
               fontWeight: 500,
