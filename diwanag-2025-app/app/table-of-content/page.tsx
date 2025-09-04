@@ -185,7 +185,10 @@ export default function TableOfContents() {
                       onClick={(e) => {
                         e.stopPropagation();
                         navigateTo(
-                          `/artwork/${encodeURIComponent(artwork.artTitle)}`
+                          `/chap-${chapter.replace(
+                            /\D/g,
+                            ""
+                          )}/artwork/${encodeURIComponent(artwork.artTitle)}`
                         );
                       }}
                       className="flex items-center gap-2 cursor-pointer rounded-md px-4 py-2 text-[var(--text-accent)] text-sm hover:bg-black/5 transition"
