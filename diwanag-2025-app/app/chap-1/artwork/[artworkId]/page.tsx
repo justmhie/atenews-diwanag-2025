@@ -103,9 +103,35 @@ export default function ArtworkPage() {
         fontFamily: "averia-serif",
         padding: "2rem",
         boxSizing: "border-box",
+        width: "100vw",
+        minHeight: "100vh",
       }}
     >
+      <style>
+        {`
+          @media (max-width: 900px) {
+            .artwork-flex-row {
+              flex-direction: column !important;
+              align-items: stretch !important;
+            }
+            .artwork-image-col, .artwork-info-col {
+              width: 100% !important;
+              max-width: 100% !important;
+              margin-left: 0 !important;
+              padding: 0 !important;
+            }
+            .artwork-image-col img {
+              padding: 1rem !important;
+              max-width: 100vw !important;
+            }
+            .artwork-info-col {
+              margin-top: 2rem !important;
+            }
+          }
+        `}
+      </style>
       <div
+        className="artwork-flex-row"
         style={{
           width: "100%",
           display: "flex",
@@ -117,6 +143,7 @@ export default function ArtworkPage() {
         }}
       >
         <div
+          className="artwork-image-col"
           style={{
             width: "50%",
             display: "flex",
@@ -132,7 +159,7 @@ export default function ArtworkPage() {
             alt={artwork.artTitle}
             style={{
               width: "100%",
-              maxWidth: "min(700px)",
+              maxWidth: "min(700px, 90vw)",
               height: "auto",
               aspectRatio: "4/3",
               objectFit: "contain",
@@ -142,11 +169,13 @@ export default function ArtworkPage() {
           />
         </div>
         <div
+          className="artwork-info-col"
           style={{
             width: "30%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            marginLeft: "2rem",
           }}
         >
           <p
@@ -200,6 +229,7 @@ export default function ArtworkPage() {
               justifyContent: "center",
               width: "100%",
               alignItems: "center",
+              flexWrap: "wrap",
             }}
           >
             {/* Previous button or Chapter 1 link */}
