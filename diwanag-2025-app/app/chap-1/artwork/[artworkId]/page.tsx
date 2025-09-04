@@ -2,6 +2,7 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Button from "@/app/components/Button";
+import TableOfContents from "@/app/table-of-content/page";
 
 type Artwork = {
   artTitle: string;
@@ -97,14 +98,14 @@ export default function ArtworkPage() {
     <div
       style={{
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         display: "flex",
         flexDirection: "column",
         fontFamily: "averia-serif",
         padding: "2rem",
         boxSizing: "border-box",
-        width: "100vw",
-        minHeight: "100vh",
+        width: "100%",
+        minHeight: "90vh",
         zIndex: 1,
         position: "relative",
         overflow: "hidden",
@@ -116,16 +117,15 @@ export default function ArtworkPage() {
         alt="Tinipong Alaala Mountain"
         style={{
           position: "absolute",
-          top: 0,
-          left: 0,
+          bottom: 0,
+          right: 0,
           width: "100vw",
           height: "100vh",
           objectFit: "cover",
           zIndex: 0,
           pointerEvents: "none",
           opacity: 1,
-          maxWidth: "100vw",
-          maxHeight: "100vh",
+          display: "block",
         }}
       />
       <style>
@@ -175,11 +175,11 @@ export default function ArtworkPage() {
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
-          alignItems: "stretch",
           opacity: isTransitioning ? 0 : 1,
           transition: "opacity 0.3s ease-in-out",
           position: "relative",
           zIndex: 1,
+          alignItems: "center",
         }}
       >
         <div
@@ -200,12 +200,11 @@ export default function ArtworkPage() {
             alt={artwork.artTitle}
             style={{
               width: "100%",
-              maxWidth: "min(700px, 90vw)",
+              maxWidth: "min(600px, 90vw)",
               height: "auto",
               aspectRatio: "4/3",
               objectFit: "contain",
               display: "block",
-              padding: "2rem",
               boxSizing: "border-box",
               overflow: "hidden",
             }}
@@ -219,7 +218,6 @@ export default function ArtworkPage() {
             flexDirection: "column",
             justifyContent: "center",
             marginLeft: "2rem",
-            marginTop: "1rem",
           }}
         >
           <p
@@ -233,7 +231,6 @@ export default function ArtworkPage() {
           <p
             style={{
               color: "var(--text-accent)",
-              marginTop: "1rem",
               fontStyle: "italic",
             }}
           >
