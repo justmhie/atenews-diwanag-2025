@@ -34,24 +34,109 @@ export default function TableOfContents() {
       });
   }, []);
 
-  const chapterTitles = [
-    "Prologue",
-    "Chapter 1",
-    "Chapter 2",
-    "Chapter 3",
-    "Chapter 4",
-    "Chapter 5",
-    "Chapter 6",
-    "Epilogue",
+  // Unified TOC items for navigation and artwork display
+  const tocItems = [
+    {
+      title: "Prologue",
+      path: "/prologue",
+      description: "",
+      isClickable: true,
+    },
+    {
+      title: "Chapter 1",
+      path: "/chap-1",
+      description: "",
+      isClickable: false,
+      subtitle: {
+        text: "See Chapter 1 Overview",
+        path: "/chap-1",
+      },
+      artworks:
+        chapters["Chapter 1"]?.map((art) => ({
+          title: art.artTitle,
+          path: `/chap-1/artwork/${encodeURIComponent(art.artTitle)}`,
+        })) || [],
+    },
+    {
+      title: "Chapter 2",
+      path: "/chap-2",
+      description: "",
+      isClickable: false,
+      artworks:
+        chapters["Chapter 2"]?.map((art) => ({
+          title: art.artTitle,
+          path: `/chap-2/artwork/${encodeURIComponent(art.artTitle)}`,
+        })) || [],
+    },
+    {
+      title: "Chapter 3",
+      path: "/chap-3",
+      description: "",
+      isClickable: false,
+      artworks:
+        chapters["Chapter 3"]?.map((art) => ({
+          title: art.artTitle,
+          path: `/chap-3/artwork/${encodeURIComponent(art.artTitle)}`,
+        })) || [],
+    },
+    {
+      title: "Chapter 4",
+      path: "/chap-4",
+      description: "",
+      isClickable: false,
+      artworks:
+        chapters["Chapter 4"]?.map((art) => ({
+          title: art.artTitle,
+          path: `/chap-4/artwork/${encodeURIComponent(art.artTitle)}`,
+        })) || [],
+    },
+    {
+      title: "Chapter 5",
+      path: "/chap-5",
+      description: "",
+      isClickable: false,
+      artworks:
+        chapters["Chapter 5"]?.map((art) => ({
+          title: art.artTitle,
+          path: `/chap-5/artwork/${encodeURIComponent(art.artTitle)}`,
+        })) || [],
+    },
+    {
+      title: "Chapter 6",
+      path: "/chap-6",
+      description: "",
+      isClickable: false,
+      artworks:
+        chapters["Chapter 6"]?.map((art) => ({
+          title: art.artTitle,
+          path: `/chap-6/artwork/${encodeURIComponent(art.artTitle)}`,
+        })) || [],
+    },
+    {
+      title: "Epilogue",
+      path: "/epilogue",
+      description: "",
+      isClickable: true,
+      artworks:
+        chapters["Epilogue"]?.map((art) => ({
+          title: art.artTitle,
+          path: `/epilogue/artwork/${encodeURIComponent(art.artTitle)}`,
+        })) || [],
+    },
   ];
 
   const toggleToc = () => setIsTocOpen(!isTocOpen);
 
-  const toggleChapter = (index: number) => {
-    setExpandedChapters((prev) => ({
-      ...prev,
-      [index]: !prev[index],
-    }));
+  const handleChapterClick = (item: any, index: number) => {
+    if (item.isClickable) {
+      router.push(item.path);
+      setIsTocOpen(false);
+    } else {
+      setExpandedChapters((prev) => ({
+        ...prev,
+        [index]: !prev[index],
+      }));
+    }
   };
 
   const navigateTo = (path: string) => {
@@ -144,59 +229,58 @@ export default function TableOfContents() {
 
         {/* TOC Items */}
         <nav className="flex flex-col gap-1 font-['averia-serif'] overflow-y-auto h-[calc(100%-8rem)]">
-          {chapterTitles.map((chapter, index) => (
-            <div key={chapter}>
+          {tocItems.map((item, index) => (
+            <div key={item.title}>
               {/* Chapter Header */}
               <div
-                onClick={() => toggleChapter(index)}
+                onClick={() => handleChapterClick(item, index)}
                 className="cursor-pointer rounded-md p-3 text-[var(--text-accent)] hover:bg-black/5 transition mb-2"
               >
-                <div className="flex items-center justify-between mb-1 ">
+                <div className="flex items-center justify-between mb-1">
                   <h3
                     className="m-0 text-lg font-semibold"
                     style={{ color: "var(--text-accent)" }}
                   >
-                    {chapter}
+                    {item.title}
                   </h3>
-                  <span
-                    className={`transform transition-transform ${
-                      expandedChapters[index] ? "rotate-90" : ""
-                    }`}
-                  >
-                    <svg width="18" height="18" fill="none">
-                      <path
-                        d="M7 5l4 4-4 4"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
+                  {/* Only show arrow for non-clickable items (chapters with artworks) */}
+                  {!item.isClickable && (
+                    <span
+                      className={`transform transition-transform ${
+                        expandedChapters[index] ? "rotate-90" : ""
+                      }`}
+                    >
+                      <svg width="18" height="18" fill="none">
+                        <path
+                          d="M7 5l4 4-4 4"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  )}
                 </div>
+                <p className="ml-8 text-sm opacity-70">{item.description}</p>
               </div>
 
               {/* Artworks */}
-              {expandedChapters[index] && chapters[chapter] && (
+              {expandedChapters[index] && item.artworks && (
                 <div className="ml-4 mb-2 rounded-r-md border-l-2 border-[var(--text-accent)] pl-4">
-                  {chapters[chapter].map((artwork, artIndex) => (
+                  {item.artworks.map((artwork: any, artIndex: number) => (
                     <div
-                      key={artwork.artTitle}
+                      key={artwork.path}
                       onClick={(e) => {
                         e.stopPropagation();
-                        navigateTo(
-                          `/chap-${chapter.replace(
-                            /\D/g,
-                            ""
-                          )}/artwork/${encodeURIComponent(artwork.artTitle)}`
-                        );
+                        navigateTo(artwork.path);
                       }}
                       className="flex items-center gap-2 cursor-pointer rounded-md px-4 py-2 text-[var(--text-accent)] text-sm hover:bg-black/5 transition"
                     >
                       <span className="w-4 text-xs opacity-60">
                         {artIndex + 1}.
                       </span>
-                      <span>{artwork.artTitle}</span>
+                      <span>{artwork.title}</span>
                     </div>
                   ))}
                 </div>
