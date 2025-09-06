@@ -16,11 +16,13 @@ export default function TableOfContents() {
       title: "Prologue",
       path: "/prologue",
       description: "",
+      isClickable: true, // Add this flag
     },
     {
       title: "Chapter 1",
       path: "/chap-1",
       description: "",
+      isClickable: false,
       subtitle: {
         text: "See Chapter 1 Overview",
         path: "/chap-1",
@@ -41,6 +43,7 @@ export default function TableOfContents() {
       title: "Chapter 2",
       path: "/chap-2",
       description: "",
+      isClickable: false,
       artworks: [
         { title: "Overview", path: "/chap-2/overview" },
         { title: "Reminiscence", path: "/chap-2/artwork-1" },
@@ -57,9 +60,9 @@ export default function TableOfContents() {
       title: "Chapter 3",
       path: "/chap-3",
       description: "",
+      isClickable: false,
       artworks: [
         { title: "Overview", path: "/chap-3/overview" },
-
         { title: "Indoor Garden", path: "/chap-3/artwork-1" },
         { title: "Come Along With Me", path: "/chap-3/artwork-2" },
         { title: "A Store that Sells Stories", path: "/chap-3/artwork-3" },
@@ -72,15 +75,15 @@ export default function TableOfContents() {
       title: "Chapter 4",
       path: "/chap-4",
       description: "",
+      isClickable: false,
       artworks: [
         { title: "Overview", path: "/chap-4/overview" },
-
         {
           title: "Everything Everywhere All at Once",
           path: "/chap-4/artwork-1",
         },
         { title: "Anatomy Study", path: "/chap-4/artwork-2" },
-        { title: "Dawn’s Quiet Kiss", path: "/chap-4/artwork-3" },
+        { title: "Dawn's Quiet Kiss", path: "/chap-4/artwork-3" },
         { title: "Heroine", path: "/chap-4/artwork-4" },
         { title: "Wings of Yesterday", path: "/chap-4/artwork-5" },
         { title: "Lakbay", path: "/chap-4/artwork-6" },
@@ -90,9 +93,9 @@ export default function TableOfContents() {
       title: "Chapter 5",
       path: "/chap-5",
       description: "",
+      isClickable: false,
       artworks: [
         { title: "Overview", path: "/chap-5/overview" },
-
         { title: "Old Habits Die Screaming", path: "/chap-5/artwork-1" },
         { title: "Irrepressible", path: "/chap-5/artwork-2" },
         { title: "Boredom", path: "/chap-5/artwork-3" },
@@ -104,16 +107,16 @@ export default function TableOfContents() {
       title: "Chapter 6",
       path: "/chap-6",
       description: "",
+      isClickable: false,
       artworks: [
         { title: "Overview", path: "/chap-6/overview" },
-
         { title: "Walking Among Us", path: "/chap-6/artwork-1" },
         {
           title: "Under the Tree, in the 5th Grade",
           path: "/chap-6/artwork-2",
         },
         { title: "Human Behavior", path: "/chap-6/artwork-3" },
-        { title: "Hugis ng Gunita’t Pangarap", path: "/chap-6/artwork-4" },
+        { title: "Hugis ng Gunita't Pangarap", path: "/chap-6/artwork-4" },
         { title: "Sigalot ng Kaluluwa", path: "/chap-6/artwork-5" },
       ],
     },
@@ -121,12 +124,23 @@ export default function TableOfContents() {
       title: "Epilogue",
       path: "/epilogue",
       description: "",
+      isClickable: true, // Add this flag
       artworks: [
         { title: "Full Circle", path: "/epilogue/artwork-1" },
         { title: "New Memories", path: "/epilogue/artwork-2" },
       ],
     },
   ];
+
+  const handleChapterClick = (item: any, index: number) => {
+    if (item.isClickable) {
+      // Navigate directly for Prologue and Epilogue
+      navigateTo(item.path);
+    } else {
+      // Toggle expansion for chapters with artworks
+      toggleChapter(index);
+    }
+  };
 
   const toggleChapter = (index: number) => {
     setExpandedChapters((prev) => ({
@@ -229,31 +243,34 @@ export default function TableOfContents() {
             <div key={item.path}>
               {/* Chapter Header */}
               <div
-                onClick={() => toggleChapter(index)}
+                onClick={() => handleChapterClick(item, index)}
                 className="cursor-pointer rounded-md p-3 text-[var(--text-accent)] hover:bg-black/5 transition mb-2"
               >
-                <div className="flex items-center justify-between mb-1 ">
+                <div className="flex items-center justify-between mb-1">
                   <h3
-                    className="m-0 text-lg font-semibold "
+                    className="m-0 text-lg font-semibold"
                     style={{ color: "var(--text-accent)" }}
                   >
                     {item.title}
                   </h3>
-                  <span
-                    className={`transform transition-transform ${
-                      expandedChapters[index] ? "rotate-90" : ""
-                    }`}
-                  >
-                    <svg width="18" height="18" fill="none">
-                      <path
-                        d="M7 5l4 4-4 4"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
+                  {/* Only show arrow for non-clickable items (chapters with artworks) */}
+                  {!item.isClickable && (
+                    <span
+                      className={`transform transition-transform ${
+                        expandedChapters[index] ? "rotate-90" : ""
+                      }`}
+                    >
+                      <svg width="18" height="18" fill="none">
+                        <path
+                          d="M7 5l4 4-4 4"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  )}
                 </div>
                 <p className="ml-8 text-sm opacity-70">{item.description}</p>
               </div>
