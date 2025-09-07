@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const isDarkPage = pathname === "/epilogue" || pathname === "/chap-5" || pathname === "/chap-6";
+  const isDarkPage = pathname === "/epilogue" || pathname === "/chap-5" || pathname === "/chap-6" || pathname === "/staff";
 
   return (
     <nav
@@ -48,7 +48,7 @@ export default function Navbar() {
         </li>
         <li>
           <Link
-            href="/landing"
+            href="/about"
             className="hover:border-b-2"
             style={{
               color: isDarkPage ? "#D4AF37" : "var(--text-accent)",
@@ -63,7 +63,7 @@ export default function Navbar() {
         </li>
         <li>
           <Link
-            href="/landing"
+            href="/staff"
             className="hover:border-b-2"
             style={{
               color: isDarkPage ? "#D4AF37" : "var(--text-accent)",
