@@ -39,7 +39,7 @@ export default function ArtworkPage() {
       .then((res) => res.json())
       .then((data: Artwork[]) => {
         const chapterArtworks = data.filter(
-          (art) => art.chapter === "Chapter 1"
+          (art) => art.chapter === "Chapter 2"
         );
         setArtworks(chapterArtworks);
         const idx = chapterArtworks.findIndex(
@@ -75,7 +75,7 @@ export default function ArtworkPage() {
     if (nextArt) {
       setIsTransitioning(true);
       await new Promise((resolve) => setTimeout(resolve, 300));
-      router.push(`/chap-1/artwork/${encodeURIComponent(nextArt.artTitle)}`);
+      router.push(`/chap-2/artwork/${encodeURIComponent(nextArt.artTitle)}`);
       setTimeout(() => setIsTransitioning(false), 100);
     }
   };
@@ -193,7 +193,7 @@ export default function ArtworkPage() {
         >
           <img
             src={
-              "/artworks/chap-1-photos/" +
+              "/artworks/chap-2-photos/" +
               slugify(artwork.artTitle, artwork.author)
             }
             alt={artwork.artTitle}
@@ -312,7 +312,7 @@ export default function ArtworkPage() {
               {currentIndex + 1} of {artworks.length}
             </div>
 
-            {/* Next button or Chapter 2 link */}
+            {/* Next button or Chapter 3 link */}
             {currentIndex === artworks.length - 1 ? (
               <Button
                 onClick={async () => {
@@ -320,7 +320,7 @@ export default function ArtworkPage() {
                   const res = await fetch("/data/artworks.json");
                   const data: Artwork[] = await res.json();
                   const chapter2Art = data.find(
-                    (art) => art.chapter === "Chapter 2"
+                    (art) => art.chapter === "Chapter 3"
                   );
                   if (chapter2Art) {
                     router.push(
@@ -329,7 +329,7 @@ export default function ArtworkPage() {
                       )}`
                     );
                   } else {
-                    router.push("/chap-2");
+                    router.push("/chap-3");
                   }
                 }}
                 style={{
@@ -339,7 +339,7 @@ export default function ArtworkPage() {
                 onMouseEnter={handleButtonMouseEnter}
                 onMouseLeave={handleButtonMouseLeave}
               >
-                Chapter 2 →
+                Chapter 3 →
               </Button>
             ) : (
               <Button
