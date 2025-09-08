@@ -39,7 +39,7 @@ export default function ArtworkPage() {
       .then((res) => res.json())
       .then((data: Artwork[]) => {
         const chapterArtworks = data.filter(
-          (art) => art.chapter === "Chapter 1"
+          (art) => art.chapter === "Chapter 5"
         );
         setArtworks(chapterArtworks);
         const idx = chapterArtworks.findIndex(
@@ -75,7 +75,7 @@ export default function ArtworkPage() {
     if (nextArt) {
       setIsTransitioning(true);
       await new Promise((resolve) => setTimeout(resolve, 300));
-      router.push(`/chap-1/artwork/${encodeURIComponent(nextArt.artTitle)}`);
+      router.push(`/chap-5/artwork/${encodeURIComponent(nextArt.artTitle)}`);
       setTimeout(() => setIsTransitioning(false), 100);
     }
   };
@@ -193,7 +193,7 @@ export default function ArtworkPage() {
         >
           <img
             src={
-              "/artworks/chap-1-photos/" +
+              "/artworks/chap-5-photos/" +
               slugify(artwork.artTitle, artwork.author)
             }
             alt={artwork.artTitle}
@@ -272,10 +272,10 @@ export default function ArtworkPage() {
               flexWrap: "wrap",
             }}
           >
-            {/* Previous button or Prologue link */}
+            {/* Previous button or Chapter 1 link */}
             {currentIndex === 0 ? (
               <Button
-                onClick={() => router.push("/prologue")}
+                onClick={() => router.push("/chap-1")}
                 style={{
                   backgroundColor: "var(--accent-brown-dark)",
                   color: "var(--text-light)",
@@ -283,7 +283,7 @@ export default function ArtworkPage() {
                 onMouseEnter={handleButtonMouseEnter}
                 onMouseLeave={handleButtonMouseLeave}
               >
-                ← Prologue
+                ← Chapter 1
               </Button>
             ) : (
               <Button
@@ -312,15 +312,15 @@ export default function ArtworkPage() {
               {currentIndex + 1} of {artworks.length}
             </div>
 
-            {/* Next button or Chapter 2 link */}
+            {/* Next button or Chapter 4 link */}
             {currentIndex === artworks.length - 1 ? (
               <Button
                 onClick={async () => {
-                  // Fetch all artworks and find the first artwork in Chapter 2
+                  // Fetch all artworks and find the first artwork in Chapter 4
                   const res = await fetch("/data/artworks.json");
                   const data: Artwork[] = await res.json();
                   const chapter2Art = data.find(
-                    (art) => art.chapter === "Chapter 2"
+                    (art) => art.chapter === "Chapter 5"
                   );
                   if (chapter2Art) {
                     router.push(
@@ -329,7 +329,7 @@ export default function ArtworkPage() {
                       )}`
                     );
                   } else {
-                    router.push("/chap-2");
+                    router.push("/chap-3");
                   }
                 }}
                 style={{
@@ -339,7 +339,7 @@ export default function ArtworkPage() {
                 onMouseEnter={handleButtonMouseEnter}
                 onMouseLeave={handleButtonMouseLeave}
               >
-                Chapter 2 →
+                Chapter 6 →
               </Button>
             ) : (
               <Button
