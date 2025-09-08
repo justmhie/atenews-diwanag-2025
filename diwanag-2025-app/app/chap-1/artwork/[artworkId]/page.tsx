@@ -111,23 +111,22 @@ export default function ArtworkPage() {
         overflow: "hidden",
       }}
     >
-      {/* Responsive background image */}
-      <img
-        src="/diwanag-prologue-1.png"
-        alt="Tinipong Alaala Mountain"
+      {/* Background Image */}
+      <div
         style={{
           position: "absolute",
-          bottom: 0,
-          right: 0,
-          width: "100vw",
-          height: "100vh",
-          objectFit: "cover",
-          zIndex: 0,
-          pointerEvents: "none",
-          opacity: 1,
-          display: "block",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundImage: "url('/chap-bg-1.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          zIndex: 1,
         }}
       />
+
       <style>
         {`
           @media (max-width: 900px) {
@@ -160,6 +159,7 @@ export default function ArtworkPage() {
             }
             .artwork-info-col {
               margin-top: 1rem !important;
+              max-width: 90vw !important;
               font-size: 0.95rem !important;
             }
             .artwork-flex-row {
