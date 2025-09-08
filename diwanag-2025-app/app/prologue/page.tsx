@@ -1,6 +1,9 @@
 "use client";
+import Button from "../components/Button";
+import { useRouter } from "next/navigation";
 
 export default function ProloguePage() {
+  const router = useRouter();
   return (
     <main
       style={{
@@ -65,11 +68,12 @@ export default function ProloguePage() {
             alignSelf: "center",
             flex: 1,
             alignItems: "start",
-      
           }}
         >
           {/* Left Column */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
+          >
             <p
               style={{
                 color: "#5D4037",
@@ -93,7 +97,12 @@ export default function ProloguePage() {
               >
                 B
               </span>
-              uried within the shadowed recesses of our beings lies a vast trove of memories—some unvarnished, others forged—each imbued with the boundless tales of our daily lives. These memories coalesce into a mosaic, piecing together the moments that define our very existence. They beckon us to immortalize these surviving fragments of bygone eras.
+              uried within the shadowed recesses of our beings lies a vast trove
+              of memories—some unvarnished, others forged—each imbued with the
+              boundless tales of our daily lives. These memories coalesce into a
+              mosaic, piecing together the moments that define our very
+              existence. They beckon us to immortalize these surviving fragments
+              of bygone eras.
             </p>
 
             <p
@@ -106,12 +115,20 @@ export default function ProloguePage() {
                 textAlign: "justify",
               }}
             >
-              Amongst us, many carry the imprints of one another upon our souls—a remnant from a life lived together, a love shared so deeply it lingered forever. Be that as it may, it is crucial to understand that our individual tales do not unfold in isolation. We are, in essence, repositories of memory; we drag about hither and thither, accruing more and more as we go, losing a few, dropping some, but never entirely losing them.
+              Amongst us, many carry the imprints of one another upon our
+              souls—a remnant from a life lived together, a love shared so
+              deeply it lingered forever. Be that as it may, it is crucial to
+              understand that our individual tales do not unfold in isolation.
+              We are, in essence, repositories of memory; we drag about hither
+              and thither, accruing more and more as we go, losing a few,
+              dropping some, but never entirely losing them.
             </p>
           </div>
 
           {/* Right Column */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
+          >
             <p
               style={{
                 color: "#5D4037",
@@ -122,7 +139,11 @@ export default function ProloguePage() {
                 textAlign: "justify",
               }}
             >
-              The specter of forgetting looms large, and there is much wisdom to be acquired from our history—if only we allow it to reveal itself to us. It demands a formidable strength to hold fast to those fragments that mold our identities, for it is through remembrance that we rediscover one another in this vast expanse of existence.
+              The specter of forgetting looms large, and there is much wisdom to
+              be acquired from our history—if only we allow it to reveal itself
+              to us. It demands a formidable strength to hold fast to those
+              fragments that mold our identities, for it is through remembrance
+              that we rediscover one another in this vast expanse of existence.
             </p>
 
             <p
@@ -135,7 +156,10 @@ export default function ProloguePage() {
                 textAlign: "justify",
               }}
             >
-              This Diwanag 2025: Tinipong Alaala—let us, in this hallowed moment, enshrine these surviving vestiges of yore. Now more than ever, may the wisdom of the past humanize us as we roam the labyrinth of memories and connections.
+              This Diwanag 2025: Tinipong Alaala—let us, in this hallowed
+              moment, enshrine these surviving vestiges of yore. Now more than
+              ever, may the wisdom of the past humanize us as we roam the
+              labyrinth of memories and connections.
             </p>
           </div>
         </div>
@@ -147,7 +171,6 @@ export default function ProloguePage() {
             bottom: "3rem",
             right: "4rem",
             textAlign: "right",
-            
           }}
         >
           <p
@@ -155,7 +178,7 @@ export default function ProloguePage() {
               color: "#E8E8E8",
               fontSize: "20px",
               fontFamily: "averif-serif",
-              fontWeight: "500",      
+              fontWeight: "500",
             }}
           >
             Elliot Dimasuhid
@@ -181,6 +204,28 @@ export default function ProloguePage() {
             AY 2024-2025
           </p>
         </div>
+
+        {/* Navigation Button */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "3rem",
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
+        >
+          <Button
+            onClick={() => router.push("/chap-1")}
+            style={{
+              backgroundColor: "var(--accent-brown-dark)",
+              color: "var(--text-light)",
+              fontSize: "18px",
+              padding: "15px 30px",
+            }}
+          >
+            Begin Chapter 1 →
+          </Button>
+        </div>
       </div>
 
       {/* Decorative Elements */}
@@ -191,7 +236,8 @@ export default function ProloguePage() {
           left: "10%",
           width: "100px",
           height: "100px",
-          background: "radial-gradient(circle, rgba(212, 175, 55, 0.3), transparent)",
+          background:
+            "radial-gradient(circle, rgba(212, 175, 55, 0.3), transparent)",
           borderRadius: "50%",
           zIndex: 2,
           animation: "float 6s ease-in-out infinite",
@@ -205,7 +251,8 @@ export default function ProloguePage() {
           right: "15%",
           width: "60px",
           height: "60px",
-          background: "radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent)",
+          background:
+            "radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent)",
           borderRadius: "50%",
           zIndex: 2,
           animation: "float 8s ease-in-out infinite reverse",
@@ -213,11 +260,16 @@ export default function ProloguePage() {
       />
 
       <style jsx>{`
-      @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
         }
-          
+
         @media (max-width: 768px) {
           main > div:last-child > div:nth-child(2) {
             grid-template-columns: 1fr !important;
