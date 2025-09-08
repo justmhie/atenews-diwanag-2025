@@ -2,7 +2,6 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Button from "@/app/components/Button";
-import TableOfContents from "@/app/table-of-content/page";
 
 type Artwork = {
   artTitle: string;

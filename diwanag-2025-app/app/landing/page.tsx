@@ -1,6 +1,5 @@
 "use client";
 import { useRouter } from "next/navigation";
-import TableOfContents from "../table-of-content/page";
 export default function LandingPage() {
   const router = useRouter();
 
@@ -21,8 +20,6 @@ export default function LandingPage() {
         position: "relative",
       }}
     >
-      <TableOfContents />
-
       {/* MAIN TEXT */}
       <div
         style={{

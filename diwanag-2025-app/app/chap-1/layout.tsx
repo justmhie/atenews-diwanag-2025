@@ -1,5 +1,4 @@
 import React from "react";
-import TableOfContents from "@/app/table-of-content/page";
 
 export default function Chapter1Layout({
   children,
