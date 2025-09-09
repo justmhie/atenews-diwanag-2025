@@ -2,6 +2,7 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Button from "@/app/components/Button";
+import ViewImage from "@/app/modals/ViewImage";
 
 type Artwork = {
   artTitle: string;
@@ -33,6 +34,31 @@ export default function ArtworkPage() {
   const [artworks, setArtworks] = useState<Artwork[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(-1);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+
+  // Move functions before useEffect that uses them
+  const goToArtwork = async (index: number) => {
+    const nextArt = artworks[index];
+    if (nextArt) {
+      setIsTransitioning(true);
+      await new Promise((resolve) => setTimeout(resolve, 300));
+      router.push(`/chap-1/artwork/${encodeURIComponent(nextArt.artTitle)}`);
+      setTimeout(() => setIsTransitioning(false), 100);
+    }
+  };
+
+  // Button hover handlers
+  const handleButtonMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.currentTarget.style.backgroundColor = "var(--accent-blue-darkest)";
+    e.currentTarget.style.transform = "translateY(-2px)";
+    e.currentTarget.style.boxShadow = "0 6px 20px var(--bg-dark)4D";
+  };
+
+  const handleButtonMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.currentTarget.style.backgroundColor = "var(--accent-brown-dark)";
+    e.currentTarget.style.transform = "translateY(0)";
+    e.currentTarget.style.boxShadow = "0 4px 15px var(--bg-dark)33";
+  };
 
   useEffect(() => {
     fetch("/data/artworks.json")
@@ -52,6 +78,7 @@ export default function ArtworkPage() {
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (artworks.length === 0 || isTransitioning) return;
+      if (isImageModalOpen) return;
 
       if (e.key === "ArrowLeft" && currentIndex > 0) {
         e.preventDefault();
@@ -64,17 +91,24 @@ export default function ArtworkPage() {
 
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [currentIndex, artworks.length, isTransitioning]);
+  }, [
+    currentIndex,
+    artworks.length,
+    isTransitioning,
+    isImageModalOpen,
+    goToArtwork,
+  ]);
 
   if (currentIndex === -1 || artworks.length === 0) {
     return (
       <div
+        className="loading-container"
         style={{
           alignItems: "center",
           justifyContent: "flex-start",
           display: "flex",
           flexDirection: "column",
-          fontFamily: "averia-serif",
+          fontFamily: "Averia Serif Libre",
           padding: "2rem",
           boxSizing: "border-box",
           width: "100%",
@@ -102,6 +136,7 @@ export default function ArtworkPage() {
 
         {/* Animated Shimmer Overlay */}
         <div
+          className="shimmer"
           style={{
             position: "absolute",
             top: 0,
@@ -111,13 +146,13 @@ export default function ArtworkPage() {
             background:
               "linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.1) 50%, transparent 75%)",
             backgroundSize: "200% 100%",
-            animation: "shimmer 3s infinite",
             zIndex: 2,
           }}
         />
 
         {/* Skeleton Content */}
         <div
+          className="skeleton-content"
           style={{
             width: "100%",
             display: "flex",
@@ -130,6 +165,7 @@ export default function ArtworkPage() {
         >
           {/* Skeleton Image */}
           <div
+            className="skeleton-image"
             style={{
               width: "50%",
               display: "flex",
@@ -139,19 +175,20 @@ export default function ArtworkPage() {
             }}
           >
             <div
+              className="pulse"
               style={{
                 width: "100%",
                 maxWidth: "min(600px, 90vw)",
                 aspectRatio: "4/3",
-                backgroundColor: "rgba(0,0,0,0.2)",
+                backgroundColor: "var(--shadow-medium)",
                 borderRadius: "8px",
-                animation: "pulse 1.5s infinite",
               }}
             />
           </div>
 
           {/* Skeleton Info */}
           <div
+            className="skeleton-info"
             style={{
               width: "30%",
               display: "flex",
@@ -165,12 +202,12 @@ export default function ArtworkPage() {
             {[1, 2, 3, 4].map((i) => (
               <div
                 key={i}
+                className="pulse"
                 style={{
                   width: `${Math.random() * 50 + 50}%`,
                   height: "20px",
-                  backgroundColor: "rgba(0,0,0,0.2)",
+                  backgroundColor: "var(--shadow-medium)",
                   borderRadius: "4px",
-                  animation: "pulse 1.5s infinite",
                   animationDelay: `${i * 0.1}s`,
                 }}
               />
@@ -178,12 +215,12 @@ export default function ArtworkPage() {
 
             {/* Author skeleton */}
             <div
+              className="pulse"
               style={{
                 width: "60%",
                 height: "20px",
-                backgroundColor: "rgba(0,0,0,0.2)",
+                backgroundColor: "var(--shadow-medium)",
                 borderRadius: "4px",
-                animation: "pulse 1.5s infinite",
                 animationDelay: "0.5s",
               }}
             />
@@ -199,22 +236,22 @@ export default function ArtworkPage() {
               }}
             >
               <div
+                className="pulse"
                 style={{
                   width: "80%",
                   height: "24px",
-                  backgroundColor: "rgba(0,0,0,0.2)",
+                  backgroundColor: "var(--shadow-medium)",
                   borderRadius: "4px",
-                  animation: "pulse 1.5s infinite",
                   animationDelay: "0.6s",
                 }}
               />
               <div
+                className="pulse"
                 style={{
                   width: "50%",
                   height: "18px",
-                  backgroundColor: "rgba(0,0,0,0.2)",
+                  backgroundColor: "var(--shadow-medium)",
                   borderRadius: "4px",
-                  animation: "pulse 1.5s infinite",
                   animationDelay: "0.7s",
                 }}
               />
@@ -222,42 +259,44 @@ export default function ArtworkPage() {
 
             {/* Skeleton buttons */}
             <div
+              className="skeleton-buttons"
               style={{
                 marginTop: "1.5rem",
                 display: "flex",
-                gap: "2rem",
+                gap: "1rem",
                 justifyContent: "center",
                 width: "100%",
                 alignItems: "center",
+                flexWrap: "wrap",
               }}
             >
               <div
+                className="pulse"
                 style={{
-                  width: "80px",
+                  width: "60px",
                   height: "40px",
-                  backgroundColor: "rgba(0,0,0,0.3)",
+                  backgroundColor: "var(--shadow-dark)",
                   borderRadius: "8px",
-                  animation: "pulse 1.5s infinite",
                   animationDelay: "0.8s",
                 }}
               />
               <div
+                className="pulse"
                 style={{
                   width: "60px",
                   height: "20px",
-                  backgroundColor: "rgba(0,0,0,0.2)",
+                  backgroundColor: "var(--shadow-medium)",
                   borderRadius: "4px",
-                  animation: "pulse 1.5s infinite",
                   animationDelay: "0.9s",
                 }}
               />
               <div
+                className="pulse"
                 style={{
-                  width: "80px",
+                  width: "60px",
                   height: "40px",
-                  backgroundColor: "rgba(0,0,0,0.3)",
+                  backgroundColor: "var(--shadow-dark)",
                   borderRadius: "8px",
-                  animation: "pulse 1.5s infinite",
                   animationDelay: "1s",
                 }}
               />
@@ -266,48 +305,35 @@ export default function ArtworkPage() {
         </div>
 
         <style jsx>{`
-          @keyframes shimmer {
-            0% {
-              background-position: -200% 0;
-            }
-            100% {
-              background-position: 200% 0;
-            }
-          }
-
-          @keyframes pulse {
-            0%,
-            100% {
-              opacity: 1;
-            }
-            50% {
-              opacity: 0.4;
-            }
-          }
-
           @media (max-width: 900px) {
-            div[style*="flex-direction: row"] {
+            .skeleton-content {
               flex-direction: column !important;
               align-items: stretch !important;
             }
 
-            div[style*="width: 50%"] {
+            .skeleton-image {
               width: 100% !important;
+              margin-bottom: 2rem !important;
             }
 
-            div[style*="width: 30%"] {
+            .skeleton-info {
               width: 100% !important;
               margin-left: 0 !important;
-              margin-top: 2rem !important;
+              padding: 0 1rem !important;
             }
           }
 
           @media (max-width: 600px) {
-            div[style*="padding: 2rem"] {
+            .loading-container {
               padding: 1rem !important;
             }
 
-            div[style*="margin-top: 2rem"] {
+            .skeleton-info {
+              padding: 0 !important;
+            }
+
+            .skeleton-buttons {
+              gap: 0.5rem !important;
               margin-top: 1rem !important;
             }
           }
@@ -315,296 +341,403 @@ export default function ArtworkPage() {
       </div>
     );
   }
+
   const artwork = artworks[currentIndex];
 
-  const goToArtwork = async (index: number) => {
-    const nextArt = artworks[index];
-    if (nextArt) {
-      setIsTransitioning(true);
-      await new Promise((resolve) => setTimeout(resolve, 300));
-      router.push(`/chap-1/artwork/${encodeURIComponent(nextArt.artTitle)}`);
-      setTimeout(() => setIsTransitioning(false), 100);
-    }
-  };
-
-  // Button hover handlers
-  const handleButtonMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.currentTarget.style.backgroundColor = "var(--accent-blue-darkest)";
-    e.currentTarget.style.transform = "translateY(-2px)";
-    e.currentTarget.style.boxShadow = "0 6px 20px var(--bg-dark)4D";
-  };
-
-  const handleButtonMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.currentTarget.style.backgroundColor = "var(--accent-brown-dark)";
-    e.currentTarget.style.transform = "translateY(0)";
-    e.currentTarget.style.boxShadow = "0 4px 15px var(--bg-dark)33";
-  };
-
   return (
-    <div
-      style={{
-        alignItems: "center",
-        justifyContent: "flex-start",
-        display: "flex",
-        flexDirection: "column",
-        fontFamily: "averia-serif",
-        padding: "2rem",
-        boxSizing: "border-box",
-        width: "100%",
-        minHeight: "90vh",
-        zIndex: 1,
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      {/* Background Image */}
+    <>
       <div
+        className="artwork-container"
         style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
+          alignItems: "center",
+          justifyContent: "flex-start",
+          display: "flex",
+          flexDirection: "column",
+          fontFamily: "Averia Serif Libre",
+          padding: "2rem",
+          boxSizing: "border-box",
           width: "100%",
-          height: "100%",
-          backgroundImage: "url('/chap-bg-1.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+          minHeight: "90vh",
           zIndex: 1,
+          position: "relative",
+          overflow: "hidden",
         }}
-      />
+      >
+        {/* Background Image */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundImage: "url('/chap-bg-1.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            zIndex: 1,
+          }}
+        />
 
-      <style>
-        {`
+        <div
+          className="artwork-content"
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            opacity: isTransitioning ? 0 : 1,
+            transition: "opacity 0.3s ease-in-out",
+            position: "relative",
+            zIndex: 2,
+            alignItems: "center",
+          }}
+        >
+          <div
+            className="artwork-image-section"
+            style={{
+              width: "50%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              overflow: "hidden",
+            }}
+          >
+            <img
+              src={
+                "/artworks/chap-1-photos/" +
+                slugify(artwork.artTitle, artwork.author)
+              }
+              alt={artwork.artTitle}
+              onClick={() => setIsImageModalOpen(true)}
+              className="artwork-image"
+              style={{
+                width: "100%",
+                maxWidth: "min(600px, 90vw)",
+                height: "auto",
+                aspectRatio: "4/3",
+                objectFit: "contain",
+                display: "block",
+                boxSizing: "border-box",
+                overflow: "hidden",
+                cursor: "pointer",
+                transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                borderRadius: "8px",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.02)";
+                e.currentTarget.style.boxShadow =
+                  "0 8px 25px var(--shadow-dark)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            />
+          </div>
+
+          <div
+            className="artwork-info-section"
+            style={{
+              width: "40%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              marginLeft: "2rem",
+              padding: "1rem",
+            }}
+          >
+            <p
+              className="artwork-description"
+              style={{
+                color: "var(--text-accent)",
+                lineHeight: "1.6",
+                marginBottom: "1rem",
+                fontSize: "1rem",
+              }}
+            >
+              {artwork.artDescription}
+            </p>
+
+            <p
+              className="artwork-author"
+              style={{
+                color: "var(--text-accent)",
+                fontStyle: "italic",
+                marginBottom: "2rem",
+                fontSize: "1rem",
+              }}
+            >
+              -{artwork.author}
+            </p>
+
+            <div
+              className="artwork-details"
+              style={{
+                fontFamily: "Averia Serif Libre",
+                textAlign: "center",
+                marginBottom: "2rem",
+              }}
+            >
+              <p
+                className="artwork-title"
+                style={{
+                  color: "var(--text-accent)",
+                  fontWeight: "bold",
+                  marginBottom: "0.5rem",
+                  fontSize: "1.1rem",
+                }}
+              >
+                "{artwork.artTitle}"
+              </p>
+              <p
+                className="artwork-medium"
+                style={{
+                  color: "var(--text-accent)",
+                  opacity: 0.8,
+                  fontSize: "0.9rem",
+                }}
+              >
+                {artwork.medium}
+              </p>
+            </div>
+
+            <div
+              className="artwork-navigation"
+              style={{
+                display: "flex",
+                gap: "1rem",
+                justifyContent: "center",
+                width: "100%",
+                alignItems: "center",
+                flexWrap: "wrap",
+              }}
+            >
+              {/* Previous Button */}
+              {currentIndex === 0 ? (
+                <Button
+                  onClick={() => router.push("/chap-1")}
+                  className="nav-button"
+                  style={{
+                    backgroundColor: "var(--accent-brown-dark)",
+                    color: "var(--text-light)",
+                    padding: "0.5rem 1rem",
+                    fontSize: "0.9rem",
+                    minWidth: "auto",
+                  }}
+                  onMouseEnter={handleButtonMouseEnter}
+                  onMouseLeave={handleButtonMouseLeave}
+                >
+                  ← Chapter 1
+                </Button>
+              ) : (
+                <Button
+                  disabled={currentIndex <= 0}
+                  onClick={() => goToArtwork(currentIndex - 1)}
+                  className="nav-button"
+                  style={{
+                    backgroundColor: "var(--accent-brown-dark)",
+                    color: "var(--text-light)",
+                    padding: "0.5rem 1rem",
+                    fontSize: "0.9rem",
+                    minWidth: "auto",
+                  }}
+                  onMouseEnter={handleButtonMouseEnter}
+                  onMouseLeave={handleButtonMouseLeave}
+                >
+                  ←
+                </Button>
+              )}
+
+              {/* Counter */}
+              <div
+                className="artwork-counter"
+                style={{
+                  color: "var(--text-accent)",
+                  fontFamily: "Averia Serif Libre",
+                  opacity: 0.7,
+                  textAlign: "center",
+                  fontSize: "0.9rem",
+                  minWidth: "60px",
+                }}
+              >
+                {currentIndex + 1} of {artworks.length}
+              </div>
+
+              {/* Next Button */}
+              {currentIndex === artworks.length - 1 ? (
+                <Button
+                  onClick={async () => {
+                    const res = await fetch("/data/artworks.json");
+                    const data: Artwork[] = await res.json();
+                    const chapter2Art = data.find(
+                      (art) => art.chapter === "Chapter 2"
+                    );
+                    if (chapter2Art) {
+                      router.push(
+                        `/chap-2/artwork/${encodeURIComponent(
+                          chapter2Art.artTitle
+                        )}`
+                      );
+                    } else {
+                      router.push("/chap-2");
+                    }
+                  }}
+                  className="nav-button"
+                  style={{
+                    backgroundColor: "var(--accent-brown-dark)",
+                    color: "var(--text-light)",
+                    padding: "0.5rem 1rem",
+                    fontSize: "0.9rem",
+                    minWidth: "auto",
+                  }}
+                  onMouseEnter={handleButtonMouseEnter}
+                  onMouseLeave={handleButtonMouseLeave}
+                >
+                  Chapter 2 →
+                </Button>
+              ) : (
+                <Button
+                  disabled={currentIndex >= artworks.length - 1}
+                  onClick={() => goToArtwork(currentIndex + 1)}
+                  className="nav-button"
+                  style={{
+                    backgroundColor: "var(--accent-brown-dark)",
+                    color: "var(--text-light)",
+                    padding: "0.5rem 1rem",
+                    fontSize: "0.9rem",
+                    minWidth: "auto",
+                  }}
+                  onMouseEnter={handleButtonMouseEnter}
+                  onMouseLeave={handleButtonMouseLeave}
+                >
+                  →
+                </Button>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <style jsx>{`
+          @media (max-width: 1024px) {
+            .artwork-info-section {
+              width: 45% !important;
+              margin-left: 1.5rem !important;
+              padding: 0.5rem !important;
+            }
+
+            .artwork-description,
+            .artwork-author {
+              font-size: 0.95rem !important;
+            }
+
+            .artwork-title {
+              font-size: 1rem !important;
+            }
+
+            .artwork-medium {
+              font-size: 0.85rem !important;
+            }
+          }
+
           @media (max-width: 900px) {
-            .artwork-flex-row {
+            .artwork-content {
               flex-direction: column !important;
               align-items: stretch !important;
             }
-            .artwork-image-col, .artwork-info-col {
+
+            .artwork-image-section {
               width: 100% !important;
-              max-width: 100% !important;
+              margin-bottom: 2rem !important;
+            }
+
+            .artwork-info-section {
+              width: 100% !important;
               margin-left: 0 !important;
-              padding: 0 !important;
+              padding: 0 1rem !important;
             }
-            .artwork-image-col img {
-              padding: 1rem !important;
-              max-width: 100vw !important;
-              height: auto !important;
-              aspect-ratio: 4/3 !important;
+
+            .artwork-image {
+              max-width: 100% !important;
             }
-            .artwork-info-col {
-              margin-top: 2rem !important;
+
+            .artwork-navigation {
+              gap: 0.5rem !important;
+            }
+
+            .nav-button {
+              padding: 0.4rem 0.8rem !important;
+              font-size: 0.85rem !important;
             }
           }
+
           @media (max-width: 600px) {
-            .artwork-image-col img {
-              padding: 0.5rem !important;
-              max-width: 100vw !important;
-              height: auto !important;
-              aspect-ratio: 4/3 !important;
+            .artwork-container {
+              padding: 1rem !important;
             }
-            .artwork-info-col {
-              margin-top: 1rem !important;
-              max-width: 90vw !important;
+
+            .artwork-info-section {
+              padding: 0 !important;
+            }
+
+            .artwork-description,
+            .artwork-author {
+              font-size: 0.9rem !important;
+              text-align: center !important;
+            }
+
+            .artwork-title {
               font-size: 0.95rem !important;
             }
-            .artwork-flex-row {
-              padding: 0 !important;
+
+            .artwork-medium {
+              font-size: 0.8rem !important;
+            }
+
+            .artwork-counter {
+              font-size: 0.8rem !important;
+              min-width: 50px !important;
+            }
+
+            .nav-button {
+              padding: 0.3rem 0.6rem !important;
+              font-size: 0.8rem !important;
             }
           }
-        `}
-      </style>
-      <div
-        className="artwork-flex-row"
-        style={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          opacity: isTransitioning ? 0 : 1,
-          transition: "opacity 0.3s ease-in-out",
-          position: "relative",
-          zIndex: 1,
-          alignItems: "center",
-        }}
-      >
-        <div
-          className="artwork-image-col"
-          style={{
-            width: "50%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            overflow: "hidden",
-          }}
-        >
-          <img
-            src={
-              "/artworks/chap-1-photos/" +
-              slugify(artwork.artTitle, artwork.author)
+
+          @media (max-width: 480px) {
+            .artwork-container {
+              padding: 0.5rem !important;
             }
-            alt={artwork.artTitle}
-            style={{
-              width: "100%",
-              maxWidth: "min(600px, 90vw)",
-              height: "auto",
-              aspectRatio: "4/3",
-              objectFit: "contain",
-              display: "block",
-              boxSizing: "border-box",
-              overflow: "hidden",
-            }}
-          />
-        </div>
-        <div
-          className="artwork-info-col"
-          style={{
-            width: "30%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            marginLeft: "2rem",
-          }}
-        >
-          <p
-            style={{
-              color: "var(--text-accent)",
-              lineHeight: "1.6",
-            }}
-          >
-            {artwork.artDescription}
-          </p>
-          <p
-            style={{
-              color: "var(--text-accent)",
-              fontStyle: "italic",
-            }}
-          >
-            -{artwork.author}
-          </p>
-          <div
-            style={{
-              fontFamily: "averia-serif",
-              marginTop: "2rem",
-              textAlign: "center",
-            }}
-          >
-            <p
-              style={{
-                color: "var(--text-accent)",
-                fontWeight: "bold",
-                marginBottom: "0.5rem",
-              }}
-            >
-              "{artwork.artTitle}"
-            </p>
-            <p
-              style={{
-                color: "var(--text-accent)",
-                opacity: 0.8,
-              }}
-            >
-              {artwork.medium}
-            </p>
-          </div>
 
-          <div
-            style={{
-              marginTop: "1.5rem",
-              display: "flex",
-              gap: "2rem",
-              justifyContent: "center",
-              width: "100%",
-              alignItems: "center",
-              flexWrap: "wrap",
-            }}
-          >
-            {/* Previous */}
-            {currentIndex === 0 ? (
-              <Button
-                onClick={() => router.push("/chap-1")}
-                style={{
-                  backgroundColor: "var(--accent-brown-dark)",
-                  color: "var(--text-light)",
-                }}
-                onMouseEnter={handleButtonMouseEnter}
-                onMouseLeave={handleButtonMouseLeave}
-              >
-                ← Chapter 1
-              </Button>
-            ) : (
-              <Button
-                disabled={currentIndex <= 0}
-                onClick={() => goToArtwork(currentIndex - 1)}
-                style={{
-                  backgroundColor: "var(--accent-brown-dark)",
-                  color: "var(--text-light)",
-                }}
-                onMouseEnter={handleButtonMouseEnter}
-                onMouseLeave={handleButtonMouseLeave}
-              >
-                ← Previous
-              </Button>
-            )}
+            .artwork-navigation {
+              flex-direction: column !important;
+              gap: 0.5rem !important;
+            }
 
-            <div
-              style={{
-                color: "var(--text-accent)",
-                fontFamily: "averia-serif",
-                opacity: 0.7,
-                minWidth: "80px",
-                textAlign: "center",
-              }}
-            >
-              {currentIndex + 1} of {artworks.length}
-            </div>
+            .artwork-counter {
+              order: 1 !important;
+            }
 
-            {/* Next button or Chapter 2 link */}
-            {currentIndex === artworks.length - 1 ? (
-              <Button
-                onClick={async () => {
-                  // Fetch all artworks and find the first artwork in Chapter 2
-                  const res = await fetch("/data/artworks.json");
-                  const data: Artwork[] = await res.json();
-                  const chapter2Art = data.find(
-                    (art) => art.chapter === "Chapter 2"
-                  );
-                  if (chapter2Art) {
-                    router.push(
-                      `/chap-2/artwork/${encodeURIComponent(
-                        chapter2Art.artTitle
-                      )}`
-                    );
-                  } else {
-                    router.push("/chap-2");
-                  }
-                }}
-                style={{
-                  backgroundColor: "var(--accent-brown-dark)",
-                  color: "var(--text-light)",
-                }}
-                onMouseEnter={handleButtonMouseEnter}
-                onMouseLeave={handleButtonMouseLeave}
-              >
-                Chapter 2 →
-              </Button>
-            ) : (
-              <Button
-                disabled={currentIndex >= artworks.length - 1}
-                onClick={() => goToArtwork(currentIndex + 1)}
-                style={{
-                  backgroundColor: "var(--accent-brown-dark)",
-                  color: "var(--text-light)",
-                }}
-                onMouseEnter={handleButtonMouseEnter}
-                onMouseLeave={handleButtonMouseLeave}
-              >
-                Next →
-              </Button>
-            )}
-          </div>
-        </div>
+            .nav-button {
+              width: 100% !important;
+              max-width: 200px !important;
+            }
+          }
+        `}</style>
       </div>
-    </div>
+
+      {/* Image Modal */}
+      <ViewImage
+        isOpen={isImageModalOpen}
+        onClose={() => setIsImageModalOpen(false)}
+        imageSrc={
+          "/artworks/chap-1-photos/" + slugify(artwork.artTitle, artwork.author)
+        }
+        title={artwork.artTitle}
+        author={artwork.author}
+        medium={artwork.medium}
+      />
+    </>
   );
 }
