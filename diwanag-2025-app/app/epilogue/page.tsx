@@ -8,7 +8,7 @@ export default function EpiloguePage() {
     <main
       style={{
         minHeight: "100vh",
-        background: "#0B141D",
+        background: "#ffffff",
         position: "relative",
         overflow: "hidden",
       }}

@@ -4,20 +4,29 @@ import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const isDarkPage = pathname === "/epilogue" || pathname === "/chap-5" || pathname === "/chap-6" || pathname === "/staff";
+  const isDarkPage =
+    pathname === "/epilogue" ||
+    pathname === "/chap-5" ||
+    pathname === "/chap-6" ||
+    pathname === "/staff";
+  const isChapter1 = pathname === "/chap-1";
 
   return (
     <nav
       className="flex justify-end"
       aria-label="Main navigation"
       style={{
-        background: isDarkPage ? "#0B141D" : "var(--bg-light)",
+        background: isChapter1
+          ? "#B79668"
+          : isDarkPage
+          ? "#0B141D"
+          : "var(--bg-light)",
         padding: "1rem 0",
         letterSpacing: "0.05em",
-        position: isDarkPage ? "fixed" : "static",
-        top: isDarkPage ? "0" : "auto",
+        position: isDarkPage || isChapter1 ? "fixed" : "static",
+        top: isDarkPage || isChapter1 ? "0" : "auto",
         width: "100%",
-        zIndex: isDarkPage ? "1000" : "auto",
+        zIndex: isDarkPage || isChapter1 ? "1000" : "auto",
       }}
     >
       <ul
@@ -36,7 +45,11 @@ export default function Navbar() {
             href="/landing"
             className="hover:border-b-2"
             style={{
-              color: isDarkPage ? "#D4AF37" : "var(--text-accent)",
+              color: isChapter1
+                ? "#4A3426"
+                : isDarkPage
+                ? "#D4AF37"
+                : "var(--text-accent)",
               fontWeight: 500,
               fontSize: "1.2rem",
               textDecoration: "none",
@@ -51,7 +64,11 @@ export default function Navbar() {
             href="/about"
             className="hover:border-b-2"
             style={{
-              color: isDarkPage ? "#D4AF37" : "var(--text-accent)",
+              color: isChapter1
+                ? "#4A3426"
+                : isDarkPage
+                ? "#D4AF37"
+                : "var(--text-accent)",
               fontWeight: 500,
               fontSize: "1.2rem",
               textDecoration: "none",
@@ -66,7 +83,11 @@ export default function Navbar() {
             href="/staff"
             className="hover:border-b-2"
             style={{
-              color: isDarkPage ? "#D4AF37" : "var(--text-accent)",
+              color: isChapter1
+                ? "#4A3426"
+                : isDarkPage
+                ? "#D4AF37"
+                : "var(--text-accent)",
               fontWeight: 500,
               fontSize: "1.2rem",
               textDecoration: "none",
