@@ -11,6 +11,7 @@ export default function Navbar() {
     pathname === "/staff";
   const isChapter1 = pathname === "/chap-1" || pathname === "/chap-2";
   const isChapter3 = pathname === "/chap-3";
+  const isChapter3Artwork = pathname.startsWith("/chap-3/");
 
   return (
     <nav
@@ -21,15 +22,26 @@ export default function Navbar() {
           ? "#B79668"
           : isChapter3
           ? "#4871BA"
+          : isChapter3Artwork
+          ? "#4E79AE"
           : isDarkPage
           ? "#0B141D"
           : "var(--bg-light)",
         padding: "1rem 0",
         letterSpacing: "0.05em",
-        position: isDarkPage || isChapter1 || isChapter3 ? "fixed" : "static",
-        top: isDarkPage || isChapter1 || isChapter3 ? "0" : "auto",
+        position:
+          isDarkPage || isChapter1 || isChapter3 || isChapter3Artwork
+            ? "fixed"
+            : "static",
+        top:
+          isDarkPage || isChapter1 || isChapter3 || isChapter3Artwork
+            ? "0"
+            : "auto",
         width: "100%",
-        zIndex: isDarkPage || isChapter1 || isChapter3 ? "1000" : "auto",
+        zIndex:
+          isDarkPage || isChapter1 || isChapter3 || isChapter3Artwork
+            ? "1000"
+            : "auto",
       }}
     >
       <ul
@@ -50,7 +62,7 @@ export default function Navbar() {
             style={{
               color: isChapter1
                 ? "#4A3426"
-                : isChapter3
+                : isChapter3 || isChapter3Artwork
                 ? "var(--text-light)"
                 : isDarkPage
                 ? "#D4AF37"
@@ -71,7 +83,7 @@ export default function Navbar() {
             style={{
               color: isChapter1
                 ? "#4A3426"
-                : isChapter3
+                : isChapter3 || isChapter3Artwork
                 ? "var(--text-light)"
                 : isDarkPage
                 ? "#D4AF37"
@@ -92,7 +104,7 @@ export default function Navbar() {
             style={{
               color: isChapter1
                 ? "#4A3426"
-                : isChapter3
+                : isChapter3 || isChapter3Artwork
                 ? "var(--text-light)"
                 : isDarkPage
                 ? "#D4AF37"

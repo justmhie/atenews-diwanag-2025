@@ -126,7 +126,7 @@ export default function ArtworkPage() {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundImage: "url('/chap-bg-1.png')",
+            backgroundImage: "url('/chap-bg-2.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -371,7 +371,7 @@ export default function ArtworkPage() {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundImage: "url('/chap-bg-1.png')",
+            backgroundImage: "url('/chap-bg-2.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -450,7 +450,7 @@ export default function ArtworkPage() {
             <p
               className="artwork-description"
               style={{
-                color: "var(--text-accent)",
+                color: "var(--text-light)",
                 lineHeight: "1.6",
                 marginBottom: "1rem",
                 fontSize: "1rem",
@@ -462,7 +462,7 @@ export default function ArtworkPage() {
             <p
               className="artwork-author"
               style={{
-                color: "var(--text-accent)",
+                color: "var(--text-light)",
                 fontStyle: "italic",
                 marginBottom: "2rem",
                 fontSize: "1rem",
@@ -482,7 +482,7 @@ export default function ArtworkPage() {
               <p
                 className="artwork-title"
                 style={{
-                  color: "var(--text-accent)",
+                  color: "var(--text-light)",
                   fontWeight: "bold",
                   marginBottom: "0.5rem",
                   fontSize: "1.1rem",
@@ -493,7 +493,7 @@ export default function ArtworkPage() {
               <p
                 className="artwork-medium"
                 style={{
-                  color: "var(--text-accent)",
+                  color: "var(--text-light)",
                   opacity: 0.8,
                   fontSize: "0.9rem",
                 }}
@@ -569,7 +569,7 @@ export default function ArtworkPage() {
               <div
                 className="artwork-counter"
                 style={{
-                  color: "var(--text-accent)",
+                  color: "var(--text-light)",
                   fontFamily: "Averia Serif Libre",
                   opacity: 0.7,
                   textAlign: "center",
