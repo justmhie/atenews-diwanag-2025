@@ -10,8 +10,9 @@ export default function Navbar() {
     pathname === "/chap-6" ||
     pathname === "/staff";
   const isChapter1 = pathname === "/chap-1" || pathname === "/chap-2";
-  const isChapter3 = pathname === "/chap-3";
-  const isChapter3Artwork = pathname.startsWith("/chap-3/");
+  const isChapter3 = pathname === "/chap-3" || pathname === "/chap-4";
+  const isChapter3Artwork =
+    pathname.startsWith("/chap-3/") || pathname.startsWith("/chap-4/");
 
   return (
     <nav
