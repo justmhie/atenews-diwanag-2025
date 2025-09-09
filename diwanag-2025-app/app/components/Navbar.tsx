@@ -10,6 +10,7 @@ export default function Navbar() {
     pathname === "/chap-6" ||
     pathname === "/staff";
   const isChapter1 = pathname === "/chap-1" || pathname === "/chap-2";
+  const isChapter3 = pathname === "/chap-3";
 
   return (
     <nav
@@ -18,15 +19,17 @@ export default function Navbar() {
       style={{
         background: isChapter1
           ? "#B79668"
+          : isChapter3
+          ? "#4871BA"
           : isDarkPage
           ? "#0B141D"
           : "var(--bg-light)",
         padding: "1rem 0",
         letterSpacing: "0.05em",
-        position: isDarkPage || isChapter1 ? "fixed" : "static",
-        top: isDarkPage || isChapter1 ? "0" : "auto",
+        position: isDarkPage || isChapter1 || isChapter3 ? "fixed" : "static",
+        top: isDarkPage || isChapter1 || isChapter3 ? "0" : "auto",
         width: "100%",
-        zIndex: isDarkPage || isChapter1 ? "1000" : "auto",
+        zIndex: isDarkPage || isChapter1 || isChapter3 ? "1000" : "auto",
       }}
     >
       <ul
@@ -47,6 +50,8 @@ export default function Navbar() {
             style={{
               color: isChapter1
                 ? "#4A3426"
+                : isChapter3
+                ? "var(--text-light)"
                 : isDarkPage
                 ? "#D4AF37"
                 : "var(--text-accent)",
@@ -66,6 +71,8 @@ export default function Navbar() {
             style={{
               color: isChapter1
                 ? "#4A3426"
+                : isChapter3
+                ? "var(--text-light)"
                 : isDarkPage
                 ? "#D4AF37"
                 : "var(--text-accent)",
@@ -85,6 +92,8 @@ export default function Navbar() {
             style={{
               color: isChapter1
                 ? "#4A3426"
+                : isChapter3
+                ? "var(--text-light)"
                 : isDarkPage
                 ? "#D4AF37"
                 : "var(--text-accent)",

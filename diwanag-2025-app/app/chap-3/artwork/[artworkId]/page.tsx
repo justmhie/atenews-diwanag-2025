@@ -2,6 +2,7 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Button from "@/app/components/Button";
+import ViewImage from "@/app/modals/ViewImage";
 
 type Artwork = {
   artTitle: string;
@@ -33,43 +34,9 @@ export default function ArtworkPage() {
   const [artworks, setArtworks] = useState<Artwork[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(-1);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
-  useEffect(() => {
-    fetch("/data/artworks.json")
-      .then((res) => res.json())
-      .then((data: Artwork[]) => {
-        const chapterArtworks = data.filter(
-          (art) => art.chapter === "Chapter 3"
-        );
-        setArtworks(chapterArtworks);
-        const idx = chapterArtworks.findIndex(
-          (art) => encodeURIComponent(art.artTitle) === artworkId
-        );
-        setCurrentIndex(idx);
-      });
-  }, [artworkId]);
-
-  useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      if (artworks.length === 0 || isTransitioning) return;
-
-      if (e.key === "ArrowLeft" && currentIndex > 0) {
-        e.preventDefault();
-        goToArtwork(currentIndex - 1);
-      } else if (e.key === "ArrowRight" && currentIndex < artworks.length - 1) {
-        e.preventDefault();
-        goToArtwork(currentIndex + 1);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyPress);
-    return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [currentIndex, artworks.length, isTransitioning]);
-
-  if (currentIndex === -1 || artworks.length === 0) return <p>Loading...</p>;
-
-  const artwork = artworks[currentIndex];
-
+  // Move functions before useEffect that uses them
   const goToArtwork = async (index: number) => {
     const nextArt = artworks[index];
     if (nextArt) {
@@ -93,271 +60,694 @@ export default function ArtworkPage() {
     e.currentTarget.style.boxShadow = "0 4px 15px var(--bg-dark)33";
   };
 
-  return (
-    <div
-      style={{
-        alignItems: "center",
-        justifyContent: "flex-start",
-        display: "flex",
-        flexDirection: "column",
-        fontFamily: "averia-serif",
-        padding: "2rem",
-        boxSizing: "border-box",
-        width: "100%",
-        minHeight: "90vh",
-        zIndex: 1,
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      {/* Background Image */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          backgroundImage: "url('/chap-bg-1.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          zIndex: 1,
-        }}
-      />
+  useEffect(() => {
+    fetch("/data/artworks.json")
+      .then((res) => res.json())
+      .then((data: Artwork[]) => {
+        const chapterArtworks = data.filter(
+          (art) => art.chapter === "Chapter 3"
+        );
+        setArtworks(chapterArtworks);
+        const idx = chapterArtworks.findIndex(
+          (art) => encodeURIComponent(art.artTitle) === artworkId
+        );
+        setCurrentIndex(idx);
+      });
+  }, [artworkId]);
 
-      <style>
-        {`
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (artworks.length === 0 || isTransitioning) return;
+      if (isImageModalOpen) return;
+
+      if (e.key === "ArrowLeft" && currentIndex > 0) {
+        e.preventDefault();
+        goToArtwork(currentIndex - 1);
+      } else if (e.key === "ArrowRight" && currentIndex < artworks.length - 1) {
+        e.preventDefault();
+        goToArtwork(currentIndex + 1);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, [
+    currentIndex,
+    artworks.length,
+    isTransitioning,
+    isImageModalOpen,
+    goToArtwork,
+  ]);
+
+  if (currentIndex === -1 || artworks.length === 0) {
+    return (
+      <div
+        className="loading-container"
+        style={{
+          alignItems: "center",
+          justifyContent: "flex-start",
+          display: "flex",
+          flexDirection: "column",
+          fontFamily: "Averia Serif Libre",
+          padding: "2rem",
+          boxSizing: "border-box",
+          width: "100%",
+          minHeight: "90vh",
+          zIndex: 1,
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {/* Background Image */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundImage: "url('/chap-bg-1.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            zIndex: 1,
+          }}
+        />
+
+        {/* Animated Shimmer Overlay */}
+        <div
+          className="shimmer"
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background:
+              "linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.1) 50%, transparent 75%)",
+            backgroundSize: "200% 100%",
+            zIndex: 2,
+          }}
+        />
+
+        {/* Skeleton Content */}
+        <div
+          className="skeleton-content"
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            position: "relative",
+            zIndex: 3,
+            alignItems: "center",
+          }}
+        >
+          {/* Skeleton Image */}
+          <div
+            className="skeleton-image"
+            style={{
+              width: "50%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              className="pulse"
+              style={{
+                width: "100%",
+                maxWidth: "min(600px, 90vw)",
+                aspectRatio: "4/3",
+                backgroundColor: "var(--shadow-medium)",
+                borderRadius: "8px",
+              }}
+            />
+          </div>
+
+          {/* Skeleton Info */}
+          <div
+            className="skeleton-info"
+            style={{
+              width: "30%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              marginLeft: "2rem",
+              gap: "1rem",
+            }}
+          >
+            {/* Description skeleton lines */}
+            {[1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className="pulse"
+                style={{
+                  width: `${Math.random() * 50 + 50}%`,
+                  height: "20px",
+                  backgroundColor: "var(--shadow-medium)",
+                  borderRadius: "4px",
+                  animationDelay: `${i * 0.1}s`,
+                }}
+              />
+            ))}
+
+            {/* Author skeleton */}
+            <div
+              className="pulse"
+              style={{
+                width: "60%",
+                height: "20px",
+                backgroundColor: "var(--shadow-medium)",
+                borderRadius: "4px",
+                animationDelay: "0.5s",
+              }}
+            />
+
+            {/* Title and medium skeleton */}
+            <div
+              style={{
+                marginTop: "2rem",
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.5rem",
+                alignItems: "center",
+              }}
+            >
+              <div
+                className="pulse"
+                style={{
+                  width: "80%",
+                  height: "24px",
+                  backgroundColor: "var(--shadow-medium)",
+                  borderRadius: "4px",
+                  animationDelay: "0.6s",
+                }}
+              />
+              <div
+                className="pulse"
+                style={{
+                  width: "50%",
+                  height: "18px",
+                  backgroundColor: "var(--shadow-medium)",
+                  borderRadius: "4px",
+                  animationDelay: "0.7s",
+                }}
+              />
+            </div>
+
+            {/* Skeleton buttons */}
+            <div
+              className="skeleton-buttons"
+              style={{
+                marginTop: "1.5rem",
+                display: "flex",
+                gap: "1rem",
+                justifyContent: "center",
+                width: "100%",
+                alignItems: "center",
+                flexWrap: "wrap",
+              }}
+            >
+              <div
+                className="pulse"
+                style={{
+                  width: "60px",
+                  height: "40px",
+                  backgroundColor: "var(--shadow-dark)",
+                  borderRadius: "8px",
+                  animationDelay: "0.8s",
+                }}
+              />
+              <div
+                className="pulse"
+                style={{
+                  width: "60px",
+                  height: "20px",
+                  backgroundColor: "var(--shadow-medium)",
+                  borderRadius: "4px",
+                  animationDelay: "0.9s",
+                }}
+              />
+              <div
+                className="pulse"
+                style={{
+                  width: "60px",
+                  height: "40px",
+                  backgroundColor: "var(--shadow-dark)",
+                  borderRadius: "8px",
+                  animationDelay: "1s",
+                }}
+              />
+            </div>
+          </div>
+        </div>
+
+        <style jsx>{`
           @media (max-width: 900px) {
-            .artwork-flex-row {
+            .skeleton-content {
               flex-direction: column !important;
               align-items: stretch !important;
             }
-            .artwork-image-col, .artwork-info-col {
+
+            .skeleton-image {
               width: 100% !important;
-              max-width: 100% !important;
+              margin-bottom: 2rem !important;
+            }
+
+            .skeleton-info {
+              width: 100% !important;
               margin-left: 0 !important;
-              padding: 0 !important;
-            }
-            .artwork-image-col img {
-              padding: 1rem !important;
-              max-width: 100vw !important;
-              height: auto !important;
-              aspect-ratio: 4/3 !important;
-            }
-            .artwork-info-col {
-              margin-top: 2rem !important;
+              padding: 0 1rem !important;
             }
           }
+
           @media (max-width: 600px) {
-            .artwork-image-col img {
-              padding: 0.5rem !important;
-              max-width: 100vw !important;
-              height: auto !important;
-              aspect-ratio: 4/3 !important;
+            .loading-container {
+              padding: 1rem !important;
             }
-            .artwork-info-col {
-              margin-top: 1rem !important;
-              max-width: 90vw !important;
-              font-size: 0.95rem !important;
-            }
-            .artwork-flex-row {
+
+            .skeleton-info {
               padding: 0 !important;
             }
+
+            .skeleton-buttons {
+              gap: 0.5rem !important;
+              margin-top: 1rem !important;
+            }
           }
-        `}
-      </style>
+        `}</style>
+      </div>
+    );
+  }
+
+  const artwork = artworks[currentIndex];
+
+  return (
+    <>
       <div
-        className="artwork-flex-row"
+        className="artwork-container"
         style={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          opacity: isTransitioning ? 0 : 1,
-          transition: "opacity 0.3s ease-in-out",
-          position: "relative",
-          zIndex: 1,
           alignItems: "center",
+          justifyContent: "flex-start",
+          display: "flex",
+          flexDirection: "column",
+          fontFamily: "Averia Serif Libre",
+          padding: "2rem",
+          boxSizing: "border-box",
+          width: "100%",
+          minHeight: "90vh",
+          zIndex: 1,
+          position: "relative",
+          overflow: "hidden",
         }}
       >
+        {/* Background Image */}
         <div
-          className="artwork-image-col"
           style={{
-            width: "50%",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundImage: "url('/chap-bg-1.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            zIndex: 1,
+          }}
+        />
+
+        <div
+          className="artwork-content"
+          style={{
+            width: "100%",
             display: "flex",
+            flexDirection: "row",
             justifyContent: "center",
+            opacity: isTransitioning ? 0 : 1,
+            transition: "opacity 0.3s ease-in-out",
+            position: "relative",
+            zIndex: 2,
             alignItems: "center",
-            overflow: "hidden",
           }}
         >
-          <img
-            src={
-              "/artworks/chap-3-photos/" +
-              slugify(artwork.artTitle, artwork.author)
-            }
-            alt={artwork.artTitle}
+          <div
+            className="artwork-image-section"
             style={{
-              width: "100%",
-              maxWidth: "min(600px, 90vw)",
-              height: "auto",
-              aspectRatio: "4/3",
-              objectFit: "contain",
-              display: "block",
-              boxSizing: "border-box",
+              width: "50%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
               overflow: "hidden",
             }}
-          />
-        </div>
-        <div
-          className="artwork-info-col"
-          style={{
-            width: "30%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            marginLeft: "2rem",
-          }}
-        >
-          <p
-            style={{
-              color: "var(--text-accent)",
-              lineHeight: "1.6",
-            }}
           >
-            {artwork.artDescription}
-          </p>
-          <p
-            style={{
-              color: "var(--text-accent)",
-              fontStyle: "italic",
-            }}
-          >
-            -{artwork.author}
-          </p>
-          <div
-            style={{
-              fontFamily: "averia-serif",
-              marginTop: "2rem",
-              textAlign: "center",
-            }}
-          >
-            <p
+            <img
+              src={
+                "/artworks/chap-3-photos/" +
+                slugify(artwork.artTitle, artwork.author)
+              }
+              alt={artwork.artTitle}
+              onClick={() => setIsImageModalOpen(true)}
+              className="artwork-image"
               style={{
-                color: "var(--text-accent)",
-                fontWeight: "bold",
-                marginBottom: "0.5rem",
+                width: "100%",
+                maxWidth: "min(600px, 90vw)",
+                height: "auto",
+                aspectRatio: "4/3",
+                objectFit: "contain",
+                display: "block",
+                boxSizing: "border-box",
+                overflow: "hidden",
+                cursor: "pointer",
+                transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                borderRadius: "8px",
               }}
-            >
-              "{artwork.artTitle}"
-            </p>
-            <p
-              style={{
-                color: "var(--text-accent)",
-                opacity: 0.8,
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.02)";
+                e.currentTarget.style.boxShadow =
+                  "0 8px 25px var(--shadow-dark)";
               }}
-            >
-              {artwork.medium}
-            </p>
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            />
           </div>
 
           <div
+            className="artwork-info-section"
             style={{
-              marginTop: "1.5rem",
+              width: "40%",
               display: "flex",
-              gap: "2rem",
+              flexDirection: "column",
               justifyContent: "center",
-              width: "100%",
-              alignItems: "center",
-              flexWrap: "wrap",
+              marginLeft: "2rem",
+              padding: "1rem",
             }}
           >
-            {/* Previous button or Chapter 1 link */}
-            {currentIndex === 0 ? (
-              <Button
-                onClick={() => router.push("/chap-1")}
-                style={{
-                  backgroundColor: "var(--accent-brown-dark)",
-                  color: "var(--text-light)",
-                }}
-                onMouseEnter={handleButtonMouseEnter}
-                onMouseLeave={handleButtonMouseLeave}
-              >
-                ← Chapter 1
-              </Button>
-            ) : (
-              <Button
-                disabled={currentIndex <= 0}
-                onClick={() => goToArtwork(currentIndex - 1)}
-                style={{
-                  backgroundColor: "var(--accent-brown-dark)",
-                  color: "var(--text-light)",
-                }}
-                onMouseEnter={handleButtonMouseEnter}
-                onMouseLeave={handleButtonMouseLeave}
-              >
-                ← Previous
-              </Button>
-            )}
+            <p
+              className="artwork-description"
+              style={{
+                color: "var(--text-accent)",
+                lineHeight: "1.6",
+                marginBottom: "1rem",
+                fontSize: "1rem",
+              }}
+            >
+              {artwork.artDescription}
+            </p>
+
+            <p
+              className="artwork-author"
+              style={{
+                color: "var(--text-accent)",
+                fontStyle: "italic",
+                marginBottom: "2rem",
+                fontSize: "1rem",
+              }}
+            >
+              -{artwork.author}
+            </p>
 
             <div
+              className="artwork-details"
               style={{
-                color: "var(--text-accent)",
-                fontFamily: "averia-serif",
-                opacity: 0.7,
-                minWidth: "80px",
+                fontFamily: "Averia Serif Libre",
                 textAlign: "center",
+                marginBottom: "2rem",
               }}
             >
-              {currentIndex + 1} of {artworks.length}
+              <p
+                className="artwork-title"
+                style={{
+                  color: "var(--text-accent)",
+                  fontWeight: "bold",
+                  marginBottom: "0.5rem",
+                  fontSize: "1.1rem",
+                }}
+              >
+                "{artwork.artTitle}"
+              </p>
+              <p
+                className="artwork-medium"
+                style={{
+                  color: "var(--text-accent)",
+                  opacity: 0.8,
+                  fontSize: "0.9rem",
+                }}
+              >
+                {artwork.medium}
+              </p>
             </div>
 
-            {/* Next button or Chapter 4 link */}
-            {currentIndex === artworks.length - 1 ? (
-              <Button
-                onClick={async () => {
-                  // Fetch all artworks and find the first artwork in Chapter 4
-                  const res = await fetch("/data/artworks.json");
-                  const data: Artwork[] = await res.json();
-                  const chapter2Art = data.find(
-                    (art) => art.chapter === "Chapter 4"
-                  );
-                  if (chapter2Art) {
-                    router.push(
-                      `/chap-2/artwork/${encodeURIComponent(
-                        chapter2Art.artTitle
-                      )}`
+            <div
+              className="artwork-navigation"
+              style={{
+                display: "flex",
+                gap: "1rem",
+                justifyContent: "center",
+                width: "100%",
+                alignItems: "center",
+                flexWrap: "wrap",
+              }}
+            >
+              {/* Previous Button */}
+              {currentIndex === 0 ? (
+                <Button
+                  onClick={async () => {
+                    const res = await fetch("/data/artworks.json");
+                    const data: Artwork[] = await res.json();
+                    const chapter3Arts = data.filter(
+                      (art) => art.chapter === "Chapter 2"
                     );
-                  } else {
-                    router.push("/chap-3");
-                  }
-                }}
+                    const lastChapter1Art =
+                      chapter3Arts[chapter3Arts.length - 1];
+                    if (lastChapter1Art) {
+                      router.push(
+                        `/chap-2
+                        `
+                      );
+                    } else {
+                      router.push("/chap-2");
+                    }
+                  }}
+                  className="nav-button"
+                  style={{
+                    backgroundColor: "var(--accent-brown-dark)",
+                    color: "var(--text-light)",
+                    padding: "0.5rem 1rem",
+                    fontSize: "0.9rem",
+                    minWidth: "auto",
+                  }}
+                  onMouseEnter={handleButtonMouseEnter}
+                  onMouseLeave={handleButtonMouseLeave}
+                >
+                  ← Chapter 2 Overview
+                </Button>
+              ) : (
+                <Button
+                  disabled={currentIndex <= 0}
+                  onClick={() => goToArtwork(currentIndex - 1)}
+                  className="nav-button"
+                  style={{
+                    backgroundColor: "var(--accent-brown-dark)",
+                    color: "var(--text-light)",
+                    padding: "0.5rem 1rem",
+                    fontSize: "0.9rem",
+                    minWidth: "auto",
+                  }}
+                  onMouseEnter={handleButtonMouseEnter}
+                  onMouseLeave={handleButtonMouseLeave}
+                >
+                  ←
+                </Button>
+              )}
+
+              {/* Counter */}
+              <div
+                className="artwork-counter"
                 style={{
-                  backgroundColor: "var(--accent-brown-dark)",
-                  color: "var(--text-light)",
+                  color: "var(--text-accent)",
+                  fontFamily: "Averia Serif Libre",
+                  opacity: 0.7,
+                  textAlign: "center",
+                  fontSize: "0.9rem",
+                  minWidth: "60px",
                 }}
-                onMouseEnter={handleButtonMouseEnter}
-                onMouseLeave={handleButtonMouseLeave}
               >
-                Chapter 4 →
-              </Button>
-            ) : (
-              <Button
-                disabled={currentIndex >= artworks.length - 1}
-                onClick={() => goToArtwork(currentIndex + 1)}
-                style={{
-                  backgroundColor: "var(--accent-brown-dark)",
-                  color: "var(--text-light)",
-                }}
-                onMouseEnter={handleButtonMouseEnter}
-                onMouseLeave={handleButtonMouseLeave}
-              >
-                Next →
-              </Button>
-            )}
+                {currentIndex + 1} of {artworks.length}
+              </div>
+
+              {/* Next Button */}
+              {currentIndex === artworks.length - 1 ? (
+                <Button
+                  onClick={async () => {
+                    const res = await fetch("/data/artworks.json");
+                    const data: Artwork[] = await res.json();
+                    const chapter3Art = data.find(
+                      (art) => art.chapter === "Chapter 4"
+                    );
+                    if (chapter3Art) {
+                      router.push("/chap-4");
+                    }
+                  }}
+                  className="nav-button"
+                  style={{
+                    backgroundColor: "var(--accent-brown-dark)",
+                    color: "var(--text-light)",
+                    padding: "0.5rem 1rem",
+                    fontSize: "0.9rem",
+                    minWidth: "auto",
+                  }}
+                  onMouseEnter={handleButtonMouseEnter}
+                  onMouseLeave={handleButtonMouseLeave}
+                >
+                  Chapter 4 →
+                </Button>
+              ) : (
+                <Button
+                  disabled={currentIndex >= artworks.length - 1}
+                  onClick={() => goToArtwork(currentIndex + 1)}
+                  className="nav-button"
+                  style={{
+                    backgroundColor: "var(--accent-brown-dark)",
+                    color: "var(--text-light)",
+                    padding: "0.5rem 1rem",
+                    fontSize: "0.9rem",
+                    minWidth: "auto",
+                  }}
+                  onMouseEnter={handleButtonMouseEnter}
+                  onMouseLeave={handleButtonMouseLeave}
+                >
+                  →
+                </Button>
+              )}
+            </div>
           </div>
         </div>
+
+        <style jsx>{`
+          @media (max-width: 1024px) {
+            .artwork-info-section {
+              width: 45% !important;
+              margin-left: 1.5rem !important;
+              padding: 0.5rem !important;
+            }
+
+            .artwork-description,
+            .artwork-author {
+              font-size: 0.95rem !important;
+            }
+
+            .artwork-title {
+              font-size: 1rem !important;
+            }
+
+            .artwork-medium {
+              font-size: 0.85rem !important;
+            }
+          }
+
+          @media (max-width: 900px) {
+            .artwork-content {
+              flex-direction: column !important;
+              align-items: stretch !important;
+            }
+
+            .artwork-image-section {
+              width: 100% !important;
+              margin-bottom: 2rem !important;
+            }
+
+            .artwork-info-section {
+              width: 100% !important;
+              margin-left: 0 !important;
+              padding: 0 1rem !important;
+            }
+
+            .artwork-image {
+              max-width: 100% !important;
+            }
+
+            .artwork-navigation {
+              gap: 0.5rem !important;
+            }
+
+            .nav-button {
+              padding: 0.4rem 0.8rem !important;
+              font-size: 0.85rem !important;
+            }
+          }
+
+          @media (max-width: 600px) {
+            .artwork-container {
+              padding: 1rem !important;
+            }
+
+            .artwork-info-section {
+              padding: 0 !important;
+            }
+
+            .artwork-description,
+            .artwork-author {
+              font-size: 0.9rem !important;
+              text-align: center !important;
+            }
+
+            .artwork-title {
+              font-size: 0.95rem !important;
+            }
+
+            .artwork-medium {
+              font-size: 0.8rem !important;
+            }
+
+            .artwork-counter {
+              font-size: 0.8rem !important;
+              min-width: 50px !important;
+            }
+
+            .nav-button {
+              padding: 0.3rem 0.6rem !important;
+              font-size: 0.8rem !important;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .artwork-container {
+              padding: 0.5rem !important;
+            }
+
+            .artwork-navigation {
+              flex-direction: column !important;
+              gap: 0.5rem !important;
+            }
+
+            .artwork-counter {
+              order: 1 !important;
+            }
+
+            .nav-button {
+              width: 100% !important;
+              max-width: 200px !important;
+            }
+          }
+        `}</style>
       </div>
-    </div>
+
+      {/* Image Modal */}
+      <ViewImage
+        isOpen={isImageModalOpen}
+        onClose={() => setIsImageModalOpen(false)}
+        imageSrc={
+          "/artworks/chap-3-photos/" + slugify(artwork.artTitle, artwork.author)
+        }
+        title={artwork.artTitle}
+        author={artwork.author}
+        medium={artwork.medium}
+      />
+    </>
   );
 }
