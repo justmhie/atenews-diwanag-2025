@@ -519,10 +519,10 @@ export default function ArtworkPage() {
               flexWrap: "wrap",
             }}
           >
-            {/* Previous button or Prologue link */}
+            {/* Previous */}
             {currentIndex === 0 ? (
               <Button
-                onClick={() => router.push("/prologue")}
+                onClick={() => router.push("/chap-1")}
                 style={{
                   backgroundColor: "var(--accent-brown-dark)",
                   color: "var(--text-light)",
@@ -530,7 +530,7 @@ export default function ArtworkPage() {
                 onMouseEnter={handleButtonMouseEnter}
                 onMouseLeave={handleButtonMouseLeave}
               >
-                ← Prologue
+                ← Chapter 1
               </Button>
             ) : (
               <Button
