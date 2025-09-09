@@ -66,8 +66,255 @@ export default function ArtworkPage() {
     return () => window.removeEventListener("keydown", handleKeyPress);
   }, [currentIndex, artworks.length, isTransitioning]);
 
-  if (currentIndex === -1 || artworks.length === 0) return <p>Loading...</p>;
+  if (currentIndex === -1 || artworks.length === 0) {
+    return (
+      <div
+        style={{
+          alignItems: "center",
+          justifyContent: "flex-start",
+          display: "flex",
+          flexDirection: "column",
+          fontFamily: "averia-serif",
+          padding: "2rem",
+          boxSizing: "border-box",
+          width: "100%",
+          minHeight: "90vh",
+          zIndex: 1,
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {/* Background Image */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundImage: "url('/chap-bg-1.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            zIndex: 1,
+          }}
+        />
 
+        {/* Animated Shimmer Overlay */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background:
+              "linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.1) 50%, transparent 75%)",
+            backgroundSize: "200% 100%",
+            animation: "shimmer 3s infinite",
+            zIndex: 2,
+          }}
+        />
+
+        {/* Skeleton Content */}
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            position: "relative",
+            zIndex: 3,
+            alignItems: "center",
+          }}
+        >
+          {/* Skeleton Image */}
+          <div
+            style={{
+              width: "50%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{
+                width: "100%",
+                maxWidth: "min(600px, 90vw)",
+                aspectRatio: "4/3",
+                backgroundColor: "rgba(0,0,0,0.2)",
+                borderRadius: "8px",
+                animation: "pulse 1.5s infinite",
+              }}
+            />
+          </div>
+
+          {/* Skeleton Info */}
+          <div
+            style={{
+              width: "30%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              marginLeft: "2rem",
+              gap: "1rem",
+            }}
+          >
+            {/* Description skeleton lines */}
+            {[1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                style={{
+                  width: `${Math.random() * 50 + 50}%`,
+                  height: "20px",
+                  backgroundColor: "rgba(0,0,0,0.2)",
+                  borderRadius: "4px",
+                  animation: "pulse 1.5s infinite",
+                  animationDelay: `${i * 0.1}s`,
+                }}
+              />
+            ))}
+
+            {/* Author skeleton */}
+            <div
+              style={{
+                width: "60%",
+                height: "20px",
+                backgroundColor: "rgba(0,0,0,0.2)",
+                borderRadius: "4px",
+                animation: "pulse 1.5s infinite",
+                animationDelay: "0.5s",
+              }}
+            />
+
+            {/* Title and medium skeleton */}
+            <div
+              style={{
+                marginTop: "2rem",
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.5rem",
+                alignItems: "center",
+              }}
+            >
+              <div
+                style={{
+                  width: "80%",
+                  height: "24px",
+                  backgroundColor: "rgba(0,0,0,0.2)",
+                  borderRadius: "4px",
+                  animation: "pulse 1.5s infinite",
+                  animationDelay: "0.6s",
+                }}
+              />
+              <div
+                style={{
+                  width: "50%",
+                  height: "18px",
+                  backgroundColor: "rgba(0,0,0,0.2)",
+                  borderRadius: "4px",
+                  animation: "pulse 1.5s infinite",
+                  animationDelay: "0.7s",
+                }}
+              />
+            </div>
+
+            {/* Skeleton buttons */}
+            <div
+              style={{
+                marginTop: "1.5rem",
+                display: "flex",
+                gap: "2rem",
+                justifyContent: "center",
+                width: "100%",
+                alignItems: "center",
+              }}
+            >
+              <div
+                style={{
+                  width: "80px",
+                  height: "40px",
+                  backgroundColor: "rgba(0,0,0,0.3)",
+                  borderRadius: "8px",
+                  animation: "pulse 1.5s infinite",
+                  animationDelay: "0.8s",
+                }}
+              />
+              <div
+                style={{
+                  width: "60px",
+                  height: "20px",
+                  backgroundColor: "rgba(0,0,0,0.2)",
+                  borderRadius: "4px",
+                  animation: "pulse 1.5s infinite",
+                  animationDelay: "0.9s",
+                }}
+              />
+              <div
+                style={{
+                  width: "80px",
+                  height: "40px",
+                  backgroundColor: "rgba(0,0,0,0.3)",
+                  borderRadius: "8px",
+                  animation: "pulse 1.5s infinite",
+                  animationDelay: "1s",
+                }}
+              />
+            </div>
+          </div>
+        </div>
+
+        <style jsx>{`
+          @keyframes shimmer {
+            0% {
+              background-position: -200% 0;
+            }
+            100% {
+              background-position: 200% 0;
+            }
+          }
+
+          @keyframes pulse {
+            0%,
+            100% {
+              opacity: 1;
+            }
+            50% {
+              opacity: 0.4;
+            }
+          }
+
+          @media (max-width: 900px) {
+            div[style*="flex-direction: row"] {
+              flex-direction: column !important;
+              align-items: stretch !important;
+            }
+
+            div[style*="width: 50%"] {
+              width: 100% !important;
+            }
+
+            div[style*="width: 30%"] {
+              width: 100% !important;
+              margin-left: 0 !important;
+              margin-top: 2rem !important;
+            }
+          }
+
+          @media (max-width: 600px) {
+            div[style*="padding: 2rem"] {
+              padding: 1rem !important;
+            }
+
+            div[style*="margin-top: 2rem"] {
+              margin-top: 1rem !important;
+            }
+          }
+        `}</style>
+      </div>
+    );
+  }
   const artwork = artworks[currentIndex];
 
   const goToArtwork = async (index: number) => {
