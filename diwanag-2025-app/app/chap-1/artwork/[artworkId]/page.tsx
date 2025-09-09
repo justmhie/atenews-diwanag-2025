@@ -574,12 +574,6 @@ export default function ArtworkPage() {
                       (art) => art.chapter === "Chapter 2"
                     );
                     if (chapter2Art) {
-                      router.push(
-                        `/chap-2/artwork/${encodeURIComponent(
-                          chapter2Art.artTitle
-                        )}`
-                      );
-                    } else {
                       router.push("/chap-2");
                     }
                   }}
