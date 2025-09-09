@@ -46,11 +46,7 @@ export default function TableOfContents() {
       title: "Chapter 1",
       path: "/chap-1",
       description: "",
-      isClickable: false,
-      subtitle: {
-        text: "See Chapter 1 Overview",
-        path: "/chap-1",
-      },
+      isClickable: true,
       artworks:
         chapters["Chapter 1"]?.map((art) => ({
           title: art.artTitle,
@@ -61,7 +57,7 @@ export default function TableOfContents() {
       title: "Chapter 2",
       path: "/chap-2",
       description: "",
-      isClickable: false,
+      isClickable: true,
       artworks:
         chapters["Chapter 2"]?.map((art) => ({
           title: art.artTitle,
@@ -72,7 +68,7 @@ export default function TableOfContents() {
       title: "Chapter 3",
       path: "/chap-3",
       description: "",
-      isClickable: false,
+      isClickable: true,
       artworks:
         chapters["Chapter 3"]?.map((art) => ({
           title: art.artTitle,
@@ -83,7 +79,7 @@ export default function TableOfContents() {
       title: "Chapter 4",
       path: "/chap-4",
       description: "",
-      isClickable: false,
+      isClickable: true,
       artworks:
         chapters["Chapter 4"]?.map((art) => ({
           title: art.artTitle,
@@ -94,7 +90,7 @@ export default function TableOfContents() {
       title: "Chapter 5",
       path: "/chap-5",
       description: "",
-      isClickable: false,
+      isClickable: true,
       artworks:
         chapters["Chapter 5"]?.map((art) => ({
           title: art.artTitle,
@@ -105,7 +101,7 @@ export default function TableOfContents() {
       title: "Chapter 6",
       path: "/chap-6",
       description: "",
-      isClickable: false,
+      isClickable: true,
       artworks:
         chapters["Chapter 6"]?.map((art) => ({
           title: art.artTitle,
@@ -127,21 +123,25 @@ export default function TableOfContents() {
 
   const toggleToc = () => setIsTocOpen(!isTocOpen);
 
-  const handleChapterClick = (item: any, index: number) => {
-    if (item.isClickable) {
+  const handleChapterClick = (item: any) => {
+    if (item.path) {
       router.push(item.path);
       setIsTocOpen(false);
-    } else {
-      setExpandedChapters((prev) => ({
-        ...prev,
-        [index]: !prev[index],
-      }));
     }
   };
 
   const navigateTo = (path: string) => {
     router.push(path);
     setIsTocOpen(false);
+  };
+
+  // Handles toggling the expanded state of a chapter (arrow click)
+  const handleExpandToggle = (index: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setExpandedChapters((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
   };
 
   return (
@@ -232,21 +232,20 @@ export default function TableOfContents() {
           {tocItems.map((item, index) => (
             <div key={item.title}>
               {/* Chapter Header */}
-              <div
-                onClick={() => handleChapterClick(item, index)}
-                className="cursor-pointer rounded-md p-3 text-[var(--text-accent)] hover:bg-black/5 transition mb-2"
-              >
+              <div className="rounded-md p-3 text-[var(--text-accent)] hover:bg-black/5 transition mb-2">
                 <div className="flex items-center justify-between mb-1">
                   <h3
-                    className="m-0 text-lg font-semibold"
+                    onClick={() => handleChapterClick(item)}
+                    className="m-0 text-lg font-semibold cursor-pointer hover:opacity-80 transition-opacity"
                     style={{ color: "var(--text-accent)" }}
                   >
                     {item.title}
                   </h3>
-                  {/* Only show arrow for non-clickable items (chapters with artworks) */}
-                  {!item.isClickable && (
+                  {/* Show arrow only for items with artworks */}
+                  {item.artworks && item.artworks.length > 0 && (
                     <span
-                      className={`transform transition-transform ${
+                      onClick={(e) => handleExpandToggle(index, e)}
+                      className={`cursor-pointer transform transition-transform hover:opacity-80 ${
                         expandedChapters[index] ? "rotate-90" : ""
                       }`}
                     >
@@ -266,7 +265,7 @@ export default function TableOfContents() {
               </div>
 
               {/* Artworks */}
-              {expandedChapters[index] && item.artworks && (
+              {expandedChapters[index] && item.artworks && item.artworks.length > 0 && (
                 <div className="ml-4 mb-2 rounded-r-md border-l-2 border-[var(--text-accent)] pl-4">
                   {item.artworks.map((artwork: any, artIndex: number) => (
                     <div
