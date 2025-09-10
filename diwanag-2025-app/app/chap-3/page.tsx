@@ -20,7 +20,7 @@ export default function ChapTwoPage() {
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundImage: "url('/trees.png')",
+          backgroundImage: "url('/trees2.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -54,18 +54,18 @@ export default function ChapTwoPage() {
             style={{
               fontSize: "2rem",
               fontFamily: "Averia Serif Libre",
-              color: "#4A3426", // Darker brown for better contrast
+              color: "var(--text-light)",
               marginBottom: "1rem",
               fontWeight: "700",
             }}
           >
-            CHAPTER II
+            CHAPTER III
           </h1>
           <div
             style={{
               width: "100px",
               height: "3px",
-              backgroundColor: "#4A3426", // Match title color
+              backgroundColor: "var(--text-light)", // Match title color
               margin: "0 auto",
             }}
           />
@@ -84,22 +84,21 @@ export default function ChapTwoPage() {
             style={{
               fontSize: "1.2rem",
               lineHeight: "1.8",
-              color: "#4A3426", // Darker brown for better readability
+              color: "var(--text-light)",
               fontFamily: "Averia Serif Libre",
               fontStyle: "italic",
             }}
           >
-            To be alone is to hold the weight of your own shadow.
-            <br />
-            But even in solitude, traces of others remain, <br />a hand once
-            held, a silence shared.
+            Grant me the land rich with tales and lore,
+            <br /> preserving the recollections of days gone before;
+            <br /> bestow upon me the realm of stories and song,
+            <br /> where the battles of justice and injustice belong.
           </p>
         </div>
       </div>
 
-
       {/* Navigation Buttons */}
-      
+
       <div
         className="nav-buttons"
         style={{
@@ -115,16 +114,16 @@ export default function ChapTwoPage() {
         <Button
           className="align-left"
           onClick={async () => {
-            // Fetch last artwork of Chapter 1
+            // Fetch last artwork of Chapter 2
             const res = await fetch("/data/artworks.json");
             const data = await res.json();
-            const chapter1Arts = data.filter(
-              (art: any) => art.chapter === "Chapter 1"
+            const chapter2Arts = data.filter(
+              (art: any) => art.chapter === "Chapter 2"
             );
-            if (chapter1Arts.length > 0) {
-              const lastArt = chapter1Arts[chapter1Arts.length - 1];
+            if (chapter2Arts.length > 0) {
+              const lastArt = chapter2Arts[chapter2Arts.length - 1];
               router.push(
-                `/chap-1/artwork/${encodeURIComponent(lastArt.artTitle)}`
+                `/chap-2/artwork/${encodeURIComponent(lastArt.artTitle)}`
               );
             }
           }}
@@ -158,11 +157,11 @@ export default function ChapTwoPage() {
             const res = await fetch("/data/artworks.json");
             const data = await res.json();
             const chapter2Art = data.find(
-              (art: any) => art.chapter === "Chapter 2"
+              (art: any) => art.chapter === "Chapter 3"
             );
             if (chapter2Art) {
               router.push(
-                `/chap-2/artwork/${encodeURIComponent(chapter2Art.artTitle)}`
+                `/chap-3/artwork/${encodeURIComponent(chapter2Art.artTitle)}`
               );
             }
           }}

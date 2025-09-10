@@ -2,7 +2,7 @@
 import Button from "../components/Button";
 import { useRouter } from "next/navigation";
 
-export default function ChapTwoPage() {
+export default function ChapFivePage() {
   const router = useRouter();
   return (
     <main
@@ -20,7 +20,7 @@ export default function ChapTwoPage() {
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundImage: "url('/trees.png')",
+          backgroundImage: "url('/trees3.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -54,18 +54,18 @@ export default function ChapTwoPage() {
             style={{
               fontSize: "2rem",
               fontFamily: "Averia Serif Libre",
-              color: "#4A3426", // Darker brown for better contrast
+              color: "var(--text-light)",
               marginBottom: "1rem",
               fontWeight: "700",
             }}
           >
-            CHAPTER II
+            CHAPTER V
           </h1>
           <div
             style={{
               width: "100px",
               height: "3px",
-              backgroundColor: "#4A3426", // Match title color
+              backgroundColor: "var(--text-light)",
               margin: "0 auto",
             }}
           />
@@ -84,22 +84,21 @@ export default function ChapTwoPage() {
             style={{
               fontSize: "1.2rem",
               lineHeight: "1.8",
-              color: "#4A3426", // Darker brown for better readability
+              color: "var(--text-light)",
               fontFamily: "Averia Serif Libre",
               fontStyle: "italic",
             }}
           >
-            To be alone is to hold the weight of your own shadow.
-            <br />
-            But even in solitude, traces of others remain, <br />a hand once
-            held, a silence shared.
+            there is war within every stillness.
+            <br /> we are contradictions;
+            <br /> creations born of destruction, wholeness found in the
+            fracture, a
+            <br /> restless longing for what we cannot name.
           </p>
         </div>
       </div>
 
-
       {/* Navigation Buttons */}
-      
       <div
         className="nav-buttons"
         style={{
@@ -115,16 +114,16 @@ export default function ChapTwoPage() {
         <Button
           className="align-left"
           onClick={async () => {
-            // Fetch last artwork of Chapter 1
+            // Fetch last artwork of Chapter 4
             const res = await fetch("/data/artworks.json");
             const data = await res.json();
-            const chapter1Arts = data.filter(
-              (art: any) => art.chapter === "Chapter 1"
+            const chapter4Arts = data.filter(
+              (art: any) => art.chapter === "Chapter 4"
             );
-            if (chapter1Arts.length > 0) {
-              const lastArt = chapter1Arts[chapter1Arts.length - 1];
+            if (chapter4Arts.length > 0) {
+              const lastArt = chapter4Arts[chapter4Arts.length - 1];
               router.push(
-                `/chap-1/artwork/${encodeURIComponent(lastArt.artTitle)}`
+                `/chap-4/artwork/${encodeURIComponent(lastArt.artTitle)}`
               );
             }
           }}
@@ -148,21 +147,21 @@ export default function ChapTwoPage() {
               "0 4px 12px rgba(74, 52, 38, 0.3)";
           }}
         >
-          ← Chapter 2
+          ← Chapter 4
         </Button>
 
         {/* Begin Journey Button */}
         <Button
           onClick={async () => {
-            // Fetch first artwork of Chapter 2
+            // Fetch first artwork of Chapter 5
             const res = await fetch("/data/artworks.json");
             const data = await res.json();
-            const chapter2Art = data.find(
-              (art: any) => art.chapter === "Chapter 2"
+            const chapter5Art = data.find(
+              (art: any) => art.chapter === "Chapter 5"
             );
-            if (chapter2Art) {
+            if (chapter5Art) {
               router.push(
-                `/chap-2/artwork/${encodeURIComponent(chapter2Art.artTitle)}`
+                `/chap-5/artwork/${encodeURIComponent(chapter5Art.artTitle)}`
               );
             }
           }}

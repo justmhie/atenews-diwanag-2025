@@ -520,7 +520,7 @@ export default function ArtworkPage() {
                     const res = await fetch("/data/artworks.json");
                     const data: Artwork[] = await res.json();
                     const chapter2Arts = data.filter(
-                      (art) => art.chapter === "Chapter 1"
+                      (art) => art.chapter === "Chapter 2 Overview"
                     );
                     const lastChapter1Art =
                       chapter2Arts[chapter2Arts.length - 1];
@@ -531,7 +531,7 @@ export default function ArtworkPage() {
                         )}`
                       );
                     } else {
-                      router.push("/chap-1");
+                      router.push("/chap-2");
                     }
                   }}
                   className="nav-button"
@@ -545,7 +545,7 @@ export default function ArtworkPage() {
                   onMouseEnter={handleButtonMouseEnter}
                   onMouseLeave={handleButtonMouseLeave}
                 >
-                  ← Chapter 1
+                  ← Chapter 2 Overview
                 </Button>
               ) : (
                 <Button
