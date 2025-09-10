@@ -49,7 +49,6 @@ export default function EpiloguePage() {
             flexDirection: "row",
             alignItems: "flex-start",
             justifyContent: "flex-start",
-           
           }}
         >
           {/* Left side - spacing for visual balance */}
@@ -65,21 +64,21 @@ export default function EpiloguePage() {
               gap: "2rem",
             }}
           >
-             {/* Epilogue Title */}
-        <div>
-          <h1
-            style={{
-              fontSize: "5rem",
-              color: "#D4AF37",
-              fontWeight: "300",
-              textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
-            }}
-          >
-            Epilogue
-          </h1>
-        </div>
+            {/* Epilogue Title */}
+            <div>
+              <h1
+                style={{
+                  fontSize: "5rem",
+                  color: "#D4AF37",
+                  fontWeight: "300",
+                  textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
+                }}
+              >
+                Epilogue
+              </h1>
+            </div>
             <div style={{ marginBottom: "2rem" }}>
-         {/* First paragraph with drop cap L */}
+              {/* First paragraph with drop cap L */}
               <p
                 style={{
                   color: "#E8E8E8",
@@ -199,9 +198,78 @@ export default function EpiloguePage() {
             </div>
           </div>
         </div>
+
+        {/* Navigation Button */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "3rem",
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
+        >
+          <button
+            onClick={() => router.push("/chap-6")}
+            style={{
+              backgroundColor: "var(--accent-brown-dark)",
+              color: "var(--text-light)",
+              padding: "0.5rem 1rem",
+              fontSize: "1.2rem",
+              minWidth: "auto",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#4A3426";
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow =
+                "0 6px 18px rgba(74, 52, 38, 0.4)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor =
+                "var(--accent-brown-dark)";
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow =
+                "0 4px 12px rgba(74, 52, 38, 0.3)";
+            }}
+          >
+            ← Back to Chapter 6
+          </button>
+        </div>
       </div>
 
-      
+      {/* Decorative Elements */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "10%",
+          left: "10%",
+          width: "100px",
+          height: "100px",
+          background:
+            "radial-gradient(circle, rgba(212, 175, 55, 0.3), transparent)",
+          borderRadius: "50%",
+          zIndex: 2,
+          animation: "float 6s ease-in-out infinite",
+        }}
+      />
+
+      <div
+        style={{
+          position: "absolute",
+          top: "20%",
+          right: "15%",
+          width: "60px",
+          height: "60px",
+          background:
+            "radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent)",
+          borderRadius: "50%",
+          zIndex: 2,
+          animation: "float 8s ease-in-out infinite reverse",
+        }}
+      />
 
       <style jsx>{`
         @keyframes float {
@@ -215,21 +283,19 @@ export default function EpiloguePage() {
         }
 
         @media (max-width: 768px) {
-          main > div:last-child {
+          main > div:nth-child(2) > div:nth-child(1) {
             flex-direction: column !important;
             padding: 2rem 1.5rem !important;
           }
 
-          main > div:last-child > div:first-child h1 {
-            fontsize: 2.5rem !important;
+          main > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) h1 {
+            font-size: 3rem !important;
           }
 
-          main > div:last-child > div:last-child {
-            max-width: 100% !important;
-          }
-
-          main > div:last-child > div:last-child > div:first-child {
-            padding: 1.5rem !important;
+          main > div:nth-child(2) > div:nth-child(2) {
+            position: static !important;
+            margin-top: 2rem !important;
+            align-self: center !important;
           }
         }
       `}</style>

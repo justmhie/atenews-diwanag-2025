@@ -219,8 +219,22 @@ export default function ProloguePage() {
             style={{
               backgroundColor: "var(--accent-brown-dark)",
               color: "var(--text-light)",
-              fontSize: "18px",
-              padding: "15px 30px",
+              padding: "0.5rem 1rem",
+              fontSize: "1.2rem",
+              minWidth: "auto",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#4A3426";
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow =
+                "0 6px 18px rgba(74, 52, 38, 0.4)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor =
+                "var(--accent-brown-dark)";
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow =
+                "0 4px 12px rgba(74, 52, 38, 0.3)";
             }}
           >
             Begin Chapter 1 →
