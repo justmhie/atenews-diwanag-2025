@@ -66,7 +66,7 @@ export default function Navbar() {
       <ul
         style={{
           display: "flex",
-          gap: "3rem",
+          gap: "2rem",
           listStyle: "none",
           padding: "0 2rem",
           margin: 0,
@@ -96,30 +96,6 @@ export default function Navbar() {
             }}
           >
             Home
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/about"
-            className="hover:border-b-2"
-            style={{
-              color: isChapter1
-                ? "#4A3426"
-                : isChapter3 ||
-                  isChapter3Artwork ||
-                  isChapter5And6 ||
-                  isChapter5And6Artwork
-                ? "var(--text-light)"
-                : isDarkPage
-                ? "#D4AF37"
-                : "var(--text-accent)",
-              fontWeight: 500,
-              fontSize: "1.2rem",
-              textDecoration: "none",
-              transition: "color 0.2s",
-            }}
-          >
-            About
           </Link>
         </li>
         <li>
