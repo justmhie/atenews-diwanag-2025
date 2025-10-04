@@ -10,13 +10,12 @@ export default function LandingPage() {
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
-        gap: "10rem",
+        gap: "8rem",
         alignItems: "center",
         justifyContent: "flex-end",
         background: "var(--bg-light)",
         width: "100%",
         boxSizing: "border-box",
-        paddingTop: "10rem",
         position: "relative",
       }}
     >
@@ -29,7 +28,7 @@ export default function LandingPage() {
           textAlign: "center",
           justifyContent: "center",
           alignContent: "center",
-          height: "20vh",
+          marginTop: "8rem",
         }}
       >
         <h1
