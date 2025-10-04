@@ -105,7 +105,7 @@ export default function ArtworkPage() {
         className="loading-container"
         style={{
           alignItems: "center",
-          justifyContent: "flex-start",
+          justifyContent: "center",
           display: "flex",
           flexDirection: "column",
           fontFamily: "Averia Serif Libre",
@@ -351,7 +351,7 @@ export default function ArtworkPage() {
         className="artwork-container"
         style={{
           alignItems: "center",
-          justifyContent: "flex-start",
+          justifyContent: "center",
           display: "flex",
           flexDirection: "column",
           fontFamily: "Averia Serif Libre",

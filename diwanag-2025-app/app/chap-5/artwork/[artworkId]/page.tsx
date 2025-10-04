@@ -105,7 +105,7 @@ export default function ArtworkPage() {
         className="loading-container"
         style={{
           alignItems: "center",
-          justifyContent: "flex-start",
+          justifyContent: "center",
           display: "flex",
           flexDirection: "column",
           fontFamily: "Averia Serif Libre",
@@ -350,7 +350,7 @@ export default function ArtworkPage() {
         className="artwork-container"
         style={{
           alignItems: "center",
-          justifyContent: "flex-start",
+          justifyContent: "center",
           display: "flex",
           flexDirection: "column",
           fontFamily: "Averia Serif Libre",
@@ -421,6 +421,7 @@ export default function ArtworkPage() {
                 cursor: "pointer",
                 transition: "transform 0.2s ease, box-shadow 0.2s ease",
                 borderRadius: "8px",
+                justifyContent: "center",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "scale(1.02)";
