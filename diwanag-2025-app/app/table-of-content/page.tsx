@@ -161,7 +161,7 @@ export default function TableOfContents() {
       {/* TOGGLE BUTTON */}
       <button
         onClick={toggleToc}
-        className="fixed top-8 left-8 z-[1000] flex h-12 w-12 items-center justify-center rounded-full bg-[var(--text-accent)] text-[var(--bg-light)] text-xl"
+        className="fixed top-8 left-8 z-[1000] flex h-12 w-12 items-center justify-center rounded-full bg-[var(--text-accent)] text-[var(--bg-light)] text-xl hover:bg-[#4A3426] transition-opacity duration-200 cursor-pointer"
       >
         {isTocOpen ? (
           <svg width="24" height="24" fill="none">
