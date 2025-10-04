@@ -119,6 +119,18 @@ export default function TableOfContents() {
           path: `/epilogue/artwork/${encodeURIComponent(art.artTitle)}`,
         })) || [],
     },
+
+    {
+      title: "Contributors",
+      path: "/staff",
+      description: "",
+      isClickable: true,
+      artworks:
+        chapters["Contributors"]?.map((art) => ({
+          title: art.artTitle,
+          path: `/staff`,
+        })) || [],
+    },
   ];
 
   const toggleToc = () => setIsTocOpen(!isTocOpen);
@@ -215,17 +227,86 @@ export default function TableOfContents() {
         }`}
       >
         {/* Header */}
-        <header className="mt-16 mb-8 border-b border-[var(--text-accent)] pb-4">
-          <h2
-            className="m-0 font-['averia-serif'] text-[1.8rem] font-semibold"
-            style={{ color: "var(--text-accent)" }}
+        <header
+          className="main-text"
+          onClick={() => {
+            router.push("/");
+            setIsTocOpen(false);
+          }}
+          style={{
+            marginTop: "5rem",
+            flexDirection: "column",
+            gap: "1rem",
+            textAlign: "left",
+            justifyContent: "center",
+            alignContent: "center",
+            height: "auto",
+            cursor: "pointer",
+            transition: "opacity 0.2s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.opacity = "0.8";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.opacity = "1";
+          }}
+        >
+          <h1
+            className="main-title"
+            style={{
+              position: "relative",
+              fontSize: "3rem",
+              color: "var(--text-accent)",
+              lineHeight: 0.5,
+              zIndex: 1,
+              background: "transparent",
+            }}
           >
-            Table of Contents
-          </h2>
-          <p className="mt-2 font-['averia-serif'] text-sm text-[var(--text-accent)] opacity-70">
-            Navigate through memories
-          </p>
+            Tinipong Alaala
+          </h1>
+
+          <div
+            className="title-divider"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "1rem",
+              zIndex: 1,
+            }}
+          >
+            <hr
+              style={{
+                flex: 2,
+                border: "none",
+                borderTop: "1px solid var(--bg-light)",
+              }}
+            />
+
+            <hr
+              style={{
+                flex: 1,
+                border: "none",
+                borderTop: "1px solid var(--text-accent)",
+              }}
+            />
+            <p
+              className="subtitle"
+              style={{
+                fontFamily: "averia-serif",
+                fontSize: "16px",
+                color: "var(--text-accent)",
+                marginTop: "0.5rem",
+                fontWeight: "300",
+                margin: 0,
+              }}
+            >
+              An Art Folio
+            </p>
+          </div>
         </header>
+
+        <p className="mt-4 border-b border-[var(--accent-gold)]" />
 
         {/* TOC Items */}
         <nav className="flex flex-col gap-1 font-['averia-serif'] overflow-y-auto h-[calc(100%-8rem)]">
@@ -289,6 +370,7 @@ export default function TableOfContents() {
             </div>
           ))}
         </nav>
+        <p className="mt-4 border-b border-[var(--accent-gold)]" />
       </aside>
     </>
   );
