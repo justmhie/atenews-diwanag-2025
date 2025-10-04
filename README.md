@@ -76,7 +76,7 @@ Each object represents a single artwork and includes the following fields:
 
 - `artTitle`: The title of the artwork.
 - `author`: The name of the artist.
-- `artImage`: The original filename of the artwork image.
+- `"art-image"`: The original filename of the artwork image.
 - `artDescription`: A short description or story about the artwork.
 - `chapter`: The chapter grouping for the artwork.
 - `medium`: The medium or material used for the artwork (e.g., Digital Art, Acrylic).
@@ -87,7 +87,7 @@ Each object represents a single artwork and includes the following fields:
 {
   "artTitle": "Underneath The Cloudless Sky",
   "author": "The Third Man",
-  "artImage": "THE THIRD MAN_Underneath The Cloudless Sky - YLAC PROVIDO.tiff",
+  "art-image": "THE THIRD MAN_Underneath The Cloudless Sky - YLAC PROVIDO.tiff",
   "artDescription": "",
   "chapter": "Chapter 1",
   "medium": "Digital Art"

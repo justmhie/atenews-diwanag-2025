@@ -7,7 +7,7 @@ import ViewImage from "@/app/modals/ViewImage";
 type Artwork = {
   artTitle: string;
   author: string;
-  artImage: string;
+  "art-image": string;
   artDescription: string;
   chapter: string;
   medium: string;
@@ -404,10 +404,7 @@ export default function ArtworkPage() {
             }}
           >
             <img
-              src={
-                "/artworks/chap-6-photos/" +
-                slugify(artwork.artTitle, artwork.author)
-              }
+              src={"/artworks/chap-6-photos/" + artwork["art-image"]}
               alt={artwork.artTitle}
               onClick={() => setIsImageModalOpen(true)}
               className="artwork-image"
@@ -741,9 +738,7 @@ export default function ArtworkPage() {
       <ViewImage
         isOpen={isImageModalOpen}
         onClose={() => setIsImageModalOpen(false)}
-        imageSrc={
-          "/artworks/chap-6-photos/" + slugify(artwork.artTitle, artwork.author)
-        }
+        imageSrc={"/artworks/chap-6-photos/" + artwork["art-image"]}
         title={artwork.artTitle}
         author={artwork.author}
         medium={artwork.medium}

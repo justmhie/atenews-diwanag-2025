@@ -7,7 +7,7 @@ import ViewImage from "@/app/modals/ViewImage";
 type Artwork = {
   artTitle: string;
   author: string;
-  artImage: string;
+  "art-image": string;
   artDescription: string;
   chapter: string;
   medium: string;
@@ -404,10 +404,7 @@ export default function ArtworkPage() {
             }}
           >
             <img
-              src={
-                "/artworks/chap-4-photos/" +
-                slugify(artwork.artTitle, artwork.author)
-              }
+              src={"/artworks/chap-4-photos/" + artwork["art-image"]}
               alt={artwork.artTitle}
               onClick={() => setIsImageModalOpen(true)}
               className="artwork-image"
@@ -520,17 +517,17 @@ export default function ArtworkPage() {
                     const res = await fetch("/data/artworks.json");
                     const data: Artwork[] = await res.json();
                     const chapter3Arts = data.filter(
-                      (art) => art.chapter === "Chapter 3"
+                      (art) => art.chapter === "Chapter 4"
                     );
                     const lastChapter1Art =
                       chapter3Arts[chapter3Arts.length - 1];
                     if (lastChapter1Art) {
                       router.push(
-                        `/chap-3
+                        `/chap-4
                         `
                       );
                     } else {
-                      router.push("/chap-3");
+                      router.push("/chap-4");
                     }
                   }}
                   className="nav-button"
@@ -544,7 +541,7 @@ export default function ArtworkPage() {
                   onMouseEnter={handleButtonMouseEnter}
                   onMouseLeave={handleButtonMouseLeave}
                 >
-                  ← Chapter 3 Overview
+                  ← Chapter 4 Overview
                 </Button>
               ) : (
                 <Button
@@ -741,9 +738,7 @@ export default function ArtworkPage() {
       <ViewImage
         isOpen={isImageModalOpen}
         onClose={() => setIsImageModalOpen(false)}
-        imageSrc={
-          "/artworks/chap-4-photos/" + slugify(artwork.artTitle, artwork.author)
-        }
+        imageSrc={"/artworks/chap-4-photos/" + artwork["art-image"]}
         title={artwork.artTitle}
         author={artwork.author}
         medium={artwork.medium}

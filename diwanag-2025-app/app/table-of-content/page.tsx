@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 type Artwork = {
   artTitle: string;
   author: string;
-  artImage: string;
+  "art-image": string;
   artDescription: string;
   chapter: string;
 };
@@ -265,25 +265,27 @@ export default function TableOfContents() {
               </div>
 
               {/* Artworks */}
-              {expandedChapters[index] && item.artworks && item.artworks.length > 0 && (
-                <div className="ml-4 mb-2 rounded-r-md border-l-2 border-[var(--text-accent)] pl-4">
-                  {item.artworks.map((artwork: any, artIndex: number) => (
-                    <div
-                      key={artwork.path}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        navigateTo(artwork.path);
-                      }}
-                      className="flex items-center gap-2 cursor-pointer rounded-md px-4 py-2 text-[var(--text-accent)] text-sm hover:bg-black/5 transition"
-                    >
-                      <span className="w-4 text-xs opacity-60">
-                        {artIndex + 1}.
-                      </span>
-                      <span>{artwork.title}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
+              {expandedChapters[index] &&
+                item.artworks &&
+                item.artworks.length > 0 && (
+                  <div className="ml-4 mb-2 rounded-r-md border-l-2 border-[var(--text-accent)] pl-4">
+                    {item.artworks.map((artwork: any, artIndex: number) => (
+                      <div
+                        key={artwork.path}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigateTo(artwork.path);
+                        }}
+                        className="flex items-center gap-2 cursor-pointer rounded-md px-4 py-2 text-[var(--text-accent)] text-sm hover:bg-black/5 transition"
+                      >
+                        <span className="w-4 text-xs opacity-60">
+                          {artIndex + 1}.
+                        </span>
+                        <span>{artwork.title}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
             </div>
           ))}
         </nav>
