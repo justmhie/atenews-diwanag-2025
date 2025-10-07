@@ -400,7 +400,6 @@ export default function ArtworkPage() {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              overflow: "hidden",
             }}
           >
             <img
@@ -409,17 +408,13 @@ export default function ArtworkPage() {
               onClick={() => setIsImageModalOpen(true)}
               className="artwork-image"
               style={{
-                width: "100%",
-                maxWidth: "min(600px, 90vw)",
-                height: "auto",
-                aspectRatio: "4/3",
+                maxWidth: "100%",
+                maxHeight: "60vh",
                 objectFit: "contain",
-                display: "block",
-                boxSizing: "border-box",
-                overflow: "hidden",
-                cursor: "pointer",
-                transition: "transform 0.2s ease, box-shadow 0.2s ease",
                 borderRadius: "8px",
+                boxShadow: "0 20px 60px var(--shadow-dark)",
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                cursor: "pointer",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "scale(1.02)";
@@ -428,7 +423,8 @@ export default function ArtworkPage() {
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "scale(1)";
-                e.currentTarget.style.boxShadow = "none";
+                e.currentTarget.style.boxShadow =
+                  "0 20px 60px var(--shadow-dark)";
               }}
             />
           </div>
