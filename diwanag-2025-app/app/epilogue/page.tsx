@@ -220,6 +220,7 @@ export default function EpiloguePage() {
               borderRadius: "4px",
               cursor: "pointer",
               transition: "all 0.3s ease",
+              fontFamily: "averia-serif",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = "#4A3426";
