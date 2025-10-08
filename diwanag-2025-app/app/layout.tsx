@@ -4,6 +4,7 @@ import "./globals.css";
 // import Navbar from "./components/Navbar";
 // import Footer from "./components/Footer";
 import TableOfContents from "./table-of-content/page";
+import PageLoadingWrapper from "./components/PageLoadingWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,13 +31,15 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body
+            <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* <Navbar /> */}
-        <TableOfContents />
-        {children}
-        {/* <Footer /> */}
+        <PageLoadingWrapper>
+          {/* <Navbar /> */}
+          <TableOfContents />
+          {children}
+          {/* <Footer /> */}
+        </PageLoadingWrapper>
       </body>
     </html>
   );

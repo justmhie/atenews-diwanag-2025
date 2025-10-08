@@ -1,305 +1,308 @@
 "use client";
 import { useRouter } from "next/navigation";
-
+import PageLoadingWrapper from "../components/PageLoadingWrapper";
 export default function EpiloguePage() {
   const router = useRouter();
 
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        background: "#ffffff",
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      {/* Background Image */}
-      <div
+    <PageLoadingWrapper>
+      <main
         style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          backgroundImage: "url('/diwanag epilogue 2.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          zIndex: 1,
-        }}
-      />
-
-      {/* Content Container */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 2,
           minHeight: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          padding: "4rem 3rem 3rem 2rem",
-          boxSizing: "border-box",
+          background: "#ffffff",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        {/* Content Layout */}
-        <div
-          style={{
-            flex: 1,
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "flex-start",
-            justifyContent: "flex-start",
-          }}
-        >
-          {/* Left side - spacing for visual balance */}
-          <div style={{ flex: 1 }} />
-
-          {/* Right side - Text Content */}
-          <div
-            style={{
-              flex: 2,
-              maxWidth: "600px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "2rem",
-            }}
-          >
-            {/* Epilogue Title */}
-            <div>
-              <h1
-                style={{
-                  fontSize: "5rem",
-                  color: "#D4AF37",
-                  fontWeight: "300",
-                  textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
-                }}
-              >
-                Epilogue
-              </h1>
-            </div>
-            <div style={{ marginBottom: "2rem" }}>
-              {/* First paragraph with drop cap L */}
-              <p
-                style={{
-                  color: "#E8E8E8",
-                  fontSize: "17px",
-                  lineHeight: "1.8",
-                  fontFamily: "averia-serif",
-                  margin: 0,
-                  marginRight: "0.5rem",
-                  marginBottom: "1.5rem",
-                  textAlign: "justify",
-                }}
-              >
-                <span
-                  style={{
-                    float: "left",
-                    fontSize: "4rem",
-                    lineHeight: "3rem",
-                    paddingRight: "0.5rem",
-                    paddingTop: "0.2rem",
-                    color: "#D4AF37",
-                    fontWeight: "bold",
-                  }}
-                >
-                  L
-                </span>
-                ast year, we were treated to the whimsical tale of a curious
-                rabbit that traversed passages of time and explored holes of the
-                unknown. We fell onto our own cavern like the rabbit hopping
-                mindlessly as it gets curious about what lies ahead. How we
-                plunge deep into the abyss has become a facet of our memory -
-                memories that listen to the rhythm of our anticipating pulse as
-                we take one step backward, and take two steps forward.
-              </p>
-
-              <p
-                style={{
-                  color: "#E8E8E8",
-                  fontSize: "17px",
-                  lineHeight: "1.8",
-                  fontFamily: "averia-serif",
-                  margin: 0,
-                  marginRight: "0.5rem",
-                  marginBottom: "1.5rem",
-                  textAlign: "justify",
-                }}
-              >
-                These memories grow exponentially as they amass our strength,
-                affection, vulnerability, and even the vastness of our oblivion
-                until they reflect a tapestry of what is called the current
-                thee. We were in this utopia and dystopia because of the
-                historical memories that prequel the point of time we took a
-                step. The second that passed and the day that followed have made
-                their way to the closet of our past and now will become one like
-                how our yesterday was once our future. All of these are stored
-                and imbued within our system—waiting to be touched despite its
-                intangible nature.
-              </p>
-
-              <p
-                style={{
-                  color: "#E8E8E8",
-                  fontSize: "17px",
-                  lineHeight: "1.8",
-                  fontFamily: "averia-serif",
-                  margin: 0,
-                  marginRight: "0.5rem",
-                  marginBottom: "1.5rem",
-                  textAlign: "justify",
-                }}
-              >
-                Diwanag 2025: Tinipong Alaala is the best we can offer to relive
-                the memories we ought to revisit every day, memories we shall
-                remember one last time, and those we ought to forget.
-              </p>
-            </div>
-
-            {/* Editor Credit */}
-            <div
-              style={{
-                alignSelf: "flex-end",
-                textAlign: "right",
-                padding: "1.5rem",
-              }}
-            >
-              <p
-                style={{
-                  color: "#D4AF37",
-                  fontSize: "20px",
-                  fontFamily: "serif",
-                  fontWeight: "500",
-                  margin: 0,
-                }}
-              >
-                Aika Khent Zainab Rosete
-              </p>
-              <p
-                style={{
-                  color: "#B8B8B8",
-                  fontSize: "18px",
-                  fontFamily: "serif",
-                  fontStyle: "italic",
-                  margin: 0,
-                }}
-              >
-                Editor-in-Chief
-              </p>
-              <p
-                style={{
-                  color: "#B8B8B8",
-                  fontSize: "18px",
-                  fontFamily: "serif",
-                  margin: 0,
-                }}
-              >
-                AY 2024-2025
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Navigation Button */}
+        {/* Background Image */}
         <div
           style={{
             position: "absolute",
-            bottom: "3rem",
-            left: "50%",
-            transform: "translateX(-50%)",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundImage: "url('/diwanag epilogue 2.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            zIndex: 1,
+          }}
+        />
+
+        {/* Content Container */}
+        <div
+          style={{
+            position: "relative",
+            zIndex: 2,
+            minHeight: "100vh",
+            display: "flex",
+            flexDirection: "column",
+            padding: "4rem 3rem 3rem 2rem",
+            boxSizing: "border-box",
           }}
         >
-          <button
-            onClick={() => router.push("/chap-6")}
+          {/* Content Layout */}
+          <div
             style={{
-              backgroundColor: "var(--accent-brown-dark)",
-              color: "var(--text-light)",
-              padding: "0.5rem 1rem",
-              fontSize: "1.2rem",
-              minWidth: "auto",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-              fontFamily: "averia-serif",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#4A3426";
-              e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow =
-                "0 6px 18px rgba(74, 52, 38, 0.4)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor =
-                "var(--accent-brown-dark)";
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow =
-                "0 4px 12px rgba(74, 52, 38, 0.3)";
+              flex: 1,
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "flex-start",
+              justifyContent: "flex-start",
             }}
           >
-            ← Back to Chapter 6
-          </button>
+            {/* Left side - spacing for visual balance */}
+            <div style={{ flex: 1 }} />
+
+            {/* Right side - Text Content */}
+            <div
+              style={{
+                flex: 2,
+                maxWidth: "600px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "2rem",
+              }}
+            >
+              {/* Epilogue Title */}
+              <div>
+                <h1
+                  style={{
+                    fontSize: "5rem",
+                    color: "#D4AF37",
+                    fontWeight: "300",
+                    textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
+                  }}
+                >
+                  Epilogue
+                </h1>
+              </div>
+              <div style={{ marginBottom: "2rem" }}>
+                {/* First paragraph with drop cap L */}
+                <p
+                  style={{
+                    color: "#E8E8E8",
+                    fontSize: "17px",
+                    lineHeight: "1.8",
+                    fontFamily: "averia-serif",
+                    margin: 0,
+                    marginRight: "0.5rem",
+                    marginBottom: "1.5rem",
+                    textAlign: "justify",
+                  }}
+                >
+                  <span
+                    style={{
+                      float: "left",
+                      fontSize: "4rem",
+                      lineHeight: "3rem",
+                      paddingRight: "0.5rem",
+                      paddingTop: "0.2rem",
+                      color: "#D4AF37",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    L
+                  </span>
+                  ast year, we were treated to the whimsical tale of a curious
+                  rabbit that traversed passages of time and explored holes of
+                  the unknown. We fell onto our own cavern like the rabbit
+                  hopping mindlessly as it gets curious about what lies ahead.
+                  How we plunge deep into the abyss has become a facet of our
+                  memory - memories that listen to the rhythm of our
+                  anticipating pulse as we take one step backward, and take two
+                  steps forward.
+                </p>
+
+                <p
+                  style={{
+                    color: "#E8E8E8",
+                    fontSize: "17px",
+                    lineHeight: "1.8",
+                    fontFamily: "averia-serif",
+                    margin: 0,
+                    marginRight: "0.5rem",
+                    marginBottom: "1.5rem",
+                    textAlign: "justify",
+                  }}
+                >
+                  These memories grow exponentially as they amass our strength,
+                  affection, vulnerability, and even the vastness of our
+                  oblivion until they reflect a tapestry of what is called the
+                  current thee. We were in this utopia and dystopia because of
+                  the historical memories that prequel the point of time we took
+                  a step. The second that passed and the day that followed have
+                  made their way to the closet of our past and now will become
+                  one like how our yesterday was once our future. All of these
+                  are stored and imbued within our system—waiting to be touched
+                  despite its intangible nature.
+                </p>
+
+                <p
+                  style={{
+                    color: "#E8E8E8",
+                    fontSize: "17px",
+                    lineHeight: "1.8",
+                    fontFamily: "averia-serif",
+                    margin: 0,
+                    marginRight: "0.5rem",
+                    marginBottom: "1.5rem",
+                    textAlign: "justify",
+                  }}
+                >
+                  Diwanag 2025: Tinipong Alaala is the best we can offer to
+                  relive the memories we ought to revisit every day, memories we
+                  shall remember one last time, and those we ought to forget.
+                </p>
+              </div>
+
+              {/* Editor Credit */}
+              <div
+                style={{
+                  alignSelf: "flex-end",
+                  textAlign: "right",
+                  padding: "1.5rem",
+                }}
+              >
+                <p
+                  style={{
+                    color: "#D4AF37",
+                    fontSize: "20px",
+                    fontFamily: "serif",
+                    fontWeight: "500",
+                    margin: 0,
+                  }}
+                >
+                  Aika Khent Zainab Rosete
+                </p>
+                <p
+                  style={{
+                    color: "#B8B8B8",
+                    fontSize: "18px",
+                    fontFamily: "serif",
+                    fontStyle: "italic",
+                    margin: 0,
+                  }}
+                >
+                  Editor-in-Chief
+                </p>
+                <p
+                  style={{
+                    color: "#B8B8B8",
+                    fontSize: "18px",
+                    fontFamily: "serif",
+                    margin: 0,
+                  }}
+                >
+                  AY 2024-2025
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation Button */}
+          <div
+            style={{
+              position: "absolute",
+              bottom: "3rem",
+              left: "50%",
+              transform: "translateX(-50%)",
+            }}
+          >
+            <button
+              onClick={() => router.push("/chap-6")}
+              style={{
+                backgroundColor: "var(--accent-brown-dark)",
+                color: "var(--text-light)",
+                padding: "0.5rem 1rem",
+                fontSize: "1.2rem",
+                minWidth: "auto",
+                border: "none",
+                borderRadius: "4px",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                fontFamily: "averia-serif",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#4A3426";
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.boxShadow =
+                  "0 6px 18px rgba(74, 52, 38, 0.4)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor =
+                  "var(--accent-brown-dark)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow =
+                  "0 4px 12px rgba(74, 52, 38, 0.3)";
+              }}
+            >
+              ← Back to Chapter 6
+            </button>
+          </div>
         </div>
-      </div>
 
-      {/* Decorative Elements */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: "10%",
-          left: "10%",
-          width: "100px",
-          height: "100px",
-          background:
-            "radial-gradient(circle, rgba(212, 175, 55, 0.3), transparent)",
-          borderRadius: "50%",
-          zIndex: 2,
-          animation: "float 6s ease-in-out infinite",
-        }}
-      />
+        {/* Decorative Elements */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "10%",
+            left: "10%",
+            width: "100px",
+            height: "100px",
+            background:
+              "radial-gradient(circle, rgba(212, 175, 55, 0.3), transparent)",
+            borderRadius: "50%",
+            zIndex: 2,
+            animation: "float 6s ease-in-out infinite",
+          }}
+        />
 
-      <div
-        style={{
-          position: "absolute",
-          top: "20%",
-          right: "15%",
-          width: "60px",
-          height: "60px",
-          background:
-            "radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent)",
-          borderRadius: "50%",
-          zIndex: 2,
-          animation: "float 8s ease-in-out infinite reverse",
-        }}
-      />
+        <div
+          style={{
+            position: "absolute",
+            top: "20%",
+            right: "15%",
+            width: "60px",
+            height: "60px",
+            background:
+              "radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent)",
+            borderRadius: "50%",
+            zIndex: 2,
+            animation: "float 8s ease-in-out infinite reverse",
+          }}
+        />
 
-      <style jsx>{`
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-20px);
-          }
-        }
-
-        @media (max-width: 768px) {
-          main > div:nth-child(2) > div:nth-child(1) {
-            flex-direction: column !important;
-            padding: 2rem 1.5rem !important;
+        <style jsx>{`
+          @keyframes float {
+            0%,
+            100% {
+              transform: translateY(0px);
+            }
+            50% {
+              transform: translateY(-20px);
+            }
           }
 
-          main > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) h1 {
-            font-size: 3rem !important;
-          }
+          @media (max-width: 768px) {
+            main > div:nth-child(2) > div:nth-child(1) {
+              flex-direction: column !important;
+              padding: 2rem 1.5rem !important;
+            }
 
-          main > div:nth-child(2) > div:nth-child(2) {
-            position: static !important;
-            margin-top: 2rem !important;
-            align-self: center !important;
+            main > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) h1 {
+              font-size: 3rem !important;
+            }
+
+            main > div:nth-child(2) > div:nth-child(2) {
+              position: static !important;
+              margin-top: 2rem !important;
+              align-self: center !important;
+            }
           }
-        }
-      `}</style>
-    </main>
+        `}</style>
+      </main>
+    </PageLoadingWrapper>
   );
 }
