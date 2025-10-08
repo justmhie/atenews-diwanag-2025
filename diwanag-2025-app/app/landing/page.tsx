@@ -1,7 +1,10 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+
 export default function LandingPage() {
   const router = useRouter();
+  const [hoveredDoor, setHoveredDoor] = useState<number | null>(null);
 
   return (
     <main
@@ -118,78 +121,153 @@ export default function LandingPage() {
           }}
         >
           {/* Door 1 - Prologue */}
-          <img
-            src="/group-12.png"
-            alt="Prologue Door"
-            className="door door-1"
+          <div
+            className="door-wrapper"
             style={{
-              height: "auto",
+              position: "relative",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
               marginTop: "3rem",
-              cursor: "pointer",
-              pointerEvents: "auto",
-              transition: "transform 0.2s ease, filter 0.2s ease",
-              maxWidth: "200px",
-              width: "100%",
             }}
-            onClick={() => router.push("/prologue")}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "scale(1.05)";
-              e.currentTarget.style.filter = "brightness(1.1)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "scale(1)";
-              e.currentTarget.style.filter = "brightness(1)";
-            }}
-          />
+            onMouseEnter={() => setHoveredDoor(1)}
+            onMouseLeave={() => setHoveredDoor(null)}
+          >
+            <div
+              className="door-label"
+              style={{
+                position: "absolute",
+                top: hoveredDoor === 1 ? "-2.5rem" : "0",
+                opacity: hoveredDoor === 1 ? 1 : 0,
+                transition: "top 0.4s ease, opacity 0.4s ease",
+                color: "var(--text-accent)",
+                padding: "0.5rem 1rem",
+                fontSize: "1.25rem",
+                fontFamily: "Averia Serif Libre",
+                whiteSpace: "nowrap",
+                pointerEvents: "none",
+                zIndex: 10,
+                fontWeight: "500",
+              }}
+            >
+              Prologue
+            </div>
+            <img
+              src="/group-12.png"
+              alt="Prologue Door"
+              className="door door-1"
+              style={{
+                height: "auto",
+                cursor: "pointer",
+                pointerEvents: "auto",
+                transition: "transform 0.2s ease, filter 0.2s ease",
+                maxWidth: "200px",
+                width: "100%",
+                transform: hoveredDoor === 1 ? "scale(1.05)" : "scale(1)",
+                filter: hoveredDoor === 1 ? "brightness(1.1)" : "brightness(1)",
+              }}
+              onClick={() => router.push("/prologue")}
+            />
+          </div>
 
-          {/* Door 2 - Chapter 1 */}
-          <img
-            src="/group-12.png"
-            alt="Chapter 1 Door"
-            className="door door-2"
+          {/* Door 2 - Artworks */}
+          <div
+            className="door-wrapper"
             style={{
-              height: "auto",
-              cursor: "pointer",
-              pointerEvents: "auto",
-              transition: "transform 0.2s ease, filter 0.2s ease",
-              maxWidth: "200px",
-              width: "100%",
+              position: "relative",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
-            onClick={() => router.push("/chap-1")}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "scale(1.05)";
-              e.currentTarget.style.filter = "brightness(1.1)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "scale(1)";
-              e.currentTarget.style.filter = "brightness(1)";
-            }}
-          />
+            onMouseEnter={() => setHoveredDoor(2)}
+            onMouseLeave={() => setHoveredDoor(null)}
+          >
+            <div
+              className="door-label"
+              style={{
+                position: "absolute",
+                top: hoveredDoor === 2 ? "-2.5rem" : "0",
+                opacity: hoveredDoor === 2 ? 1 : 0,
+                transition: "top 0.4s ease, opacity 0.4s ease",
+                color: "var(--text-accent)",
+                padding: "0.5rem 1rem",
+                fontSize: "1.25rem",
+                fontFamily: "Averia Serif Libre",
+                whiteSpace: "nowrap",
+                pointerEvents: "none",
+                zIndex: 10,
+                fontWeight: "500",
+              }}
+            >
+              Artworks
+            </div>
+            <img
+              src="/group-12.png"
+              alt="Artworks Door"
+              className="door door-2"
+              style={{
+                height: "auto",
+                cursor: "pointer",
+                pointerEvents: "auto",
+                transition: "transform 0.2s ease, filter 0.2s ease",
+                maxWidth: "200px",
+                width: "100%",
+                transform: hoveredDoor === 2 ? "scale(1.05)" : "scale(1)",
+                filter: hoveredDoor === 2 ? "brightness(1.1)" : "brightness(1)",
+              }}
+              onClick={() => router.push("/chap-1")}
+            />
+          </div>
 
           {/* Door 3 - Epilogue */}
-          <img
-            src="/group-12.png"
-            alt="Epilogue Door"
-            className="door door-3"
+          <div
+            className="door-wrapper"
             style={{
-              height: "auto",
+              position: "relative",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
               marginTop: "3rem",
-              cursor: "pointer",
-              pointerEvents: "auto",
-              transition: "transform 0.2s ease, filter 0.2s ease",
-              maxWidth: "200px",
-              width: "100%",
             }}
-            onClick={() => router.push("/epilogue")}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "scale(1.05)";
-              e.currentTarget.style.filter = "brightness(1.1)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "scale(1)";
-              e.currentTarget.style.filter = "brightness(1)";
-            }}
-          />
+            onMouseEnter={() => setHoveredDoor(3)}
+            onMouseLeave={() => setHoveredDoor(null)}
+          >
+            <div
+              className="door-label"
+              style={{
+                position: "absolute",
+                top: hoveredDoor === 3 ? "-2.5rem" : "0",
+                opacity: hoveredDoor === 3 ? 1 : 0,
+                transition: "top 0.4s ease, opacity 0.4s ease",
+                color: "var(--text-accent)",
+                padding: "0.5rem 1rem",
+                fontSize: "1.25rem",
+                fontFamily: "Averia Serif Libre",
+                whiteSpace: "nowrap",
+                pointerEvents: "none",
+                zIndex: 10,
+                fontWeight: "500",
+              }}
+            >
+              Epilogue
+            </div>
+            <img
+              src="/group-12.png"
+              alt="Epilogue Door"
+              className="door door-3"
+              style={{
+                height: "auto",
+                cursor: "pointer",
+                pointerEvents: "auto",
+                transition: "transform 0.2s ease, filter 0.2s ease",
+                maxWidth: "200px",
+                width: "100%",
+                transform: hoveredDoor === 3 ? "scale(1.05)" : "scale(1)",
+                filter: hoveredDoor === 3 ? "brightness(1.1)" : "brightness(1)",
+              }}
+              onClick={() => router.push("/epilogue")}
+            />
+          </div>
         </div>
       </div>
 
@@ -250,9 +328,18 @@ export default function LandingPage() {
             max-width: 90px !important;
           }
 
-          .door-1,
-          .door-3 {
+          .door-wrapper:nth-child(1),
+          .door-wrapper:nth-child(3) {
             margin-top: 2rem !important;
+          }
+
+          .door-label {
+            font-size: 0.8rem !important;
+            top: -2rem !important;
+          }
+
+          .door-wrapper:hover .door-label {
+            top: -2rem !important;
           }
         }
 
@@ -285,9 +372,18 @@ export default function LandingPage() {
             max-width: 70px !important;
           }
 
-          .door-1,
-          .door-3 {
+          .door-wrapper:nth-child(1),
+          .door-wrapper:nth-child(3) {
             margin-top: 1.5rem !important;
+          }
+
+          .door-label {
+            font-size: 0.75rem !important;
+            top: -1.8rem !important;
+          }
+
+          .door-wrapper:hover .door-label {
+            top: -1.8rem !important;
           }
         }
         /* Mobile */
@@ -325,9 +421,18 @@ export default function LandingPage() {
             max-width: 55px !important;
           }
 
-          .door-1,
-          .door-3 {
+          .door-wrapper:nth-child(1),
+          .door-wrapper:nth-child(3) {
             margin-top: 1rem !important;
+          }
+
+          .door-label {
+            font-size: 0.7rem !important;
+            top: -1.5rem !important;
+          }
+
+          .door-wrapper:hover .door-label {
+            top: -1.5rem !important;
           }
         }
         /* Mobile Small */
@@ -345,9 +450,18 @@ export default function LandingPage() {
             max-width: 45px !important;
           }
 
-          .door-1,
-          .door-3 {
+          .door-wrapper:nth-child(1),
+          .door-wrapper:nth-child(3) {
             margin-top: 0.8rem !important;
+          }
+
+          .door-label {
+            font-size: 0.65rem !important;
+            top: -1.3rem !important;
+          }
+
+          .door-wrapper:hover .door-label {
+            top: -1.3rem !important;
           }
         }
 
@@ -370,9 +484,18 @@ export default function LandingPage() {
             max-width: 40px !important;
           }
 
-          .door-1,
-          .door-3 {
+          .door-wrapper:nth-child(1),
+          .door-wrapper:nth-child(3) {
             margin-top: 0.5rem !important;
+          }
+
+          .door-label {
+            font-size: 0.6rem !important;
+            top: -1.2rem !important;
+          }
+
+          .door-wrapper:hover .door-label {
+            top: -1.2rem !important;
           }
         }
       `}</style>
