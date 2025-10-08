@@ -13,21 +13,6 @@ type Artwork = {
   medium: string;
 };
 
-function slugify(title: string, author: string) {
-  return (
-    title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)/g, "") +
-    "-by-" +
-    author
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)/g, "") +
-    ".png"
-  );
-}
-
 export default function ArtworkPage() {
   const { artworkId } = useParams();
   const router = useRouter();
