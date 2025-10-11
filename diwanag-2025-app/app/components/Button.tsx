@@ -12,7 +12,7 @@ export default function Button({
   style,
   ...props
 }: ButtonProps) {
-  let baseStyle: React.CSSProperties = {
+  const baseStyle: React.CSSProperties = {
     padding: "12px 24px",
     fontFamily: "averia-serif",
     border: "none",

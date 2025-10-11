@@ -12,6 +12,13 @@ type Artwork = {
 
 type ChapterArtworks = Record<string, Artwork[]>;
 
+type TocItem = {
+  title: string;
+  path?: string;
+  description?: string;
+  artworks?: Array<{ title: string; path: string }>;
+};
+
 export default function TableOfContents() {
   const [isTocOpen, setIsTocOpen] = useState(false);
   const [expandedChapters, setExpandedChapters] = useState<
@@ -135,7 +142,7 @@ export default function TableOfContents() {
 
   const toggleToc = () => setIsTocOpen(!isTocOpen);
 
-  const handleChapterClick = (item: any) => {
+  const handleChapterClick = (item: TocItem) => {
     if (item.path) {
       router.push(item.path);
       setIsTocOpen(false);
@@ -350,21 +357,26 @@ export default function TableOfContents() {
                 item.artworks &&
                 item.artworks.length > 0 && (
                   <div className="ml-4 mb-2 rounded-r-md border-l-2 border-[var(--text-accent)] pl-4">
-                    {item.artworks.map((artwork: any, artIndex: number) => (
-                      <div
-                        key={artwork.path}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          navigateTo(artwork.path);
-                        }}
-                        className="flex items-center gap-2 cursor-pointer rounded-md px-4 py-2 text-[var(--text-accent)] text-sm hover:bg-black/5 transition"
-                      >
-                        <span className="w-4 text-xs opacity-60">
-                          {artIndex + 1}.
-                        </span>
-                        <span>{artwork.title}</span>
-                      </div>
-                    ))}
+                    {item.artworks.map(
+                      (
+                        artwork: { title: string; path: string },
+                        artIndex: number
+                      ) => (
+                        <div
+                          key={artwork.path}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigateTo(artwork.path);
+                          }}
+                          className="flex items-center gap-2 cursor-pointer rounded-md px-4 py-2 text-[var(--text-accent)] text-sm hover:bg-black/5 transition"
+                        >
+                          <span className="w-4 text-xs opacity-60">
+                            {artIndex + 1}.
+                          </span>
+                          <span>{artwork.title}</span>
+                        </div>
+                      )
+                    )}
                   </div>
                 )}
             </div>
