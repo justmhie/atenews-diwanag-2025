@@ -67,25 +67,27 @@ export default function AtenewsStaffPage() {
             </p>
           </header>
 
-          {/* Staff Content - Single Column Layout */}
+          {/* Staff Content - 4 Column Grid Layout */}
           <div
+            className="staff-grid"
             style={{
-              display: "flex",
-              flexDirection: "column",
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
               gap: "3rem",
-              maxWidth: "600px",
+              maxWidth: "1600px",
               margin: "0 auto",
-              textAlign: "center",
+              width: "100%",
             }}
           >
-            {/* Creative Direction, Illustrative Designs, Overall Layout */}
+            {/* Column 1: Creative Direction + Web Developers */}
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
-                gap: "1.5rem",
+                gap: "2rem",
               }}
             >
+              {/* Creative Direction */}
               <div>
                 <h2
                   style={{
@@ -95,6 +97,7 @@ export default function AtenewsStaffPage() {
                     fontWeight: "bold",
                     fontStyle: "italic",
                     fontFamily: "averia-serif",
+                    textAlign: "center",
                   }}
                 >
                   Creative Direction, Illustrative Designs, Overall Layout
@@ -104,6 +107,7 @@ export default function AtenewsStaffPage() {
                     display: "flex",
                     flexDirection: "column",
                     gap: "0.3rem",
+                    textAlign: "center",
                   }}
                 >
                   <p
@@ -119,8 +123,57 @@ export default function AtenewsStaffPage() {
                   </p>
                 </div>
               </div>
+
+              {/* Web Designers and Developers */}
+              <div>
+                <h2
+                  style={{
+                    fontSize: "1.4rem",
+                    color: "#F8FFD8",
+                    marginBottom: "1rem",
+                    fontWeight: "bold",
+                    fontStyle: "italic",
+                    fontFamily: "averia-serif",
+                    textAlign: "center",
+                  }}
+                >
+                  Web Designers and Developers
+                </h2>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.3rem",
+                    textAlign: "center",
+                  }}
+                >
+                  <p
+                    style={{
+                      color: "#F8FFD8",
+                      fontSize: "17px",
+                      lineHeight: "1.8",
+                      fontFamily: "averia-serif",
+                      margin: 0,
+                    }}
+                  >
+                    Alyssa Mhie Matila
+                  </p>
+                  <p
+                    style={{
+                      color: "#F8FFD8",
+                      fontSize: "17px",
+                      lineHeight: "1.8",
+                      fontFamily: "averia-serif",
+                      margin: 0,
+                    }}
+                  >
+                    Nica Zoe Dable
+                  </p>
+                </div>
+              </div>
             </div>
-            {/* Artists */}
+
+            {/* Column 2: Artists 1-8 */}
             <div
               style={{
                 display: "flex",
@@ -137,6 +190,7 @@ export default function AtenewsStaffPage() {
                     fontWeight: "bold",
                     fontStyle: "italic",
                     fontFamily: "averia-serif",
+                    textAlign: "center",
                   }}
                 >
                   Artists
@@ -146,6 +200,7 @@ export default function AtenewsStaffPage() {
                     display: "flex",
                     flexDirection: "column",
                     gap: "0.3rem",
+                    textAlign: "center",
                   }}
                 >
                   <p
@@ -236,6 +291,41 @@ export default function AtenewsStaffPage() {
                   >
                     Elliot Dimasuhid
                   </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Column 3: Artists 9-15 */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1.5rem",
+              }}
+            >
+              <div>
+                <h2
+                  style={{
+                    fontSize: "1.4rem",
+                    color: "#F8FFD8",
+                    marginBottom: "1rem",
+                    fontWeight: "bold",
+                    fontStyle: "italic",
+                    fontFamily: "averia-serif",
+                    textAlign: "center",
+                    opacity: 0,
+                  }}
+                >
+                  Artists
+                </h2>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.3rem",
+                    textAlign: "center",
+                  }}
+                >
                   <p
                     style={{
                       color: "#F8FFD8",
@@ -322,6 +412,52 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
+                    Sayu
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Column 4: Artists 16-22 */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1.5rem",
+              }}
+            >
+              <div>
+                <h2
+                  style={{
+                    fontSize: "1.4rem",
+                    color: "#F8FFD8",
+                    marginBottom: "1rem",
+                    fontWeight: "bold",
+                    fontStyle: "italic",
+                    fontFamily: "averia-serif",
+                    textAlign: "center",
+                    opacity: 0,
+                  }}
+                >
+                  Artists
+                </h2>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.3rem",
+                    textAlign: "center",
+                  }}
+                >
+                  <p
+                    style={{
+                      color: "#F8FFD8",
+                      fontSize: "17px",
+                      lineHeight: "1.8",
+                      fontFamily: "averia-serif",
+                      margin: 0,
+                    }}
+                  >
                     Stargaeze
                   </p>
                   <p
@@ -334,17 +470,6 @@ export default function AtenewsStaffPage() {
                     }}
                   >
                     Star Noveno
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Sayu
                   </p>
                   <p
                     style={{
@@ -393,60 +518,6 @@ export default function AtenewsStaffPage() {
                 </div>
               </div>
             </div>
-
-            {/* Web Designers and Developers */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "1.5rem",
-              }}
-            >
-              <div>
-                <h2
-                  style={{
-                    fontSize: "1.4rem",
-                    color: "#F8FFD8",
-                    marginBottom: "1rem",
-                    fontWeight: "bold",
-                    fontStyle: "italic",
-                    fontFamily: "averia-serif",
-                  }}
-                >
-                  Web Designers and Developers
-                </h2>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.3rem",
-                  }}
-                >
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Alyssa Mhie Matila
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Nica Zoe Dable
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Footer spacing */}
@@ -454,17 +525,40 @@ export default function AtenewsStaffPage() {
         </div>
 
         <style jsx>{`
+          /* Tablet - 2 columns */
+          @media (max-width: 1024px) and (min-width: 769px) {
+            .staff-grid {
+              grid-template-columns: repeat(2, 1fr) !important;
+              gap: 2rem !important;
+            }
+
+            .staff-grid > div:nth-child(4),
+            .staff-grid > div:nth-child(5) {
+              grid-column: span 1 !important;
+            }
+          }
+
+          /* Mobile - 1 column */
           @media (max-width: 768px) {
-            main > div:last-child {
+            main > div:last-of-type {
               padding: 2rem 1.5rem !important;
             }
 
-            main > div:last-child > header h1 {
+            main > div:last-of-type > header h1 {
               font-size: 2.5rem !important;
             }
 
-            main > div:last-child > div:nth-child(2) {
+            .staff-grid {
+              grid-template-columns: 1fr !important;
               gap: 2rem !important;
+            }
+
+            .staff-grid > div {
+              grid-column: span 1 !important;
+            }
+
+            .staff-grid h2 {
+              opacity: 1 !important;
             }
           }
         `}</style>
