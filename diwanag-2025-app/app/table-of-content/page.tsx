@@ -316,7 +316,7 @@ export default function TableOfContents() {
         <p className="mt-4 border-b border-[var(--accent-gold)]" />
 
         {/* TOC Items */}
-        <nav className="flex flex-col gap-1 font-['averia-serif'] overflow-y-auto h-[calc(100%-8rem)]">
+        <nav className="aesthetic-scroll flex flex-col gap-1 font-['averia-serif'] overflow-y-auto h-[calc(100%-8rem)]">
           {tocItems.map((item, index) => (
             <div key={item.title}>
               {/* Chapter Header */}
@@ -384,6 +384,50 @@ export default function TableOfContents() {
         </nav>
         <p className="mt-4 border-b border-[var(--accent-gold)]" />
       </aside>
+
+      <style jsx global>{`
+        /* Aesthetic Scrollbar Styling */
+        .aesthetic-scroll {
+          scrollbar-width: thin;
+          scrollbar-color: var(--text-accent) transparent;
+        }
+
+        /* Webkit browsers (Chrome, Safari, Edge) */
+        .aesthetic-scroll::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        .aesthetic-scroll::-webkit-scrollbar-track {
+          background: transparent;
+          border-radius: 10px;
+          margin: 8px 0;
+        }
+
+        .aesthetic-scroll::-webkit-scrollbar-thumb {
+          background: var(--text-accent);
+          border-radius: 10px;
+          border: 2px solid var(--bg-light);
+          transition: background 0.3s ease;
+        }
+
+        .aesthetic-scroll::-webkit-scrollbar-thumb:hover {
+          background: #4A3426;
+        }
+
+        .aesthetic-scroll::-webkit-scrollbar-thumb:active {
+          background: #3d2b1e;
+        }
+
+        /* Smooth scrolling behavior */
+        .aesthetic-scroll {
+          scroll-behavior: smooth;
+        }
+
+        /* Add padding to prevent content from being hidden by scrollbar */
+        .aesthetic-scroll {
+          padding-right: 4px;
+        }
+      `}</style>
     </>
   );
 }
