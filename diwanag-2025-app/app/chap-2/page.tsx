@@ -114,80 +114,19 @@ export default function ChapTwoPage() {
           }}
         >
           <Button
-            className="align-left"
-            onClick={async () => {
-              // Fetch last artwork of Chapter 1
-              const res = await fetch("/data/artworks.json");
-              const data = await res.json();
-              const chapter1Arts = data.filter(
-                (art: any) => art.chapter === "Chapter 1"
-              );
-              if (chapter1Arts.length > 0) {
-                const lastArt = chapter1Arts[chapter1Arts.length - 1];
-                router.push(
-                  `/chap-1/artwork/${encodeURIComponent(lastArt.artTitle)}`
-                );
-              }
-            }}
-            style={{
-              backgroundColor: "var(--accent-brown-dark)",
-              color: "var(--text-light)",
-              padding: "0.5rem 1rem",
-              fontSize: "1.2rem",
-              minWidth: "auto",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#4A3426";
-              e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow =
-                "0 6px 18px rgba(74, 52, 38, 0.4)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor =
-                "var(--accent-brown-dark)";
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow =
-                "0 4px 12px rgba(74, 52, 38, 0.3)";
-            }}
+            variant="primary"
+            onClick={() =>
+              router.push("/chap-1/artwork/Underneath%20The%20Cloudless%20Sky")
+            }
+            className="!h-12 transition-all duration-300 hover:-translate-y-0.5"
           >
-            ← Chapter 1
+            ← Back to Chapter 1
           </Button>
 
-          {/* Begin Journey Button */}
           <Button
-            onClick={async () => {
-              // Fetch first artwork of Chapter 2
-              const res = await fetch("/data/artworks.json");
-              const data = await res.json();
-              const chapter2Art = data.find(
-                (art: any) => art.chapter === "Chapter 2"
-              );
-              if (chapter2Art) {
-                router.push(
-                  `/chap-2/artwork/${encodeURIComponent(chapter2Art.artTitle)}`
-                );
-              }
-            }}
-            style={{
-              backgroundColor: "var(--accent-brown-dark)",
-              color: "var(--text-light)",
-              padding: "0.5rem 1rem",
-              fontSize: "1.2rem",
-              minWidth: "auto",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#4A3426";
-              e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow =
-                "0 6px 18px rgba(74, 52, 38, 0.4)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor =
-                "var(--accent-brown-dark)";
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow =
-                "0 4px 12px rgba(74, 52, 38, 0.3)";
-            }}
+            variant="primary"
+            onClick={() => router.push("/chap-2/artwork/Reminiscence")}
+            className="!h-12 transition-all duration-300 hover:-translate-y-0.5"
           >
             Begin Journey →
           </Button>

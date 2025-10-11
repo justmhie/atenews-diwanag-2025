@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import PageLoadingWrapper from "../components/PageLoadingWrapper";
+import Button from "@/app/components/Button";
 export default function EpiloguePage() {
   const router = useRouter();
 
@@ -210,36 +211,15 @@ export default function EpiloguePage() {
               transform: "translateX(-50%)",
             }}
           >
-            <button
-              onClick={() => router.push("/chap-6")}
-              style={{
-                backgroundColor: "var(--accent-brown-dark)",
-                color: "var(--text-light)",
-                padding: "0.5rem 1rem",
-                fontSize: "1.2rem",
-                minWidth: "auto",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-                fontFamily: "averia-serif",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#4A3426";
-                e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow =
-                  "0 6px 18px rgba(74, 52, 38, 0.4)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor =
-                  "var(--accent-brown-dark)";
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow =
-                  "0 4px 12px rgba(74, 52, 38, 0.3)";
-              }}
+            <Button
+              variant="primary"
+              onClick={() =>
+                router.push("/chap-6/artwork/Sigalot%20ng%20Kaluluwa")
+              }
+              className="!h-12 transition-all duration-300 hover:-translate-y-0.5"
             >
               ← Back to Chapter 6
-            </button>
+            </Button>
           </div>
         </div>
 

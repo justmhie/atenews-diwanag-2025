@@ -113,80 +113,19 @@ export default function ChapSixPage() {
           }}
         >
           <Button
-            className="align-left"
-            onClick={async () => {
-              // Fetch last artwork of Chapter 5
-              const res = await fetch("/data/artworks.json");
-              const data = await res.json();
-              const chapter5Arts = data.filter(
-                (art: any) => art.chapter === "Chapter 5"
-              );
-              if (chapter5Arts.length > 0) {
-                const lastArt = chapter5Arts[chapter5Arts.length - 1];
-                router.push(
-                  `/chap-5/artwork/${encodeURIComponent(lastArt.artTitle)}`
-                );
-              }
-            }}
-            style={{
-              backgroundColor: "var(--accent-brown-dark)",
-              color: "var(--text-light)",
-              padding: "0.5rem 1rem",
-              fontSize: "1.2rem",
-              minWidth: "auto",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#4A3426";
-              e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow =
-                "0 6px 18px rgba(74, 52, 38, 0.4)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor =
-                "var(--accent-brown-dark)";
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow =
-                "0 4px 12px rgba(74, 52, 38, 0.3)";
-            }}
+            variant="primary"
+            onClick={() =>
+              router.push("/chap-5/artwork/Wholeness%20in%20Whiskered%20Whimsy")
+            }
+            className="!h-12 transition-all duration-300 hover:-translate-y-0.5"
           >
-            ← Chapter 5
+            ← Back to Chapter 5
           </Button>
 
-          {/* Begin Journey Button */}
           <Button
-            onClick={async () => {
-              // Fetch first artwork of Chapter 6
-              const res = await fetch("/data/artworks.json");
-              const data = await res.json();
-              const chapter6Art = data.find(
-                (art: any) => art.chapter === "Chapter 6"
-              );
-              if (chapter6Art) {
-                router.push(
-                  `/chap-6/artwork/${encodeURIComponent(chapter6Art.artTitle)}`
-                );
-              }
-            }}
-            style={{
-              backgroundColor: "var(--accent-brown-dark)",
-              color: "var(--text-light)",
-              padding: "0.5rem 1rem",
-              fontSize: "1.2rem",
-              minWidth: "auto",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#4A3426";
-              e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow =
-                "0 6px 18px rgba(74, 52, 38, 0.4)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor =
-                "var(--accent-brown-dark)";
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow =
-                "0 4px 12px rgba(74, 52, 38, 0.3)";
-            }}
+            variant="primary"
+            onClick={() => router.push("/chap-6/artwork/Walking%20Among%20Us")}
+            className="!h-12 transition-all duration-300 hover:-translate-y-0.5"
           >
             Begin Journey →
           </Button>

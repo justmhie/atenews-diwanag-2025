@@ -117,69 +117,20 @@ export default function ChapOnePage() {
             alignItems: "center",
           }}
         >
-          {/* Return to Prologue Button */}
           <Button
-            className="align-left"
+            variant="primary"
             onClick={() => router.push("/prologue")}
-            style={{
-              backgroundColor: "var(--accent-brown-dark)",
-              color: "var(--text-light)",
-              padding: "0.5rem 1rem",
-              fontSize: "1.2rem",
-              minWidth: "auto",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#4A3426";
-              e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow =
-                "0 6px 18px rgba(74, 52, 38, 0.4)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor =
-                "var(--accent-brown-dark)";
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow =
-                "0 4px 12px rgba(74, 52, 38, 0.3)";
-            }}
+            className="!h-12 transition-all duration-300 hover:-translate-y-0.5"
           >
-            ← Prologue
+            ← Back to Prologue
           </Button>
 
-          {/* Begin Journey Button */}
           <Button
-            onClick={async () => {
-              // Fetch first artwork of Chapter 1
-              const res = await fetch("/data/artworks.json");
-              const data = await res.json();
-              const chapter1Art = data.find(
-                (art: any) => art.chapter === "Chapter 1"
-              );
-              if (chapter1Art) {
-                router.push(
-                  `/chap-1/artwork/${encodeURIComponent(chapter1Art.artTitle)}`
-                );
-              }
-            }}
-            style={{
-              backgroundColor: "var(--accent-brown-dark)",
-              color: "var(--text-light)",
-              padding: "0.5rem 1rem",
-              fontSize: "1.2rem",
-              minWidth: "auto",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#4A3426";
-              e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow =
-                "0 6px 18px rgba(74, 52, 38, 0.4)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor =
-                "var(--accent-brown-dark)";
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow =
-                "0 4px 12px rgba(74, 52, 38, 0.3)";
-            }}
+            variant="primary"
+            onClick={() =>
+              router.push("/chap-1/artwork/Tailored%20for%20Yesterday")
+            }
+            className="!h-12 transition-all duration-300 hover:-translate-y-0.5"
           >
             Begin Journey →
           </Button>

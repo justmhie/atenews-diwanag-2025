@@ -226,29 +226,11 @@ export default function ProloguePage() {
             }}
           >
             <Button
+              variant="primary"
               onClick={() => router.push("/chap-1")}
-              style={{
-                backgroundColor: "var(--accent-brown-dark)",
-                color: "var(--text-light)",
-                padding: "0.5rem 1rem",
-                fontSize: "1.2rem",
-                minWidth: "auto",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#4A3426";
-                e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow =
-                  "0 6px 18px rgba(74, 52, 38, 0.4)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor =
-                  "var(--accent-brown-dark)";
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow =
-                  "0 4px 12px rgba(74, 52, 38, 0.3)";
-              }}
+              className="!h-12 transition-all duration-300 hover:-translate-y-0.5"
             >
-              Begin Chapter 1 →
+              Begin Chapter 1
             </Button>
           </div>
         </div>

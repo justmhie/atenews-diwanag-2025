@@ -247,7 +247,7 @@ export default function ArtworkPage() {
                   >
                     <path d="M19 12H5M12 19l-7-7 7-7" />
                   </svg>
-                  Chapter
+                  Chapter 2
                 </Button>
               ) : (
                 <Button
