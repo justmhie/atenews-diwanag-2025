@@ -150,7 +150,7 @@ export default function ChapTwoPage() {
                 "0 4px 12px rgba(74, 52, 38, 0.3)";
             }}
           >
-            ← Chapter 2
+            ← Chapter 1
           </Button>
 
           {/* Begin Journey Button */}

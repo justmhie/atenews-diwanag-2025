@@ -34,7 +34,7 @@ export default function Button({
           ? "var(--bg-light)"
           : "var(--accent-brown-dark)"
         : variant === "secondary"
-        ? "var(--)"
+        ? "var(--accent-gold-darker)"
         : "transparent",
     color:
       variant === "primary"
