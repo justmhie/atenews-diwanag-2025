@@ -53,7 +53,7 @@ export default function AtenewsStaffPage() {
                 letterSpacing: "2px",
               }}
             >
-              Atenews Staff
+              Diwanag 2025
             </h1>
             <p
               style={{
@@ -63,21 +63,22 @@ export default function AtenewsStaffPage() {
                 fontSize: "18px",
               }}
             >
-              1st Semester, AY 2024-2025
+              List of Contributors
             </p>
           </header>
 
-          {/* Staff Content - Four Column Layout matching the table */}
+          {/* Staff Content - Single Column Layout */}
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr 1fr",
+              display: "flex",
+              flexDirection: "column",
               gap: "3rem",
-              maxWidth: "1400px",
+              maxWidth: "600px",
               margin: "0 auto",
+              textAlign: "center",
             }}
           >
-            {/* COLUMN 1 - Editorial Board Names */}
+            {/* Creative Direction, Illustrative Designs, Overall Layout */}
             <div
               style={{
                 display: "flex",
@@ -96,7 +97,7 @@ export default function AtenewsStaffPage() {
                     fontFamily: "averia-serif",
                   }}
                 >
-                  Editorial Board
+                  Creative Direction, Illustrative Designs, Overall Layout
                 </h2>
                 <div
                   style={{
@@ -114,7 +115,115 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
-                    Aika Khent Zainab Rosete
+                    Mariz Alyah Cenojas
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* Artists */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1.5rem",
+              }}
+            >
+              <div>
+                <h2
+                  style={{
+                    fontSize: "1.4rem",
+                    color: "#F8FFD8",
+                    marginBottom: "1rem",
+                    fontWeight: "bold",
+                    fontStyle: "italic",
+                    fontFamily: "averia-serif",
+                  }}
+                >
+                  Artists
+                </h2>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.3rem",
+                  }}
+                >
+                  <p
+                    style={{
+                      color: "#F8FFD8",
+                      fontSize: "17px",
+                      lineHeight: "1.8",
+                      fontFamily: "averia-serif",
+                      margin: 0,
+                    }}
+                  >
+                    Adrian Dave Realuyo
+                  </p>
+                  <p
+                    style={{
+                      color: "#F8FFD8",
+                      fontSize: "17px",
+                      lineHeight: "1.8",
+                      fontFamily: "averia-serif",
+                      margin: 0,
+                    }}
+                  >
+                    Annaliese Margarette Abrina
+                  </p>
+                  <p
+                    style={{
+                      color: "#F8FFD8",
+                      fontSize: "17px",
+                      lineHeight: "1.8",
+                      fontFamily: "averia-serif",
+                      margin: 0,
+                    }}
+                  >
+                    Ayra
+                  </p>
+                  <p
+                    style={{
+                      color: "#F8FFD8",
+                      fontSize: "17px",
+                      lineHeight: "1.8",
+                      fontFamily: "averia-serif",
+                      margin: 0,
+                    }}
+                  >
+                    Cornikopia
+                  </p>
+                  <p
+                    style={{
+                      color: "#F8FFD8",
+                      fontSize: "17px",
+                      lineHeight: "1.8",
+                      fontFamily: "averia-serif",
+                      margin: 0,
+                    }}
+                  >
+                    Dominic Basalo II
+                  </p>
+                  <p
+                    style={{
+                      color: "#F8FFD8",
+                      fontSize: "17px",
+                      lineHeight: "1.8",
+                      fontFamily: "averia-serif",
+                      margin: 0,
+                    }}
+                  >
+                    Earl Geibriel Dicipulo
+                  </p>
+                  <p
+                    style={{
+                      color: "#F8FFD8",
+                      fontSize: "17px",
+                      lineHeight: "1.8",
+                      fontFamily: "averia-serif",
+                      margin: 0,
+                    }}
+                  >
+                    Elise
                   </p>
                   <p
                     style={{
@@ -136,7 +245,7 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
-                    Mauriz Pagangpang
+                    E.O. Lyth
                   </p>
                   <p
                     style={{
@@ -147,7 +256,7 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
-                    Cheijtisha Nheka Gargaran
+                    Hany
                   </p>
                   <p
                     style={{
@@ -158,7 +267,7 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
-                    Rena Christine Bustamante
+                    Jerelyn Hilay
                   </p>
                   <p
                     style={{
@@ -169,7 +278,7 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
-                    Jerachris Rosal
+                    Leila Angelie Magdadaro
                   </p>
                   <p
                     style={{
@@ -180,7 +289,7 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
-                    Wenayl Geronimo
+                    Mokie
                   </p>
                   <p
                     style={{
@@ -191,7 +300,7 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
-                    Daniel Gallego
+                    Pichibii
                   </p>
                   <p
                     style={{
@@ -202,7 +311,7 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
-                    Toni Ann Albarico
+                    Pol
                   </p>
                   <p
                     style={{
@@ -213,7 +322,7 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
-                    Kent Empedrad
+                    Stargaeze
                   </p>
                   <p
                     style={{
@@ -224,7 +333,7 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
-                    Heart Haezel Gacayan
+                    Star Noveno
                   </p>
                   <p
                     style={{
@@ -235,42 +344,7 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
-                    Dr. Cheryl Baldric
-                  </p>
-                </div>
-              </div>
-
-              {/* Second row - More names */}
-              <div>
-                <h2
-                  style={{
-                    fontSize: "1.4rem",
-                    color: "#C9A54F",
-                    marginBottom: "1rem",
-                    fontWeight: "bold",
-                    fontStyle: "italic",
-                    fontFamily: "averia-serif",
-                  }}
-                >
-                  ──────────────
-                </h2>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.3rem",
-                  }}
-                >
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Mariz Aylah Cenojas
+                    Sayu
                   </p>
                   <p
                     style={{
@@ -281,7 +355,7 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
-                    Ryan Balleza
+                    The Third Man
                   </p>
                   <p
                     style={{
@@ -292,7 +366,7 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
-                    Kent Sanchez
+                    Tiffany Cantona
                   </p>
                   <p
                     style={{
@@ -303,7 +377,7 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
-                    Rean Marco Regno
+                    Tio
                   </p>
                   <p
                     style={{
@@ -314,35 +388,13 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
-                    Lance Allen Tosloc
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Kirsten George Jara
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Shika Rani Eramis
+                    YuShan
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* COLUMN 2 - Roles */}
+            {/* Web Designers and Developers */}
             <div
               style={{
                 display: "flex",
@@ -354,291 +406,6 @@ export default function AtenewsStaffPage() {
                 <h2
                   style={{
                     fontSize: "1.4rem",
-                    color: "#05101C",
-                    marginBottom: "1rem",
-                    fontWeight: "bold",
-                    fontStyle: "italic",
-                    fontFamily: "averia-serif",
-                  }}
-                >
-                  .
-                </h2>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.3rem",
-                  }}
-                >
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Editor-in-Chief
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Associate Editor & Art Editor for Cartoon
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Managing Editor for Secretariat
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Managing Editor for Finance
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    News Editor & Literary Editor
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Art Editor for Photo
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Art Editor for Graphic Design
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Art Editor for Layout & Web
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Productions Editor
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Social Media Editor
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Honorary Editor & Features Editor
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Moderator
-                  </p>
-                </div>
-              </div>
-
-              {/* Second row - More roles */}
-              <div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.3rem",
-                  }}
-                >
-                  <h2
-                    style={{
-                      fontSize: "1.4rem",
-                      color: "#C9A54F",
-                      marginBottom: "1rem",
-                      fontWeight: "bold",
-                      fontStyle: "italic",
-                      fontFamily: "averia-serif",
-                    }}
-                  >
-                    ──────────────
-                  </h2>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Creative Direction, Overall Layout
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Senior Photojournalist
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Senior Video Editor
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Senior Social Media Staff
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Junior Layout Artist
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Junior News Writer
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Junior Web Designer & Developer
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* COLUMN 3 */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "1.5rem",
-              }}
-            >
-              {/* Senior Feature Writers */}
-              <div>
-                <h2
-                  style={{
-                    fontSize: "1.4rem",
                     color: "#F8FFD8",
                     marginBottom: "1rem",
                     fontWeight: "bold",
@@ -646,7 +413,7 @@ export default function AtenewsStaffPage() {
                     fontFamily: "averia-serif",
                   }}
                 >
-                  Senior Feature Writers
+                  Web Designers and Developers
                 </h2>
                 <div
                   style={{
@@ -664,7 +431,7 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
-                    Giancarlo Rafael Tablós
+                    Alyssa Mhie Matila
                   </p>
                   <p
                     style={{
@@ -675,446 +442,7 @@ export default function AtenewsStaffPage() {
                       margin: 0,
                     }}
                   >
-                    Leanna Kim Apalico
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Stephen Camahalan
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Jersey Francisco
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Diwania Ma. Rosemina Gales
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Shema Kailah Sacman
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Rhyan Amanda Usman
-                  </p>
-                </div>
-              </div>
-
-              {/* Senior Field Correspondent */}
-              <div>
-                <h2
-                  style={{
-                    fontSize: "1.4rem",
-                    color: "#F8FFD8",
-                    marginBottom: "1rem",
-                    fontWeight: "bold",
-                    fontStyle: "italic",
-                    fontFamily: "averia-serif",
-                  }}
-                >
-                  Senior Field Correspondent
-                </h2>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.3rem",
-                  }}
-                >
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Jana Buagas
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Lennard Antoinette Delima
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Mari Andreiane Dormitorio
-                  </p>
-                </div>
-              </div>
-
-              {/* Junior Photojournalists */}
-              <div>
-                <h2
-                  style={{
-                    fontSize: "1.4rem",
-                    color: "#F8FFD8",
-                    marginBottom: "1rem",
-                    fontWeight: "bold",
-                    fontStyle: "italic",
-                    fontFamily: "averia-serif",
-                  }}
-                >
-                  Junior Photojournalists
-                </h2>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.3rem",
-                  }}
-                >
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Christina Cabiosa
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Seth Gatinao
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Edrian Nabos
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* COLUMN 4 */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "1.5rem",
-              }}
-            >
-              {/* Senior News Writers */}
-              <div>
-                <h2
-                  style={{
-                    fontSize: "1.4rem",
-                    color: "#F8FFD8",
-                    marginBottom: "1rem",
-                    fontWeight: "bold",
-                    fontStyle: "italic",
-                    fontFamily: "averia-serif",
-                  }}
-                >
-                  Senior News Writers
-                </h2>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.3rem",
-                  }}
-                >
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Julianne Kaye Cortez
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Criztia Joy Libao
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Lancelotte Loriel Piquero
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Mariah Veronica Rubia
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Joshua Angelo Ybañez
-                  </p>
-                  <p
-                    style={{
-                      color: "#05101C",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    .
-                  </p>
-                  <p
-                    style={{
-                      color: "#05101C",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    .
-                  </p>
-                </div>
-              </div>
-
-              {/* Senior Layout Artists */}
-              <div>
-                <h2
-                  style={{
-                    fontSize: "1.4rem",
-                    color: "#F8FFD8",
-                    marginBottom: "1rem",
-                    fontWeight: "bold",
-                    fontStyle: "italic",
-                    fontFamily: "averia-serif",
-                  }}
-                >
-                  Senior Layout Artists
-                </h2>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.3rem",
-                  }}
-                >
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    John Shenon Uy
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Mariz Aylah Cenojas
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Earl Gelbriel Dicipulo
-                  </p>
-                </div>
-              </div>
-
-              {/* Junior Social Media Staff */}
-              <div>
-                <h2
-                  style={{
-                    fontSize: "1.4rem",
-                    color: "#F8FFD8",
-                    marginBottom: "1rem",
-                    fontWeight: "bold",
-                    fontStyle: "italic",
-                    fontFamily: "averia-serif",
-                  }}
-                >
-                  Junior Social Media Staff
-                </h2>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.3rem",
-                  }}
-                >
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Celestil Bernas
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Daniel Esguerra
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Alyssa Nicole Hiyos
-                  </p>
-                </div>
-              </div>
-
-              {/* Junior Cartoonists */}
-              <div>
-                <h2
-                  style={{
-                    fontSize: "1.4rem",
-                    color: "#F8FFD8",
-                    marginBottom: "1rem",
-                    fontWeight: "bold",
-                    fontStyle: "italic",
-                    fontFamily: "averia-serif",
-                  }}
-                >
-                  Junior Cartoonists
-                </h2>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.3rem",
-                  }}
-                >
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Dominic Basalo II
-                  </p>
-                  <p
-                    style={{
-                      color: "#F8FFD8",
-                      fontSize: "17px",
-                      lineHeight: "1.8",
-                      fontFamily: "averia-serif",
-                      margin: 0,
-                    }}
-                  >
-                    Shanice Angel Yu
+                    Nica Zoe Dable
                   </p>
                 </div>
               </div>
@@ -1136,7 +464,6 @@ export default function AtenewsStaffPage() {
             }
 
             main > div:last-child > div:nth-child(2) {
-              grid-template-columns: 1fr !important;
               gap: 2rem !important;
             }
           }
